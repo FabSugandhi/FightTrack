@@ -174,67 +174,67 @@ Below are the screenshots of the project overview, as well as the individual ite
 
 ### Project Overview
 
-![Project0Overview](https://github.com/user-attachments/assets/17752eb1-3ae9-4dce-bee1-454a763555fb)
+![Project0Overview](./docs/R6/Project0Overview.png)
 
 ### Project Timeline
 
-![ProjectTimeline](https://github.com/user-attachments/assets/a48ecc17-e817-4933-a110-603b60061192)
+![ProjectTimeline](./docs/R6/ProjectTimeline.png)
 
 ### Project Setup
 
-![Project1Setup](https://github.com/user-attachments/assets/6f5d4b98-ab0a-4088-817b-c28e33f462fe)
+![Project1Setup](./docs/R6/Project1Setup.png)
 
 ### Dataflow Diagram
 
-![Project2DataflowDiagram](https://github.com/user-attachments/assets/9faf5f2e-391d-43c0-9480-2c95531a740a)
+![Project2DataflowDiagram](./docs/R6/Project2DataflowDiagram.png)
 
 ### Architecture Diagram
 
-![Project3ArchitectureDiagram](https://github.com/user-attachments/assets/4aff473e-044d-4722-84a2-9529103eccd9)
+![Project3ArchitectureDiagram](./docs/R6/Project3ArchitectureDiagram.png)
 
 ### User Stories
 
-![Project4UserStories](https://github.com/user-attachments/assets/07cac055-c6cc-45c1-8443-000279cd638a)
+![Project4UserStories](./docs/R6/Project4UserStories.png)
 
 ### Wireframe
 
-![Project5Wireframe](https://github.com/user-attachments/assets/da4d4923-ed25-4e90-bf98-2db9b9418ba0)
+![Project5Wireframe](./docs/R6/Project5Wireframe.png)
 
 ### Technical Setup
 
-![Project6TechnicalSetup](https://github.com/user-attachments/assets/6d8cae28-45b1-4916-b129-b95be2bb1cd4)
+![Project6TechnicalSetup](./docs/R6/Project6TechnicalSetup.png)
 
 ### Website Design
 
-![Project7WebsiteDesign](https://github.com/user-attachments/assets/64be061f-8c3f-4644-a11b-b0ac0b110894)
+![Project7WebsiteDesign](./docs/R6/Project7WebsiteDesign.png)
 
 ### Frontend Development
 
-![Project8FrontendDevelopment](https://github.com/user-attachments/assets/c9a8c2ad-be51-4ccf-bd61-2954cb879a4e)
+![Project8FrontendDevelopment](./docs/R6/Project8FrontendDevelopment.png)
 
 ### Backend Development
 
-![Project9BackendDevelopment](https://github.com/user-attachments/assets/02cc5ca1-f338-4d64-ba71-550e9149a847)
+![Project9BackendDevelopment](./docs/R6/Project9BackendDevelopment.png)
 
 ### Integration
 
-![Project10Integration](https://github.com/user-attachments/assets/b9090d2d-ea45-4bab-b641-a5367b42ce34)
+![Project10Integration](./docs/R6/Project10Integration.png)
 
 ### Dashboard Development
 
-![Project11DashboardDevelopment](https://github.com/user-attachments/assets/e5d3edc1-9ddb-4ec0-81d6-7ca9d8664c10)
+![Project11DashboardDevelopment](./docs/R6/Project11DashboardDevelopment.png)
 
 ### Testing
 
-![Project12Testing](https://github.com/user-attachments/assets/0be58ed6-1bdb-4d8d-b4e0-f5897367d1bc)
+![Project12Testing](./docs/R6/Project12Testing.png)
 
 ### Deployment
 
-![Project13Deployment](https://github.com/user-attachments/assets/5b439ded-0eeb-46c2-ad36-26d3bb802751)
+![Project13Deployment](./docs/R6/Project13Deployment.png)
 
 ### Documentation
 
-![Project14Documentation](https://github.com/user-attachments/assets/08ccdd3a-6827-4b22-9b41-d7a9cb45ed93)
+![Project14Documentation](./docs/R6/Project14Documentation.png)
 
 
 
