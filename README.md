@@ -19,12 +19,12 @@ For the gym owner, the app offers a comprehensive dashboard to monitor class enr
 - **Backend**:
   - Node.js
   - Express.js
+  - Mongoose (for defining schemas and models)
   - Render (for hosting)
 
 - **Database**:
   - MongoDB
   - MongoDB Atlas (for managed cloud service)
-  - Mongoose (for defining schemas and models)
 
 # R2: Dataflow Diagram
 
