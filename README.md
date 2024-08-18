@@ -4,8 +4,8 @@ Coder Academy Term 3 Assignment 2 - Part A
 
 ## Student Name: 
 
-Kasun Don
-Fabian Sugandhi
+Kasun Don\
+Fabian Sugandhi\
 Ryley Croucher
 
 # R1
