@@ -122,6 +122,8 @@ User Stories:
 
 # R5: Wireframes
 
+The wireframe was created using [Figma](https://www.figma.com/). These are the initial wireframes that will be used as the base for the website. These are not final, and further additions, omissions, and alterations, which might include additional pages, is very likely to be adopted in order to facilitate a functional and user-friendly website. Some items in the wireframe are coloured RED. This is to indicate that the items are buttons that will lead to either another page or a document that can be downloaded. Four (4) pages are created as a basis, namely: Homepage, Facilities (which will include overview of all the gym facilities and classes), Members (which will include all membership and individual class pass purchase information), and Contact (indicated as Location in the wireframe as the gym might have multiple locations, this page will include the gym address and an enquiry form). For the initial plan, two (2) screen sizes have been accomodated: Mobile Devices (up to 768px wide) and Tablet & Laptop (above 768px wide). The Tablet layout will be differentiated from the Laptop layout by adjusting the margin. As done with the page inclusion, this is subject to future adjustments once the actual design progresses.
+
 ## Homepage (Mobile)
 
 ![HomeMobile](https://github.com/user-attachments/assets/5656cea8-2f7c-4ba5-9e7c-d35c6824ae63)
@@ -156,9 +158,17 @@ User Stories:
 
 # R6: Project Management
 
+Link to the [Implementation Plan](https://github.com/users/FabSugandhi/projects/4/views/1), created using GitHub Project.
+
+Below are the screenshots of the project overview, as well as the individual items that will be involved in the whole project. This will be updated regularly, and progress will be monitored to ensure that the project will be completed in the required timeline. Up to the submission of T3A2-A, dated 18 August 2024. the project timeline had been followed with no significant deviation.
+
 ## Project Overview
 
 ![Project0Overview](https://github.com/user-attachments/assets/17752eb1-3ae9-4dce-bee1-454a763555fb)
+
+## Project Timeline
+
+![ProjectTimeline](https://github.com/user-attachments/assets/a48ecc17-e817-4933-a110-603b60061192)
 
 ## Project Setup
 
@@ -215,5 +225,6 @@ User Stories:
 ## Documentation
 
 ![Project14Documentation](https://github.com/user-attachments/assets/08ccdd3a-6827-4b22-9b41-d7a9cb45ed93)
+
 
 
