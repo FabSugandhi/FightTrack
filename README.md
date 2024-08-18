@@ -2,7 +2,7 @@
 
 Coder Academy Term 3 Assignment 2 - Part A
 
-### Student Name: 
+### Student Name:
 
 Kasun Don\
 Fabian Sugandhi\
@@ -82,36 +82,39 @@ In our database, MongoDB will be responsible for storing and managing applicatio
 
 ### User Story 1: Boxing Instructor
 
-Name: Josh 
-Age: 28 
+Name: Josh
+Age: 28
 
 About:
 Josh is a boxing instructor passionate about fitness and teaching others. He runs a local boxing gym, offering classes like Cardio Boxing, Fighters Academy, Open Gym, and Kids Boxing. Josh is committed to providing the best experience for his clients but finds it challenging to manage all administrative tasks while focusing on training his clients.
 
 Needs:
+
 - Easily manage class schedules, enrollments, and payments.
 - Monitor class attendance.
 
 Frustrations:
+
 - Struggles with balancing administrative tasks and training responsibilities between classes.
 - Finds it a hassle to track payments and attendance manually.
 
 User Stories:
+
 - *As a user*, I want to see how many people have enrolled in each class so that I can prepare the right resources and plan my sessions effectively.
 - *As a user*, I want to update class schedules and availability easily so that clients can see when classes are available each week.
 - *As a user*, I want to track whether attendees have paid for classes so that I can manage payments efficiently without interrupting training sessions.
 - *As a user*, I want to sign up new members to the gym directly through the web app so that I can streamline the onboarding process and grow my client base.
 
-
 ### User Story 2: Boxing Class Member
 
-Name: Claire 
+Name: Claire
 Age: 22
 
 About:
 Claire is a university student who stays active through boxing classes. With her busy study schedule, Claire needs a flexible and convenient way to book her boxing classes, track her progress, and manage her membership.
 
 Needs:
+
 - See when classes are available to plan her schedule.
 - Manage her class enrollments easily.
 - Search for classes available at specific times and days.
@@ -119,16 +122,16 @@ Needs:
 - Receive notifications about class times and reminders.
 
 Frustrations:
+
 - Finds it hard to locate classes that fit into her busy schedule.
 - Tends to forget when she has booked a class for.
 
 User Stories:
+
 - *As a user*, I want to see when classes are available so that I can plan my schedule around them.
 - *As a user*, I want to manage my class enrollments through the app so that I can easily adjust my bookings if my plans change.
 - *As a user*, I want to pay for my membership directly through the app so that I can handle all my gym-related tasks in one place.
 - *As a user*, I want to receive notifications about class times and reminders so that I don't miss any sessions.
-
-
 
 ## R5: Wireframes
 
@@ -235,6 +238,3 @@ Below are the screenshots of the project overview, as well as the individual ite
 ### Documentation
 
 ![Project14Documentation](./docs/R6/Project14Documentation.png)
-
-
-
