@@ -40,11 +40,11 @@ For the gym owner, the app offers a comprehensive dashboard to monitor class enr
 
 ### Level 0
 
-![level0dfd](https://github.com/user-attachments/assets/8b6a4b73-f3c5-4232-8a7b-8b8e2e29d1cd)
+![level0dfd](./docs/R2/level0dfd.png)
 
 ### Level 1
 
-![level1dfd](https://github.com/user-attachments/assets/0fdf2e45-797a-4e07-a084-92fd0f6d979f)
+![level1dfd](./docs/R2/level1dfd.png)
 
 #### Entities:
 
@@ -68,7 +68,7 @@ For the gym owner, the app offers a comprehensive dashboard to monitor class enr
 
 ## R3: Application Architecture Diagram
 
-![application_diagram](https://github.com/user-attachments/assets/5a6864c9-7073-4832-8754-0f28bbaa274a)
+![application_diagram](./docs/R3/application_diagram.png)
 
 In the front end of our project React will handle the UI rendering while HTML, CSS and Javascript will be the foundational languages used to structure the front end web application. Vite will also be used to streamline development to get our front functioning as efficiently as possible. Netlify will be used to host our front end for deployment.
 
