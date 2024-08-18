@@ -136,11 +136,11 @@ The wireframe was created using [Figma](https://www.figma.com/). These are the i
 
 ### Homepage (Mobile)
 
-![HomeMobile](https://github.com/user-attachments/assets/5656cea8-2f7c-4ba5-9e7c-d35c6824ae63)
+![HomeMobile](./docs/R5/HomeMobile.png)
 
 ### Homepage (Laptop & Tablet)
 
-![HomeLaptopTablet](https://github.com/user-attachments/assets/e786f427-9c5a-4fb2-a496-eabef57459d0)
+![HomeLaptopTablet](./docs/R5/HomeLaptopTablet.png)
 
 ### Facilities (Mobile)
 
