@@ -8,6 +8,23 @@ For the gym owner, the app offers a comprehensive dashboard to monitor class enr
 
 ## Tech Stack
 
+- **Frontend**:
+  - React
+  - HTML
+  - CSS
+  - JavaScript
+  - Vite
+  - Netlify (for deployment)
+
+- **Backend**:
+  - Node.js
+  - Express.js
+  - Render (for hosting)
+
+- **Database**:
+  - MongoDB
+  - MongoDB Atlas (for managed cloud service)
+  - Mongoose (for defining schemas and models)
 
 # R2: Dataflow Diagram
 
