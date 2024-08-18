@@ -144,27 +144,27 @@ The wireframe was created using [Figma](https://www.figma.com/). These are the i
 
 ### Facilities (Mobile)
 
-![FacilitiesMobile](https://github.com/user-attachments/assets/0ae31874-0349-4e33-967e-026a74091d25)
+![FacilitiesMobile](./docs/R5/FacilitiesMobile.png)
 
 ### Facilities (Laptop & Tablet)
 
-![FacilitiesLaptopTablet](https://github.com/user-attachments/assets/208ed05e-ca83-42e0-84c1-124ec239a969)
+![FacilitiesLaptopTablet](./docs/R5/FacilitiesLaptopTablet.png)
 
 ### Members (Mobile)
 
-![MembersMobile](https://github.com/user-attachments/assets/6f474242-438a-4a20-8558-bb0873d67ca8)
+![MembersMobile](./docs/R5/MembersMobile.png)
 
 ### Members (Laptop & Tablet)
 
-![MembersLaptopTablet](https://github.com/user-attachments/assets/c12c6bef-40ec-47fa-b969-7df4e2b9e9f5)
+![MembersLaptopTablet](./docs/R5/MembersLaptopTablet.png)
 
 ### Contact (Mobile)
 
-![ContactMobile](https://github.com/user-attachments/assets/049c0c93-45a6-440c-923a-b68a74c64685)
+![ContactMobile](./docs/R5/ContactMobile.png)
 
 ### Contact (Laptop & Tablet)
 
-![ContactLaptopTablet](https://github.com/user-attachments/assets/d7e44dc4-e157-4a47-96ff-24a72e4fe8ad)
+![ContactLaptopTablet](./docs/R5/ContactLaptopTablet.png)
 
 ## R6: Project Management
 
