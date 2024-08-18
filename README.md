@@ -2,21 +2,21 @@
 
 Coder Academy Term 3 Assignment 2 - Part A
 
-## Student Name: 
+### Student Name: 
 
 Kasun Don\
 Fabian Sugandhi\
 Ryley Croucher
 
-# R1
+## R1
 
-## Purpose, Features and Target Audience
+### Purpose, Features and Target Audience
 
 The purpose of this web application is to streamline the booking and management process for a boxing gym, providing an efficient and user-friendly platform for both clients and the gym owner. The app aims to enhance the client experience by allowing them to easily create accounts, manage their profiles, and book classes like Cardi Box, Fighters Academy, Open Gym, and Kids Boxing. Clients will be able to search for classes that fit their schedules, check availability, and manage their bookings with ease.
 
 For the gym owner, the app offers a comprehensive dashboard to monitor class enrollments, track attendance, manage payments, and edit class details. This feature-rich platform will also facilitate the collection of payments for various membership packages, ensuring a seamless process for both short-term and long-term clients. By automating these processes, the app will free up valuable time for the gym owner, allowing them to focus more on delivering high-quality training to their clients while improving operational efficiency and client satisfaction.
 
-## Tech Stack
+### Tech Stack
 
 - **Frontend**:
   - React
@@ -36,22 +36,22 @@ For the gym owner, the app offers a comprehensive dashboard to monitor class enr
   - MongoDB
   - MongoDB Atlas (for managed cloud service)
 
-# R2: Dataflow Diagram
+## R2: Dataflow Diagram
 
-## Level 0
+### Level 0
 
 ![level0dfd](https://github.com/user-attachments/assets/8b6a4b73-f3c5-4232-8a7b-8b8e2e29d1cd)
 
-## Level 1
+### Level 1
 
 ![level1dfd](https://github.com/user-attachments/assets/0fdf2e45-797a-4e07-a084-92fd0f6d979f)
 
-### Entities:
+#### Entities:
 
 - Member: Users who sign up, book classes, make payments, and view their dashboard.
 - Owner: Manages classes and performs administrative tasks.
 
-### Processes:
+#### Processes:
 
 - User Authentication: Handles user signup, login, and profile management.
 - Class Management: Manages class schedules and availability.
@@ -59,14 +59,14 @@ For the gym owner, the app offers a comprehensive dashboard to monitor class enr
 - Payment Processing: Handles payment for different packages.
 - User Dashboard: Allows users to view their class bookings, payment status, and manage their profiles.
 
-### Database:
+#### Database:
 
 - Member Database: Stores member details.
 - Class Schedule Database: Stores class schedules and details.
 - Booking Database: Stores class bookings made by members.
 - Payment Database: Stores payment information for memberships and any day passes
 
-# R3: Application Architecture Diagram
+## R3: Application Architecture Diagram
 
 ![application_diagram](https://github.com/user-attachments/assets/5a6864c9-7073-4832-8754-0f28bbaa274a)
 
@@ -78,7 +78,7 @@ Node js and Express js will handle the incoming HTTP requests from the front end
 
 In our database, MongoDB will be responsible for storing and managing application data, including user information. To host this database we've opted for Atlas, a fully managed cloud service tailored specifically for MongoDB that ensure reliability.
 
-# R4: User Stories
+## R4: User Stories
 
 ### User Story 1: Boxing Instructor
 
@@ -130,109 +130,109 @@ User Stories:
 
 
 
-# R5: Wireframes
+## R5: Wireframes
 
 The wireframe was created using [Figma](https://www.figma.com/). These are the initial wireframes that will be used as the base for the website. These are not final, and further additions, omissions, and alterations, which might include additional pages, is very likely to be adopted in order to facilitate a functional and user-friendly website. Some items in the wireframe are coloured RED. This is to indicate that the items are buttons that will lead to either another page or a document that can be downloaded. Four (4) pages are created as a basis, namely: Homepage, Facilities (which will include overview of all the gym facilities and classes), Members (which will include all membership and individual class pass purchase information), and Contact (indicated as Location in the wireframe as the gym might have multiple locations, this page will include the gym address and an enquiry form). For the initial plan, two (2) screen sizes have been accomodated: Mobile Devices (up to 768px wide) and Tablet & Laptop (above 768px wide). The Tablet layout will be differentiated from the Laptop layout by adjusting the margin. As done with the page inclusion, this is subject to future adjustments once the actual design progresses.
 
-## Homepage (Mobile)
+### Homepage (Mobile)
 
 ![HomeMobile](https://github.com/user-attachments/assets/5656cea8-2f7c-4ba5-9e7c-d35c6824ae63)
 
-## Homepage (Laptop & Tablet)
+### Homepage (Laptop & Tablet)
 
 ![HomeLaptopTablet](https://github.com/user-attachments/assets/e786f427-9c5a-4fb2-a496-eabef57459d0)
 
-## Facilities (Mobile)
+### Facilities (Mobile)
 
 ![FacilitiesMobile](https://github.com/user-attachments/assets/0ae31874-0349-4e33-967e-026a74091d25)
 
-## Facilities (Laptop & Tablet)
+### Facilities (Laptop & Tablet)
 
 ![FacilitiesLaptopTablet](https://github.com/user-attachments/assets/208ed05e-ca83-42e0-84c1-124ec239a969)
 
-## Members (Mobile)
+### Members (Mobile)
 
 ![MembersMobile](https://github.com/user-attachments/assets/6f474242-438a-4a20-8558-bb0873d67ca8)
 
-## Members (Laptop & Tablet)
+### Members (Laptop & Tablet)
 
 ![MembersLaptopTablet](https://github.com/user-attachments/assets/c12c6bef-40ec-47fa-b969-7df4e2b9e9f5)
 
-## Contact (Mobile)
+### Contact (Mobile)
 
 ![ContactMobile](https://github.com/user-attachments/assets/049c0c93-45a6-440c-923a-b68a74c64685)
 
-## Contact (Laptop & Tablet)
+### Contact (Laptop & Tablet)
 
 ![ContactLaptopTablet](https://github.com/user-attachments/assets/d7e44dc4-e157-4a47-96ff-24a72e4fe8ad)
 
-# R6: Project Management
+## R6: Project Management
 
 Link to the [Implementation Plan](https://github.com/users/FabSugandhi/projects/4/views/1), created using GitHub Project.
 
 Below are the screenshots of the project overview, as well as the individual items that will be involved in the whole project. This will be updated regularly, and progress will be monitored to ensure that the project will be completed in the required timeline. Up to the submission of T3A2-A, dated 18 August 2024. the project timeline had been followed with no significant deviation.
 
-## Project Overview
+### Project Overview
 
 ![Project0Overview](https://github.com/user-attachments/assets/17752eb1-3ae9-4dce-bee1-454a763555fb)
 
-## Project Timeline
+### Project Timeline
 
 ![ProjectTimeline](https://github.com/user-attachments/assets/a48ecc17-e817-4933-a110-603b60061192)
 
-## Project Setup
+### Project Setup
 
 ![Project1Setup](https://github.com/user-attachments/assets/6f5d4b98-ab0a-4088-817b-c28e33f462fe)
 
-## Dataflow Diagram
+### Dataflow Diagram
 
 ![Project2DataflowDiagram](https://github.com/user-attachments/assets/9faf5f2e-391d-43c0-9480-2c95531a740a)
 
-## Architecture Diagram
+### Architecture Diagram
 
 ![Project3ArchitectureDiagram](https://github.com/user-attachments/assets/4aff473e-044d-4722-84a2-9529103eccd9)
 
-## User Stories
+### User Stories
 
 ![Project4UserStories](https://github.com/user-attachments/assets/07cac055-c6cc-45c1-8443-000279cd638a)
 
-## Wireframe
+### Wireframe
 
 ![Project5Wireframe](https://github.com/user-attachments/assets/da4d4923-ed25-4e90-bf98-2db9b9418ba0)
 
-## Technical Setup
+### Technical Setup
 
 ![Project6TechnicalSetup](https://github.com/user-attachments/assets/6d8cae28-45b1-4916-b129-b95be2bb1cd4)
 
-## Website Design
+### Website Design
 
 ![Project7WebsiteDesign](https://github.com/user-attachments/assets/64be061f-8c3f-4644-a11b-b0ac0b110894)
 
-## Frontend Development
+### Frontend Development
 
 ![Project8FrontendDevelopment](https://github.com/user-attachments/assets/c9a8c2ad-be51-4ccf-bd61-2954cb879a4e)
 
-## Backend Development
+### Backend Development
 
 ![Project9BackendDevelopment](https://github.com/user-attachments/assets/02cc5ca1-f338-4d64-ba71-550e9149a847)
 
-## Integration
+### Integration
 
 ![Project10Integration](https://github.com/user-attachments/assets/b9090d2d-ea45-4bab-b641-a5367b42ce34)
 
-## Dashboard Development
+### Dashboard Development
 
 ![Project11DashboardDevelopment](https://github.com/user-attachments/assets/e5d3edc1-9ddb-4ec0-81d6-7ca9d8664c10)
 
-## Testing
+### Testing
 
 ![Project12Testing](https://github.com/user-attachments/assets/0be58ed6-1bdb-4d8d-b4e0-f5897367d1bc)
 
-## Deployment
+### Deployment
 
 ![Project13Deployment](https://github.com/user-attachments/assets/5b439ded-0eeb-46c2-ad36-26d3bb802751)
 
-## Documentation
+### Documentation
 
 ![Project14Documentation](https://github.com/user-attachments/assets/08ccdd3a-6827-4b22-9b41-d7a9cb45ed93)
 
