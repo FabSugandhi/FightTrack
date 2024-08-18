@@ -1,3 +1,11 @@
+# T3A2-A: Full Stack App (Part A)
+
+Coder Academy Term 3 Assignment 2 - Part A
+
+## Student Name: 
+
+Fabian Sugandhi
+
 # R1
 
 ## Purpose, Features and Target Audience
