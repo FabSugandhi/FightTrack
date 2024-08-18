@@ -1,6 +1,4 @@
-# T3A2-A: Full Stack App (Part A)
-
-## R1
+# R1
 
 ### Purpose, Features and Target Audience
 
