@@ -141,6 +141,10 @@ The wireframe was created using [Figma](https://www.figma.com/). These are the i
 
 # R6: Project Management
 
+Link to the [Implementation Plan](https://github.com/users/FabSugandhi/projects/4/views/1), created using GitHub Project.
+
+Below are the screenshots of the project overview, as well as the individual items that will be involved in the whole project. This will be updated regularly, and progress will be monitored to ensure that the project will be completed in the required timeline. 
+
 ## Project Overview
 
 ![Project0Overview](https://github.com/user-attachments/assets/17752eb1-3ae9-4dce-bee1-454a763555fb)
