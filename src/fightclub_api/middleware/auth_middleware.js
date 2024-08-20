@@ -28,4 +28,4 @@ const isAdmin = (req, res, next) => {
     }
 };
 
-module.exports = { verify, isOwner };
+module.exports = { verify, isAdmin };
