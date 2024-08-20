@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/user.js');
 const bcrypt = require('bcryptjs');
 const e = require('express');
 const jwt = require('jsonwebtoken');
@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 // Register a new user
 // @route POST /api/auth/register
 // @access Public
+// @req.body { name, email, password }
 exports.register = async (req, res) => {
     const { name, email, password } = req.body;
 
@@ -37,6 +38,7 @@ exports.register = async (req, res) => {
 // Login user
 // @route POST /api/auth/login
 // @access Public
+// @req.body { email, password }
 exports.login = async (req, res) => {
     const { email, password } = req.body;
 
@@ -69,6 +71,7 @@ exports.login = async (req, res) => {
 // Get user profile
 // @route GET /api/auth/profile
 // @access Private
+// @req.user { _id }
 exports.getProfile = async (req, res) => {
     try {
         const user = await User.findById(req.user._id).select('-password');
@@ -82,6 +85,7 @@ exports.getProfile = async (req, res) => {
 // Update user profile
 // @route PUT /api/auth/profile
 // @access Private
+// @req.body { name, email, password }
 exports.updateProfile = async (req, res) => {
     const { name, email, password } = req.body;
 

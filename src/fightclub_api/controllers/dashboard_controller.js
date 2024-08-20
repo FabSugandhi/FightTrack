@@ -1,6 +1,6 @@
 const Booking = require('../models/Booking');
-const Payment = require('../models/Payment');
 const Class = require('../models/Class');
+// const Payment = require('../models/Payment');
 
 // Get dashboard data for a user
 // @route GET /api/dashboard
@@ -8,8 +8,8 @@ const Class = require('../models/Class');
 exports.getDashboardData = async (req, res) => {
     try {
         const bookings = await Booking.find({ user: req.user._id }).populate('class');
-        const payments = await Payment.find({ user: req.user._id });
         const classes = await Class.find();
+        // const payments = await Payment.find({ user: req.user._id });
 
         res.json({
             bookings,

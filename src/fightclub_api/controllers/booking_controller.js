@@ -4,6 +4,7 @@ const Class = require('../models/Class');
 // Book a class
 // @route POST /api/bookings/book
 // @access Private
+// @req.body { classId }
 exports.bookClass = async (req, res) => {
     const { classId } = req.body;
 
@@ -18,13 +19,25 @@ exports.bookClass = async (req, res) => {
             return res.status(400).json({ message: 'Class is full' });
         }
 
-        selectedClass.currentAttendees += 1;
-        await selectedClass.save();
+        // Check if a booking already exists for the user and class
+        let booking = await Booking.findOne({ user: req.user._id, class: classId });
 
-        const booking = new Booking({
-            user: req.user._id,
-            class: classId,
-        });
+        if (booking) {
+            // Update existing booking
+            booking.status = 'booked';
+            booking.bookingDate = new Date();
+        } else {
+            // Create new booking
+            booking = new Booking({
+                user: req.user._id,
+                class: classId,
+                status: 'booked',
+                bookingDate: new Date(),
+            });
+
+            selectedClass.currentAttendees += 1;
+            await selectedClass.save();
+        }
 
         const savedBooking = await booking.save();
 
@@ -37,6 +50,7 @@ exports.bookClass = async (req, res) => {
 // Cancel a booking
 // @route PUT /api/bookings/cancel/:id
 // @access Private
+// @req.params { id }
 exports.cancelBooking = async (req, res) => {
     const { id } = req.params;
 
@@ -70,7 +84,11 @@ exports.getBookings = async (req, res) => {
     try {
         const bookings = await Booking.find({ user: req.user._id }).populate('class');
 
-        res.json(bookings);
+        if (bookings.length === 0) {
+            return res.status(404).json({ message: 'No bookings found' });
+        } else {
+            res.json(bookings);
+        }
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }

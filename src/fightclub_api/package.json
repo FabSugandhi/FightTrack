@@ -4,7 +4,8 @@
     "description": "Backend for FightTrack",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js"
+        "start": "node index.js",
+        "seed": "node seed.js"
     },
     "author": "",
     "license": "ISC",
