@@ -15,10 +15,10 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/auth', require('./routes/auth_routes.js'));
-// app.use('/api/classes', require('./routes/class_routes'));
-// app.use('/api/bookings', require('./routes/booking_routes'));
+app.use('/api/classes', require('./routes/class_routes'));
+app.use('/api/bookings', require('./routes/booking_routes'));
+app.use('/api/dashboard', require('./routes/dashboard_routes.js'));
 // app.use('/api/payments', require('./routes/payment_routes'));
-// app.use('/api/dashboard', require('./routes/dashboard_routes'));
 
 app.listen(5001, err => {
     if (err) {
