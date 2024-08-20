@@ -1,7 +1,7 @@
 {
-    "name": "boxing-gym-app-backend",
+    "name": "fighttrack-api",
     "version": "1.0.0",
-    "description": "Backend for the Boxing Gym App",
+    "description": "Backend for FightTrack",
     "main": "index.js",
     "scripts": {
         "start": "node index.js"
