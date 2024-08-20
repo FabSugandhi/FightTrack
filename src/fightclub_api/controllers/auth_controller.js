@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
+const e = require('express');
 const jwt = require('jsonwebtoken');
 
 // Register a new user
@@ -28,6 +29,7 @@ exports.register = async (req, res) => {
             token,
         });
     } catch (error) {
+        console.error('Error registering user:', error); // Log the error
         res.status(500).json({ message: 'Server error' });
     }
 };
@@ -112,7 +114,7 @@ exports.updateProfile = async (req, res) => {
 
 // Generate JWT token
 const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, {
+    return jwt.sign({ id }, process.env.JWT_KEY, {
         expiresIn: '1d',
     });
 };
