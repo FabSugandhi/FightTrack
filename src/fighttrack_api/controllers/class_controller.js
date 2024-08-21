@@ -1,8 +1,9 @@
-const Class = require('../models/Class');
+const Class = require('../models/class.js');
 
 // Create a new class
 // @route POST /api/classes
 // @access Private/Admin
+// @req.body { title, description, schedule, maxAttendees }
 exports.createClass = async (req, res) => {
     const { title, description, schedule, maxAttendees } = req.body;
 
@@ -24,15 +25,17 @@ exports.createClass = async (req, res) => {
 
 // Update class information
 // @route PUT /api/classes/:id
-// @access Private/Owner
+// @access Private/Admin
+// @req.params { id }
+// @req.body { title, description, schedule, maxAttendees}
 exports.updateClass = async (req, res) => {
     const { id } = req.params;
-    const { title, description, schedule, maxAttendees } = req.body;
+    const { title, description, schedule, maxAttendees} = req.body;
 
     try {
         const updatedClass = await Class.findByIdAndUpdate(
             id,
-            { title, description, schedule, maxAttendees },
+            { title, description, schedule, maxAttendees},
             { new: true }
         );
 
@@ -48,7 +51,8 @@ exports.updateClass = async (req, res) => {
 
 // Delete a class
 // @route DELETE /api/classes/:id
-// @access Private/Owner
+// @access Private/Admin
+// @req.params { id }
 exports.deleteClass = async (req, res) => {
     const { id } = req.params;
 
@@ -72,7 +76,11 @@ exports.getClasses = async (req, res) => {
     try {
         const classes = await Class.find();
 
-        res.json(classes);
+        if (classes.length === 0) {
+            return res.status(404).json({ message: 'No classes found' });
+        } else {
+            res.json(classes);
+        }
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }
