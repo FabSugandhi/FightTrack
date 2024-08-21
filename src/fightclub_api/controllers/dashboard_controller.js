@@ -1,5 +1,5 @@
-const Booking = require('../models/Booking');
-const Class = require('../models/Class');
+const Booking = require('../models/booking.js');
+const Class = require('../models/class.js');
 // const Payment = require('../models/Payment');
 
 // Get dashboard data for a user

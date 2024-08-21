@@ -1,4 +1,4 @@
-const Class = require('../models/Class');
+const Class = require('../models/class.js');
 
 // Create a new class
 // @route POST /api/classes
