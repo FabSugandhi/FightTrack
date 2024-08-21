@@ -10,8 +10,9 @@ const app = express();
 app.use(express.json());
 
 // test route
-app.get('/', (req, res) => {
-    res.send('Hello World')
+app.get('/', (_req, res) => {
+    const currentTime = new Date().toLocaleTimeString();
+    res.send(`<h1>Hello World, the time is currently ${currentTime}<h1>`);
 })
 
 app.use('/api/auth', require('./routes/auth_routes.js'));
