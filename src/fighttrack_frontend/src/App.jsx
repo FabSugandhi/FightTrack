@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useParams } from "react-router-dom";
-import Header from "./Header";  // Import Header
-import NavBar from "./NavBar";  // Import NavBar for desktop
-import MobileNavBar from "./MobileNavBar";  // Import MobileNavBar for mobile
+import Header from "./Header";
+import NavBar from "./NavBar";
+import MobileNavBar from "./MobileNavBar";
+import Footer from "./Footer";  // Import Footer
 import Home from "./Home";
 import AboutUs from "./AboutUs";
 import Facilities from "./Facilities";
@@ -49,7 +50,7 @@ const App = () => {
 
   return (
     <>
-      <Header /> {/* Add Header component here */}
+      <Header /> {/* Add Header component */}
       <div className="is-hidden-mobile">
         <NavBar /> {/* Desktop Navbar */}
       </div>
@@ -69,6 +70,7 @@ const App = () => {
         </Route>
         <Route path="*" element={<h3>Page not found!</h3>} />
       </Routes>
+      <Footer /> {/* Add Footer component */}
     </>
   );
 };
