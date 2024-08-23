@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background: url('https://placehold.co/1920x1080/000000/FFFFFF?text=Background+Image') repeat;
+  background: hsl(0, 0%, 7%);
   margin: 0;
 }
 
