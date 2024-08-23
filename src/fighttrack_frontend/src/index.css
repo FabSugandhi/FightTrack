@@ -1,5 +1,63 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
 
-h1 {
-  font-size: 2rem;
+body {
+  font-family: 'Roboto', sans-serif;
+  background: url('https://placehold.co/1920x1080/000000/FFFFFF?text=Background+Image') repeat;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+}
+
+/* Centering the navbar items */
+.navbar-menu {
+  display: flex;
+  justify-content: center; /* Center align the navbar items */
+}
+
+.navbar-menu .navbar-start {
+  display: flex;
+}
+
+.navbar-menu .navbar-item {
+  margin: 0 1rem; /* Space between items */
+}
+
+.navbar-item.is-active {
+  color: #ffdd57; /* Highlight color for active tab */
+  font-weight: bold; /* Bold font for active tab */
+}
+
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Hide elements on mobile */
+.is-hidden-mobile {
+  display: none;
+}
+
+/* Hide elements on tablets and above */
+.is-hidden-tablet {
+  display: none;
+}
+
+@media screen and (min-width: 769px) {
+  .is-hidden-mobile {
+    display: block;
+  }
+  .is-hidden-tablet {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .is-hidden-mobile {
+    display: none;
+  }
+  .is-hidden-tablet {
+    display: block;
+  }
 }
