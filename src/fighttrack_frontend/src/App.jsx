@@ -16,6 +16,7 @@ import Pricing from "./Pricing"; // Import Pricing Table
 import Calendar from "./Calendar"; // Import Calendar
 import TermsOfService from "./TermsOfService"; // Import Terms
 import PrivacyPolicy from "./PrivacyPolicy"; // Import Terms
+import Login from "./Login"; // Import Login
 
 const App = () => {
   const [entries, setEntries] = useState([]);
@@ -63,6 +64,7 @@ const App = () => {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} /> {/* Add Login Route */}
         <Route path="/about" element={<AboutUs />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/membership" element={<Membership />} />
