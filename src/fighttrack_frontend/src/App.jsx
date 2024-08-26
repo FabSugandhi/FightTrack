@@ -14,6 +14,8 @@ import NewEntry from "./NewEntry";
 import ShowEntry from "./ShowEntry";
 import Pricing from "./Pricing"; // Import Pricing Table
 import Calendar from "./Calendar"; // Import Calendar
+import TermsOfService from "./TermsOfService"; // Import Terms
+import PrivacyPolicy from "./PrivacyPolicy"; // Import Terms
 
 const App = () => {
   const [entries, setEntries] = useState([]);
@@ -68,6 +70,8 @@ const App = () => {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/category" element={<CategorySelection categories={categories} />} />
         <Route path="/calendar" element={<Calendar />} /> {/* Add Calendar Route */}
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/entry">
           <Route path=":id" element={<ShowEntryWrapper />} />
           <Route path="new/:cat_id" element={<NewEntry categories={categories} addEntry={addEntry} />} />

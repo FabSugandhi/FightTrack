@@ -1,41 +1,40 @@
 .calendar-grid {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .calendar-grid .column {
-    flex-basis: calc(100% / 7); /* Each day takes up 1/7th of the width */
-    padding: 10px;
-  }
-  
-  .calendar-grid .column.has-text-centered {
-    border: 1px solid #ddd;
-    min-height: 100px; /* Set a minimum height for each day cell */
-    position: relative; /* Allow positioning of events */
-  }
-  
-  .calendar-grid .has-background-light {
-    background-color: #f5f5f5;
-  }
-  
-  .calendar-grid .has-text-weight-bold {
-    font-weight: 700;
-  }
-  
-  .event {
-    background-color: #3273dc; /* Bulma primary color */
-    color: white;
-    border-radius: 4px;
-    padding: 5px;
-    margin-top: 5px;
-  }
-  
-  .event-title {
-    font-size: 0.875rem;
-    font-weight: bold;
-  }
-  
-  .event-time {
-    font-size: 0.75rem;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calendar-grid .column {
+  flex-basis: calc(100% / 7); /* Each day takes up 1/7th of the width */
+  padding: 10px;
+}
+
+.calendar-grid .column.has-text-centered {
+  border: 1px solid #ddd;
+  min-height: 100px; /* Set a minimum height for each day cell */
+  position: relative; /* Allow positioning of events */
+}
+
+.calendar-grid .has-background-light {
+  background-color: #f5f5f5;
+}
+
+.calendar-grid .has-text-weight-bold {
+  font-weight: 700;
+}
+
+.event {
+  background-color: #3273dc; /* Bulma primary color */
+  color: white;
+  border-radius: 4px;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.event-title {
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.event-time {
+  font-size: 0.75rem;
+}

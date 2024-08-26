@@ -1,10 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const Footer = () => {
   return (
     <footer className="footer mt-6 pb-6">
       <div className="container">
         <div className="columns">
+          <div className="column">
+            <h3 className="title is-size-5">Terms and Conditions</h3>
+            <Link to="/terms-of-service" className="has-text-link">Terms of Service</Link>
+            <br />
+            <Link to="/privacy-policy" className="has-text-link">Privacy Policy</Link>
+          </div>
           <div className="column">
             <h3 className="title is-size-5">Opening Hours</h3>
             <p>Monday-Friday</p>
