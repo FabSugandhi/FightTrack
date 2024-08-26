@@ -12,6 +12,7 @@ import ContactUs from "./ContactUs";
 import CategorySelection from "./CategorySelection";
 import NewEntry from "./NewEntry";
 import ShowEntry from "./ShowEntry";
+import Pricing from "./Pricing";  // Import Pricing Table
 
 const App = () => {
   const [entries, setEntries] = useState([]);
@@ -62,6 +63,7 @@ const App = () => {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/membership" element={<Membership />} />
+        <Route path="/pricing" element={<Pricing />} /> {/* Add PricingTable Route */}
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/category" element={<CategorySelection categories={categories} />} />
         <Route path="/entry">
