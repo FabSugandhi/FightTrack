@@ -1,5 +1,8 @@
 const nodemailer = require('nodemailer');
 
+// @route POST /api/contact/contact
+// @access Public
+// @req.body { name, email, message }
 exports.sendContactEmail = async (req, res) => {
     const { name, email, message } = req.body;
 
