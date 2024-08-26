@@ -1,6 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ContactUs = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [enquiries, setEnquiries] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = { name, email, phone, enquiries };
+
+    try {
+      const response = await fetch('https://fighttrack-abws.onrender.com/api/contact/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Handle successful response
+        console.log('Form submitted successfully');
+      } else {
+        // Handle error response
+        console.error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div className="container mt-5">
       <section className="section">
@@ -28,28 +58,29 @@ const ContactUs = () => {
 
             <div className="column is-two-third">
               <h3 className="title is-4">Drop Us a Line</h3>
+              <form onSubmit={handleSubmit}>
               <div className="field">
                 <label className="label">Name</label>
                 <div className="control">
-                  <input className="input" type="text" placeholder="Text input" />
+                  <input className="input" type="text" placeholder="Text input" value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
               </div>
               <div className="field">
                 <label className="label">Email</label>
                 <div className="control">
-                  <input className="input" type="text" placeholder="Text input" />
+                  <input className="input" type="text" placeholder="Text input" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
               </div>
               <div className="field">
                 <label className="label">Phone Number</label>
                 <div className="control">
-                  <input className="input" type="text" placeholder="Text input" />
+                  <input className="input" type="text" placeholder="Text input" value={phone} onChange={(e) => setPhone(e.target.value)} />
                 </div>
               </div>
               <div className="field">
                 <label className="label">Enquiries</label>
                 <div className="control">
-                  <textarea className="textarea" placeholder="Text input"></textarea>
+                  <textarea className="textarea" placeholder="Text input" value={enquiries} onChange={(e) => setEnquiries(e.target.value)}></textarea>
                 </div>
               </div>
               <div className="field is-grouped">
@@ -60,6 +91,7 @@ const ContactUs = () => {
                   <button className="button is-link is-light">Cancel</button>
                 </div>
               </div>
+            </form>
             </div>
           </div>
         </div>
