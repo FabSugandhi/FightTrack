@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.js');
+const { check, validationResult } = require('express-validator');
 
 const verify = async (req, res, next) => {
     let token;
@@ -28,4 +29,21 @@ const isAdmin = (req, res, next) => {
     }
 };
 
-module.exports = { verify, isAdmin };
+const registerValidation = [
+    check('name')
+        .isAlpha().withMessage('Name must contain only letters')
+        .not().isEmpty().withMessage('Name is required'),
+    check('email')
+        .isEmail().withMessage('Please include a valid email'),
+    check('password')
+        .isLength({ min: 5 }).withMessage('Password must be at least 5 characters long'),
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        next();
+    }
+];
+
+module.exports = { verify, isAdmin, registerValidation };
