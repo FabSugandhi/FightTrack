@@ -15,6 +15,7 @@ const Login = () => {
         setIsLoading(true);
         setErrorMessage("");
 
+        // TODO: Change to production endpoint
         const endpoint = isSignUp ? "https://localhost:5001/api/auth/register" : "https://localhost:5001/api/auth/login";
         const userData = isSignUp ? { name, email, password } : { email, password };
 
@@ -30,6 +31,7 @@ const Login = () => {
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem("token", data.token);
+                // TODO: Redirect to user dashboard
                 navigate("/dashboard");
             } else {
                 const errorData = await response.json();
