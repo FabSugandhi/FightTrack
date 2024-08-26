@@ -15,8 +15,7 @@ const Login = () => {
         setIsLoading(true);
         setErrorMessage("");
 
-        // TODO: Change to production endpoint
-        const endpoint = isSignUp ? "https://localhost:5001/api/auth/register" : "https://localhost:5001/api/auth/login";
+        const endpoint = isSignUp ? "https://fighttrack-abws.onrender.com/api/auth/register" : "https://fighttrack-abws.onrender.com/api/auth/login";
         const userData = isSignUp ? { name, email, password } : { email, password };
 
         try {
