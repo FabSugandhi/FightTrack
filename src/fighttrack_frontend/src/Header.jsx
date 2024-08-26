@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    setIsLoading(true);
+    // Simulate a delay before navigation
+    setTimeout(() => {
+      navigate('/login');
+      setIsLoading(false);
+    }, 500);
+  };
+
   return (
     <header className="mb-6" style={{ position: 'relative', paddingTop: '10px' }}>
       <button
-        className="button is-primary"
+        className={`button is-primary ${isLoading ? 'is-loading' : ''}`}
         style={{
           position: 'absolute',
           top: '10px',
           right: '20px',
         }}
+        onClick={handleLoginClick}
+        disabled={isLoading}
       >
         Login
       </button>
