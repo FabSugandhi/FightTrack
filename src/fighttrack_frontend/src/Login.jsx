@@ -6,6 +6,7 @@ const Login = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -14,6 +15,12 @@ const Login = () => {
         e.preventDefault();
         setIsLoading(true);
         setErrorMessage("");
+
+        if (isSignUp && password !== confirmPassword) {
+            setErrorMessage("Passwords do not match");
+            setIsLoading(false);
+            return;
+        }
 
         const endpoint = isSignUp ? "https://fighttrack-abws.onrender.com/api/auth/register" : "https://fighttrack-abws.onrender.com/api/auth/login";
         const userData = isSignUp ? { name, email, password } : { email, password };
@@ -30,7 +37,7 @@ const Login = () => {
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem("token", data.token);
-                // TODO: Redirect to user dashboard
+                // TODO: Redirect to dashboard
                 navigate("/dashboard");
             } else {
                 const errorData = await response.json();
@@ -88,6 +95,20 @@ const Login = () => {
                                 />
                             </div>
                         </div>
+                        {isSignUp && (
+                            <div className="field">
+                                <label className="label">Confirm Password</label>
+                                <div className="control">
+                                    <input
+                                        className="input"
+                                        type="password"
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                            </div>
+                        )}
                         <div className="field">
                             <div className="control">
                                 <button className={`button is-primary is-fullwidth ${isLoading ? 'is-loading' : ''}`} disabled={isLoading}>
