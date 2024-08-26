@@ -3,7 +3,7 @@ import { Routes, Route, useParams } from "react-router-dom";
 import Header from "./Header";
 import NavBar from "./NavBar";
 import MobileNavBar from "./MobileNavBar";
-import Footer from "./Footer";  // Import Footer
+import Footer from "./Footer";
 import Home from "./Home";
 import AboutUs from "./AboutUs";
 import Facilities from "./Facilities";
@@ -12,6 +12,8 @@ import ContactUs from "./ContactUs";
 import CategorySelection from "./CategorySelection";
 import NewEntry from "./NewEntry";
 import ShowEntry from "./ShowEntry";
+import Pricing from "./Pricing"; // Import Pricing Table
+import Calendar from "./Calendar"; // Import Calendar
 
 const App = () => {
   const [entries, setEntries] = useState([]);
@@ -62,8 +64,10 @@ const App = () => {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/membership" element={<Membership />} />
+        <Route path="/pricing" element={<Pricing />} /> {/* Add PricingTable Route */}
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/category" element={<CategorySelection categories={categories} />} />
+        <Route path="/calendar" element={<Calendar />} /> {/* Add Calendar Route */}
         <Route path="/entry">
           <Route path=":id" element={<ShowEntryWrapper />} />
           <Route path="new/:cat_id" element={<NewEntry categories={categories} addEntry={addEntry} />} />
