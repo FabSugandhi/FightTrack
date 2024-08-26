@@ -41,7 +41,12 @@ const Login = () => {
                 navigate("/dashboard");
             } else {
                 const errorData = await response.json();
+                if (errorData.errors) {
+                    const errorMessages = errorData.errors.map(error => error.msg).join(", ");
+                    setErrorMessage(errorMessages);
+                } else {
                 setErrorMessage(errorData.message || (isSignUp ? "Registration failed" : "Invalid login credentials"));
+                }
             }
         } catch (error) {
             console.error("An error occurred:", error);
