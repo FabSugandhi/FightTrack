@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.js');
 const { check, validationResult } = require('express-validator');
-const Filter = require('bad-words');
-const filter = new Filter();
 
 const verify = async (req, res, next) => {
     let token;
@@ -35,13 +33,7 @@ const isAdmin = (req, res, next) => {
 const registerValidation = [
     check('name')
         .isAlpha().withMessage('Name must contain only letters')
-        .not().isEmpty().withMessage('Name is required')
-        .custom(value => {
-            if (filter.isProfane(value)) {
-                throw new Error('Name contains inappropriate language');
-            }
-            return true;
-        }),
+        .not().isEmpty().withMessage('Name is required'),
     check('email')
         .isEmail().withMessage('Please include a valid email'),
     check('password')
