@@ -32,7 +32,7 @@ const isAdmin = (req, res, next) => {
 // TODO: Add better validation
 const registerValidation = [
     check('name')
-        .isAlpha().withMessage('Name must contain only letters')
+        .matches(/^[A-Za-z\s]+$/).withMessage('Name must contain only letters')
         .not().isEmpty().withMessage('Name is required'),
     check('email')
         .isEmail().withMessage('Please include a valid email'),
