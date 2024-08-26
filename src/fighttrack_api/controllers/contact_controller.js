@@ -2,25 +2,25 @@ const nodemailer = require('nodemailer');
 
 // @route POST /api/contact/contact
 // @access Public
-// @req.body { name, email, message }
+// @req.body { name, email, phone, message }
 exports.sendContactEmail = async (req, res) => {
-    const { name, email, message } = req.body;
+    const { name, email, phone, message } = req.body;
 
     // Create a transporter object
     let transporter = nodemailer.createTransport({
         service: 'gmail', // email service
         auth: {
-            user: process.env.EMAIL_USER, // our email
-            pass: process.env.EMAIL_PASS  // our email password
+            user: process.env.EMAIL_USER, // the transporter email
+            pass: process.env.EMAIL_PASS  // the transporter password
         }
     });
 
     // Setup email data
     let mailOptions = {
         from: email, // sender address
-        to: process.env.COMPANY_EMAIL, // list of receivers
+        to: process.env.COMPANY_EMAIL, // list of receiver emails
         subject: 'Contact Us Form Submission', // Subject line
-        text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}` // plain text body
+        text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}` // text body filled with the form data
     };
 
     // Send mail with defined transport object
