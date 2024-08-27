@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import VerticalNav from "./VerticalNav";
 import AvailableClasses from "./AvailableClasses";
-// // import MySchedule from "./MySchedule";
-// // import ClassCalendar from "./ClassCalendar";
-// // import Profile from "./Profile";
+import MySchedule from "./MySchedule";
+import ClassCalendar from "./ClassCalendar";
+import Profile from "./Profile";
 
 const Dashboard = () => {
     const [activeSection, setActiveSection] = useState("availableClasses");
-
+    
     const renderSection = () => {
         switch (activeSection) {
-            case "availableClasses":
+            case "AvailableClasses":
                 return <AvailableClasses />;
-            case "mySchedule":
+            case "MySchedule":
                 return <MySchedule />;
-            case "classCalendar":
+            case "ClassCalendar":
                 return <ClassCalendar />;
-            case "profile":
+            case "Profile":
                 return <Profile />;
             default:
                 return <AvailableClasses />;

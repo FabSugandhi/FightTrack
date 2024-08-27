@@ -19,11 +19,8 @@ const AvailableClassesCard = () => {
               Book your next session:
             </p>
             {classes.map((className, index) => (
-              <div
-                key={index}
-                className="columns is-vcentered is-mobile"
-                style={{ marginBottom: '0.5rem' }}
-              >
+              <div key={index} className="box">
+              <div className="columns is-vcentered is-mobile">
                 <div className="column">
                   <p>{className}</p>
                 </div>
@@ -31,6 +28,7 @@ const AvailableClassesCard = () => {
                   <button className="button is-dark">Book</button>
                 </div>
               </div>
+            </div>
             ))}
           </div>
         </div>
