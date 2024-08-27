@@ -19,6 +19,8 @@ import TermsOfService from "./TermsOfService"; // Import Terms
 import PrivacyPolicy from "./PrivacyPolicy"; // Import Terms
 import Login from "./Login"; // Import Login
 import Booking from './Booking'; // Import BookingPage
+import Dashboard from './Dashboard/Dashboard'; // Import Dashboard
+// import Management from './Management'; // Import Management
 
 const App = () => {
   const [entries, setEntries] = useState([]);
@@ -66,7 +68,9 @@ const App = () => {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} /> {/* Add Login Route */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} /> {/* Add Login Route */}
+        <Route path="/management" element={<management />} /> {/* Add Login Route */}
         <Route path="/class" element={<Class />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/membership" element={<Membership />} />
