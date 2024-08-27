@@ -53,9 +53,9 @@ exports.sendContactEmail = async (req, res) => {
 
         // Send mail with defined transport object
         await transporter.sendMail(mailOptions);
-        res.status(200).send('Email sent successfully');
+        res.status(200).send({ message: 'Email sent successfully!' });
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error sending email');
+        res.status(500).send({ message: 'Error sending email' });
     }
 };
