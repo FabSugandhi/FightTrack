@@ -40,15 +40,15 @@ const Header = () => {
         {isAuthenticated ? 'Logout' : 'Login'}
       </button>
       <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-        <h1 className="title is-size-3">South Side Boxing</h1>
+        <h1 className="title is-size-3 ">South Side Boxing</h1>
         <p className="subtitle is-size-5">
           Powered by Fighttrack
         </p>
         <p>Health. Fitness. Strength. Balance.</p>
         <p className="mt-2">
           Call us today on
-          <span className="has-text-weight-bold"> 1-800-000-0000 </span>
-          to start getting fit!
+          <span className="has-text-weight-bold"> 0468 855 7999 </span>
+          to start training!
         </p>
       </div>
     </header>
