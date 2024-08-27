@@ -2,6 +2,8 @@ const User = require('../models/user.js');
 const bcrypt = require('bcryptjs');
 const e = require('express');
 const jwt = require('jsonwebtoken');
+const { google } = require('googleapis');
+const OAuth2 = google.auth.OAuth2;
 
 // Register a new user
 // @route POST /api/auth/register
@@ -127,6 +129,31 @@ exports.getAllUsers = async (req, res) => {
     } catch (error) {
         console.error('Error fetching users:', error);
         res.status(500).json({ message: 'Server error' });
+    }
+};
+
+exports.oauth2callback = async (req, res) => {
+    const oauth2Client = new OAuth2(
+        process.env.CLIENT_ID,
+        process.env.CLIENT_SECRET,
+        'https://fighttrack-abws.onrender.com/oauth2callback'
+    );
+
+    const { code } = req.query;
+
+    try {
+        const { tokens } = await oauth2Client.getToken(code);
+        oauth2Client.setCredentials(tokens);
+
+        // Save the tokens to your database or session
+        if (tokens.refresh_token) {
+            req.session.refresh_token = tokens.refresh_token;
+        }
+
+        res.status(200).send('Authentication successful! You can close this window.');
+    } catch (error) {
+        console.error('Error retrieving access token', error);
+        res.status(500).send('Error retrieving access token');
     }
 };
 
