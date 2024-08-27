@@ -44,14 +44,9 @@ const ContactUs = () => {
           <div className="columns mt-4">
             <div className="column is-one-third">
               <h3 className="title is-4">Locations</h3>
-              <p><strong>Gym A</strong></p>
-              <p>500 Terry Crews St.</p>
-              <p>San Francisco, CA 12345</p>
-              <p>info@fighttrack.com</p>
-              <p className="mb-3">Tel: 123-456-7890</p>
-              <p><strong>Gym B</strong></p>
-              <p>500 Terry Crews St.</p>
-              <p>San Francisco, CA 12345</p>
+              <p><strong>Brisbane Boxing - Mt Gravatt</strong></p>
+              <p>520 Kessels Road</p>
+              <p>Macgregor QLD 4109</p>
               <p>info@fighttrack.com</p>
               <p className="mb-3">Tel: 123-456-7890</p>
             </div>
