@@ -65,6 +65,9 @@ const seed = async () => {
                 email: 'admin@fighttrack.com',
                 password: 'admin', // This will be hashed by the pre-save hook in the schema
                 role: 'admin',
+                joinDate: new Date(),
+                membershipType: 'premium',
+                classesAttended: 9000
             });
             await user.save();
             console.log('Admin user created');
