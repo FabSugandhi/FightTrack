@@ -147,7 +147,7 @@ exports.oauth2callback = async (req, res) => {
 
         // Save the tokens to your database or session
         if (tokens.refresh_token) {
-            req.session.tokens = tokens;
+            req.session.refresh_token = tokens.refresh_token;
         }
 
         res.status(200).send('Authentication successful! You can close this window.');

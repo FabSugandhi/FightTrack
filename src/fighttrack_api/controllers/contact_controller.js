@@ -18,12 +18,17 @@ exports.sendContactEmail = async (req, res) => {
 
     // Set the refresh token
     oauth2Client.setCredentials({
-        refresh_token: req.session.tokens.refresh_token
+        refresh_token: process.env.REFRESH_TOKEN
     });
 
     try {
         // Generate an access token
-        const accessToken = await oauth2Client.getAccessToken();
+        const accessTokenResponse = await oauth2Client.getAccessToken();
+        const accessToken = accessTokenResponse?.token;
+
+        if (!accessToken) {
+            return res.status(500).send('Error getting access token');
+        }
 
         // Create a transporter object
         let transporter = nodemailer.createTransport({
