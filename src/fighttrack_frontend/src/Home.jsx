@@ -10,6 +10,7 @@ const Home = ({ entries }) => {
               alt="Boxing Image" 
               className="image is-4by3" 
               src="https://placehold.co/800x400/000000/FFFFFF?text=Boxing+Image" 
+              style={{ display: "block", margin: "0 auto" }} // Centering the image
             />
             <h2 className="title is-size-4 mt-4">
               Discover a New Way to Improve Your Well-Being

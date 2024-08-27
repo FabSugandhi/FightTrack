@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import MobileNavBar from "./MobileNavBar";
 import Footer from "./Footer";
 import Home from "./Home";
-import AboutUs from "./AboutUs";
+import Class from "./Class";
 import Facilities from "./Facilities";
 import Membership from "./Membership";
 import ContactUs from "./ContactUs";
@@ -13,6 +13,7 @@ import CategorySelection from "./CategorySelection";
 import NewEntry from "./NewEntry";
 import ShowEntry from "./ShowEntry";
 import Pricing from "./Pricing"; // Import Pricing Table
+import Purchase from "./Purchase";
 import Calendar from "./Calendar"; // Import Calendar
 import TermsOfService from "./TermsOfService"; // Import Terms
 import PrivacyPolicy from "./PrivacyPolicy"; // Import Terms
@@ -65,10 +66,11 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} /> {/* Add Login Route */}
-        <Route path="/about" element={<AboutUs />} />
+        <Route path="/class" element={<Class />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/membership" element={<Membership />} />
         <Route path="/pricing" element={<Pricing />} /> {/* Add PricingTable Route */}
+        <Route path="/purchase" element={<Purchase />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/category" element={<CategorySelection categories={categories} />} />
         <Route path="/calendar" element={<Calendar />} /> {/* Add Calendar Route */}

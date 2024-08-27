@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const Facilities = () => {
   return (
@@ -7,7 +8,7 @@ const Facilities = () => {
         <div className="box">
           <h2 className="title is-2">Our Facilities</h2>
           <p>
-            Welcome to our Boxing Club! We take pride in offering top-notch facilities to meet all your needs. Our facilities are designed to provide you with comfort, convenience, and a great experience. Whether you are here for work or leisure, we have everything you need to make your stay enjoyable.
+            Welcome to FightTrack! We take pride in offering top-notch facilities designed to meet all your fitness needs. Our amenities provide a comfortable and motivating environment, ensuring that every visit is enjoyable and productive.
           </p>
           <div className="columns mt-4">
             <div className="column is-half">
@@ -19,22 +20,21 @@ const Facilities = () => {
             </div>
             <div className="column is-half">
               <p>
-                From state-of-the-art fitness centers to relaxing spa facilities, we have it all. Our goal is to ensure that our guests have access to the best amenities during their visit. We are dedicated to maintaining high standards of cleanliness and functionality in all our facilities, so you can relax and focus on what matters most to you.
+                At FightTrack, we offer a wide range of classes designed to cater to all fitness levels and interests. Whether you're looking to improve your boxing skills, enhance your cardio, or find a fun way to stay in shape, our expert trainers have crafted programs that are perfect for you. From beginner-friendly sessions to advanced training, we provide a supportive environment where you can challenge yourself and achieve your fitness goals.
               </p>
-              <button className="button is-primary mt-5">
-                  Get Started &gt;
-              </button>
+              <Link to="/class">
+                <button className="button is-primary mt-5">
+                  Explore Classes &gt;
+                </button>
+              </Link>
             </div>
           </div>
 
           <div className="columns mt-4">
             <div className="column is-half">
               <p>
-                At our Boxing Club, we understand the importance of well-equipped event spaces for hosting successful gatherings. Our versatile facilities can accommodate a wide range of events, from corporate meetings to social celebrations. We provide personalized support to ensure that every event is a memorable and seamless experience for our clients and their guests.
+                Our state-of-the-art equipment and well-maintained facilities are designed to enhance your workout experience. We offer modern workout areas, relaxing lounges, and clean, spacious locker rooms to ensure that you feel comfortable and motivated during every visit.
               </p>
-              <button className="button is-primary mt-5">
-                  Get Started &gt;
-              </button>
             </div>
             <div className="column is-half">
               <img 
@@ -55,11 +55,8 @@ const Facilities = () => {
             </div>
             <div className="column is-half">
               <p>
-                Explore our diverse range of facilities that are tailored to enhance your lifestyle. Whether you are seeking a sophisticated dining experience or a vibrant entertainment venue, we have carefully curated our facilities to cater to your preferences. Join us at our Boxing Club and discover a world of exceptional amenities designed with your satisfaction in mind.
+                Our highly skilled trainers are here to support you throughout your fitness journey. With expertise in various aspects of boxing and wellness, they provide personalized coaching to ensure you get the most out of each workout. Their commitment to your progress and well-being ensures that every training session is effective, motivating, and tailored to your individual goals.
               </p>
-              <button className="button is-primary mt-5">
-                  Get Started &gt;
-              </button>
             </div>
           </div>
         </div>
