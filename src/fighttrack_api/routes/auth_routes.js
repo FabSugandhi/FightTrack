@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { register, login, getProfile, updateProfile, getAllUsers } = require('../controllers/auth_controller.js');
+const { register, login, getProfile, updateProfile, getAllUsers, oauth2callback } = require('../controllers/auth_controller.js');
 const { verify, registerValidation } = require('../middleware/auth_middleware.js');
 
 router.post('/register', registerValidation, register);
