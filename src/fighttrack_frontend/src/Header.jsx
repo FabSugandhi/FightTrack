@@ -1,17 +1,28 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleLoginClick = () => {
+  useEffect(() => {
+    const authStatus = localStorage.getItem("isAuthenticated");
+    setIsAuthenticated(authStatus === "true");
+  }, [location]);
+
+  const handleAuthClick = () => {
     setIsLoading(true);
-    // Simulate a delay before navigation
-    setTimeout(() => {
+    if (isAuthenticated) {
+      localStorage.removeItem("isAuthenticated");
+      localStorage.removeItem("token");
+      setIsAuthenticated(false);
+      navigate('/');
+    } else {
       navigate('/login');
-      setIsLoading(false);
-    }, 500);
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -23,16 +34,17 @@ const Header = () => {
           top: '10px',
           right: '20px',
         }}
-        onClick={handleLoginClick}
+        onClick={handleAuthClick}
         disabled={isLoading}
       >
-        Login
+        {isAuthenticated ? 'Logout' : 'Login'}
       </button>
       <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-        <h1 className="title is-size-3">FightTrack</h1>
+        <h1 className="title is-size-3">South Side Boxing</h1>
         <p className="subtitle is-size-5">
-          Health. Fitness. Strength. Balance.
+          Powered by Fighttrack
         </p>
+        <p>Health. Fitness. Strength. Balance.</p>
         <p className="mt-2">
           Call us today on
           <span className="has-text-weight-bold"> 1-800-000-0000 </span>
