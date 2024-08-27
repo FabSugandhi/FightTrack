@@ -136,7 +136,7 @@ exports.oauth2callback = async (req, res) => {
     const oauth2Client = new OAuth2(
         process.env.CLIENT_ID,
         process.env.CLIENT_SECRET,
-        'https://fighttrack-abws.onrender.com//oauth2callback'
+        'https://fighttrack-abws.onrender.com/oauth2callback'
     );
 
     const { code } = req.query;
@@ -146,7 +146,9 @@ exports.oauth2callback = async (req, res) => {
         oauth2Client.setCredentials(tokens);
 
         // Save the tokens to your database or session
-        // For example: req.session.tokens = tokens;
+        if (tokens.refresh_token) {
+            req.session.tokens = tokens;
+        }
 
         res.status(200).send('Authentication successful! You can close this window.');
     } catch (error) {
