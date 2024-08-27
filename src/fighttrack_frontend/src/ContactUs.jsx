@@ -35,6 +35,7 @@ const ContactUs = () => {
         setErrorMessage(''); // Clear any previous error messages
       }
     } catch (error) {
+      // Handle network error
       console.error('Error:', error);
       setErrorMessage('An error occurred. Please try again later.');
     }
@@ -91,7 +92,17 @@ const ContactUs = () => {
                     <button className="button is-link">Submit</button>
                   </div>
                   <div className="control">
-                    <button className="button is-link is-light">Cancel</button>
+                    <button className="button is-link is-light"
+                    type="button"
+                    onClick={() => {
+                      setName('');
+                      setEmail('');
+                      setPhone('');
+                      setEnquiries('');
+                    }}
+                    >
+                      Cancel
+                      </button>
                   </div>
                 </div>
                 {errorMessage && (
