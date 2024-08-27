@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const User = require('./models/user.js');
 
+
 dotenv.config();
 
 // seed an admin user
