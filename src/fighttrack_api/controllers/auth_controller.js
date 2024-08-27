@@ -116,6 +116,20 @@ exports.updateProfile = async (req, res) => {
     }
 };
 
+// GET all existing users
+// @route GET /api/auth/users
+// @access Private
+// @req.body { name, email, password }
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find().select('-password');
+        res.json(users);
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
 // Generate JWT token
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_KEY, {
