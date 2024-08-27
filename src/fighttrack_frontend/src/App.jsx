@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useParams } from "react-router-dom";
+import ProtectedRoute from './ProtectedRoute';
 import Header from "./Header";
 import NavBar from "./NavBar";
 import MobileNavBar from "./MobileNavBar";
@@ -21,6 +22,7 @@ import Login from "./Login"; // Import Login
 import Booking from './Booking'; // Import BookingPage
 import Dashboard from './Dashboard/Dashboard'; // Import Dashboard
 // import Management from './Management'; // Import Management
+
 
 const App = () => {
   const [entries, setEntries] = useState([]);
@@ -69,8 +71,14 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} /> {/* Add Login Route */}
-        <Route path="/management" element={<management />} /> {/* Add Login Route */}
+        <Route 
+          path="/dashboard" 
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } 
+        />
         <Route path="/class" element={<Class />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/membership" element={<Membership />} />

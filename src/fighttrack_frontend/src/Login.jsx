@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = () => {
     const [isSignUp, setIsSignUp] = useState(false);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -37,7 +37,7 @@ const Login = ({ setIsAuthenticated }) => {
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem("token", data.token);
-                localStorage.setItem("isAuthenticated", "true"); // Store authentication state
+                localStorage.setItem("isAuthenticated", "true");
                 navigate("/dashboard");
             } else {
                 const errorData = await response.json();
@@ -45,7 +45,7 @@ const Login = ({ setIsAuthenticated }) => {
                     const errorMessages = errorData.errors.map(error => error.msg).join(", ");
                     setErrorMessage(errorMessages);
                 } else {
-                setErrorMessage(errorData.message || (isSignUp ? "Registration failed" : "Invalid login credentials"));
+                    setErrorMessage(errorData.message || (isSignUp ? "Registration failed" : "Invalid login credentials"));
                 }
             }
         } catch (error) {
