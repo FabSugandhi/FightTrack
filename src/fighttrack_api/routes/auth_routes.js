@@ -8,6 +8,7 @@ router.post('/login', login);
 router.get('/profile', verify, getProfile);
 router.put('/profile', verify, updateProfile);
 router.get('/users', verify, getAllUsers);
+router.get('/oauth2callback', oauth2callback);
 
 module.exports = router;
 

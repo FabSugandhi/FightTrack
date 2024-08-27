@@ -1,4 +1,7 @@
 const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
+
+const OAuth2 = google.auth.OAuth2;
 
 // @route POST /api/contact/contact
 // @access Public
@@ -6,25 +9,44 @@ const nodemailer = require('nodemailer');
 exports.sendContactEmail = async (req, res) => {
     const { name, email, phone, message } = req.body;
 
-    // Create a transporter object
-    let transporter = nodemailer.createTransport({
-        service: 'gmail', // email service
-        auth: {
-            user: process.env.EMAIL_USER, // the transporter email
-            pass: process.env.EMAIL_PASS  // the transporter password
-        }
+    // Create an OAuth2 client
+    const oauth2Client = new OAuth2(
+        process.env.CLIENT_ID, // Client ID
+        process.env.CLIENT_SECRET, // Client Secret
+        "https://developers.google.com/oauthplayground" // Redirect URL
+    );
+
+    // Set the refresh token
+    oauth2Client.setCredentials({
+        refresh_token: process.env.REFRESH_TOKEN
     });
 
-    // Setup email data
-    let mailOptions = {
-        from: email, // sender address
-        to: process.env.COMPANY_EMAIL, // list of receiver emails
-        subject: 'Contact Us Form Submission', // Subject line
-        text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}` // text body filled with the form data
-    };
-
-    // Send mail with defined transport object
     try {
+        // Generate an access token
+        const accessToken = await oauth2Client.getAccessToken();
+
+        // Create a transporter object
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                type: 'OAuth2',
+                user: process.env.EMAIL_USER,
+                clientId: process.env.CLIENT_ID,
+                clientSecret: process.env.CLIENT_SECRET,
+                refreshToken: process.env.REFRESH_TOKEN,
+                accessToken: accessToken.token
+            }
+        });
+
+        // Setup email data
+        let mailOptions = {
+            from: email, // sender address
+            to: process.env.COMPANY_EMAIL, // list of receiver emails
+            subject: 'Contact Us Form Submission', // Subject line
+            text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}` // text body filled with the form data
+        };
+
+        // Send mail with defined transport object
         await transporter.sendMail(mailOptions);
         res.status(200).send('Email sent successfully');
     } catch (error) {
