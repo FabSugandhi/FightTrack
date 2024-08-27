@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Calendar.css'; // Import the CSS file for calendar styling
 
 const Calendar = () => {
@@ -8,12 +9,58 @@ const Calendar = () => {
   const daysInMonth = new Date(year, today.getMonth() + 1, 0).getDate();
   const firstDayOfMonth = new Date(year, today.getMonth(), 1).getDay();
 
-  // Sample events data
+  // Sample events data organized by day of the week
   const events = {
-    5: [{ title: 'Boxing Class', time: '10:00 AM' }],
-    12: [{ title: 'Sparring Session', time: '3:00 PM' }],
-    18: [{ title: 'Open Gym', time: '8:00 AM' }, { title: 'Yoga', time: '5:00 PM' }],
-    25: [{ title: 'Fighters Academy', time: '6:00 PM' }]
+    0: [{ title: 'CLOSED' }],
+    1: [
+      { title: 'Cardi Box', time: '5:00 - 5:45 AM' },
+      { title: 'Cardi Box', time: '6:00 - 6:45 AM' },
+      { title: 'Cardi Box', time: '7:00 - 7:45 AM' },
+      { title: 'Fighters Academy', time: '4:00 PM' },
+      { title: 'Cardi Box', time: '5:00 - 5:45 PM' },
+      { title: 'Cardi Box', time: '6:00 - 6:45 PM' },
+      { title: 'Cardi Box', time: '7:00 - 7:45 PM' }
+    ],
+    2: [
+      { title: 'Cardi Box', time: '5:00 - 5:45 AM' },
+      { title: 'Cardi Box', time: '6:00 - 6:45 AM' },
+      { title: 'Cardi Box', time: '7:00 - 7:45 AM' },
+      { title: 'Kids Boxing', time: '4:00 PM' },
+      { title: 'Cardi Box', time: '5:00 - 5:45 PM' },
+      { title: 'Cardi Box', time: '6:00 - 6:45 PM' },
+      { title: 'Cardi Box', time: '7:00 - 7:45 PM' }
+    ],
+    3: [
+      { title: 'Cardi Box', time: '5:00 - 5:45 AM' },
+      { title: 'Cardi Box', time: '6:00 - 6:45 AM' },
+      { title: 'Cardi Box', time: '7:00 - 7:45 AM' },
+      { title: 'Fighters Academy', time: '4:00 PM' },
+      { title: 'Cardi Box', time: '5:00 - 5:45 PM' },
+      { title: 'Cardi Box', time: '6:00 - 6:45 PM' },
+      { title: 'Cardi Box', time: '7:00 - 7:45 PM' }
+    ],
+    4: [
+      { title: 'Cardi Box', time: '5:00 - 5:45 AM' },
+      { title: 'Cardi Box', time: '6:00 - 6:45 AM' },
+      { title: 'Cardi Box', time: '7:00 - 7:45 AM' },
+      { title: 'Kids Boxing', time: '4:00 PM' },
+      { title: 'Cardi Box', time: '5:00 - 5:45 PM' },
+      { title: 'Cardi Box', time: '6:00 - 6:45 PM' },
+      { title: 'Cardi Box', time: '7:00 - 7:45 PM' }
+    ],
+    5: [
+      { title: 'Cardi Box', time: '5:00 - 5:45 AM' },
+      { title: 'Cardi Box', time: '6:00 - 6:45 AM' },
+      { title: 'Cardi Box', time: '7:00 - 7:45 AM' },
+      { title: 'Kids Boxing', time: '4:00 PM' },
+      { title: 'Cardi Box', time: '5:00 - 5:45 PM' },
+      { title: 'Cardi Box', time: '6:00 - 6:45 PM' }
+    ],
+    6: [
+      { title: 'Cardi Box', time: '6:00 - 6:45 AM' },
+      { title: 'Cardi Box', time: '7:00 - 7:45 AM' },
+      { title: 'Cardi Box', time: '8:00 - 8:45 AM' }
+    ]
   };
 
   // Generate an array representing the days of the current month
@@ -39,13 +86,23 @@ const Calendar = () => {
           {days.map((day, index) => (
             <div key={index} className="column has-text-centered">
               {day && (
-                <div>
-                  <p>{day}</p>
-                  {events[day] && events[day].map((event, i) => (
-                    <div key={i} className="event">
-                      <p className="event-title">{event.title}</p>
-                      <p className="event-time">{event.time}</p>
-                    </div>
+                <div className="day-cell">
+                  <p className="day-number">{day}</p>
+                  {events[index % 7] && events[index % 7].map((event, i) => (
+                    event.title === 'CLOSED' ? (
+                      <div key={i} className="event closed">
+                        <p className="event-title">{event.title}</p>
+                      </div>
+                    ) : (
+                      <Link
+                        key={i}
+                        to={`/booking/${day}/${event.title.replace(/\s+/g, '-').toLowerCase()}`}
+                        className="event"
+                      >
+                        <p className="event-title">{event.title}</p>
+                        {event.time && <p className="event-time">{event.time}</p>}
+                      </Link>
+                    )
                   ))}
                 </div>
               )}

@@ -22,12 +22,28 @@
   font-weight: 700;
 }
 
+.day-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%; /* Ensure the day cell stretches to fill the column */
+}
+
+.day-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
 .event {
   background-color: #3273dc; /* Bulma primary color */
   color: white;
   border-radius: 4px;
   padding: 5px;
   margin-top: 5px;
+  text-decoration: none; /* Remove underline from links */
+  display: block; /* Ensure events fill available space */
 }
 
 .event-title {
@@ -37,4 +53,8 @@
 
 .event-time {
   font-size: 0.75rem;
+}
+
+.event.closed {
+  background-color: red; /* Red for closed days */
 }
