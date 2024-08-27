@@ -5,6 +5,7 @@ const ContactUs = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [enquiries, setEnquiries] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,16 +19,24 @@ const ContactUs = () => {
         },
         body: JSON.stringify(formData),
       });
-
-      if (response.ok) {
+    
+      if (!response.ok) {
+        // Handle error response
+        const errorData = await response.json();
+        if (errorData.errors) {
+          const errorMessages = errorData.errors.map(error => error.msg).join(", ");
+          setErrorMessage(errorMessages);
+        } else {
+          setErrorMessage(errorData.message || 'Form submission failed');
+        }
+      } else {
         // Handle successful response
         console.log('Form submitted successfully');
-      } else {
-        // Handle error response
-        console.error('Form submission failed');
+        setErrorMessage(''); // Clear any previous error messages
       }
     } catch (error) {
       console.error('Error:', error);
+      setErrorMessage('An error occurred. Please try again later.');
     }
   };
 
@@ -35,7 +44,6 @@ const ContactUs = () => {
     <div className="container mt-5">
       <section className="section">
         <div className="box">
-
           <h2 className="title is-2">Contact Us</h2>
           <p>
             We'd love to hear from you! Whether you have questions about our classes, facilities, or membership options, feel free to reach out to us.
@@ -54,39 +62,44 @@ const ContactUs = () => {
             <div className="column is-two-third">
               <h3 className="title is-4">Drop Us a Line</h3>
               <form onSubmit={handleSubmit}>
-              <div className="field">
-                <label className="label">Name</label>
-                <div className="control">
-                  <input className="input" type="text" placeholder="Text input" value={name} onChange={(e) => setName(e.target.value)} />
+                <div className="field">
+                  <label className="label">Name</label>
+                  <div className="control">
+                    <input className="input" type="text" placeholder="Text input" value={name} onChange={(e) => setName(e.target.value)} />
+                  </div>
                 </div>
-              </div>
-              <div className="field">
-                <label className="label">Email</label>
-                <div className="control">
-                  <input className="input" type="text" placeholder="Text input" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <div className="field">
+                  <label className="label">Email</label>
+                  <div className="control">
+                    <input className="input" type="text" placeholder="Text input" value={email} onChange={(e) => setEmail(e.target.value)} />
+                  </div>
                 </div>
-              </div>
-              <div className="field">
-                <label className="label">Phone Number</label>
-                <div className="control">
-                  <input className="input" type="text" placeholder="Text input" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                <div className="field">
+                  <label className="label">Phone Number</label>
+                  <div className="control">
+                    <input className="input" type="text" placeholder="Text input" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                  </div>
                 </div>
-              </div>
-              <div className="field">
-                <label className="label">Enquiries</label>
-                <div className="control">
-                  <textarea className="textarea" placeholder="Text input" value={enquiries} onChange={(e) => setEnquiries(e.target.value)}></textarea>
+                <div className="field">
+                  <label className="label">Enquiries</label>
+                  <div className="control">
+                    <textarea className="textarea" placeholder="Text input" value={enquiries} onChange={(e) => setEnquiries(e.target.value)}></textarea>
+                  </div>
                 </div>
-              </div>
-              <div className="field is-grouped">
-                <div className="control">
-                  <button className="button is-link">Submit</button>
+                <div className="field is-grouped">
+                  <div className="control">
+                    <button className="button is-link">Submit</button>
+                  </div>
+                  <div className="control">
+                    <button className="button is-link is-light">Cancel</button>
+                  </div>
                 </div>
-                <div className="control">
-                  <button className="button is-link is-light">Cancel</button>
-                </div>
-              </div>
-            </form>
+                {errorMessage && (
+                  <div className="notification is-danger is-light mt-3">
+                    {errorMessage}
+                  </div>
+                )}
+              </form>
             </div>
           </div>
         </div>
