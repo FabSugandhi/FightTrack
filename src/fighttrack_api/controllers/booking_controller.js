@@ -93,3 +93,22 @@ exports.getBookings = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+
+// Get all bookings for a specific class
+// @route GET /api/bookings/class/:classId
+// @access Private
+exports.getBookingsByClassId = async (req, res) => {
+    const { classId } = req.params;
+
+    try {
+        const bookings = await Booking.find({ class: classId }).populate('user', 'name email');
+
+        if (bookings.length === 0) {
+            return res.status(404).json({ message: 'No bookings found for this class' });
+        }
+
+        res.json(bookings);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+};

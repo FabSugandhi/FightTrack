@@ -108,36 +108,6 @@ exports.getClasses = async (req, res) => {
     }
 };
 
-// Get all bookings for a specific class
-// @route GET /api/classes/:id/bookings
-// @access Private/Admin
-// @req.params { id }
-exports.getClassBookings = async (req, res) => {
-    const { id } = req.params;
-
-    try {
-        const bookings = await Booking.find({ class: id })
-            .populate('user', 'name email membershipType')
-            .populate('class', 'title schedule');
-
-        if (bookings.length === 0) {
-            return res.status(404).json({ message: 'No bookings found for this class' });
-        }
-
-        const formattedBookings = bookings.map(booking => ({
-            id: booking._id,
-            userName: booking.user.name,
-            userEmail: booking.user.email,
-            membershipType: booking.user.membershipType,
-            className: booking.class.title,
-        }));
-
-        res.json(formattedBookings);
-    } catch (error) {
-        res.status(500).json({ message: 'Server error' });
-    }
-};
-
 // add an attendee to a class (for walk-ins or on-the-spot additions)
 exports.addAttendee = async (req, res) => {
     const { id } = req.params;
