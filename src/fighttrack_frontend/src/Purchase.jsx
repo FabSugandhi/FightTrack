@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Purchase.css"; // Import the CSS file if you have any specific styles
 
 const Purchase = () => {
+  const [isPurchased, setIsPurchased] = useState(false);
+
+  const handlePurchaseClick = () => {
+    setIsPurchased(true);
+  };
+
   return (
     <section className="section">
       <div className="container">
@@ -14,11 +20,27 @@ const Purchase = () => {
         </p>
         <div className="spacer"></div>
         <div className="has-text-centered">
-          <p className="mt-4">
-            This is a dummy purchase page for demonstration purposes. In a real application, this page would include a payment form and other necessary details.
-          </p>
-          <div className="spacer"></div>
-          <Link to="/pricing" className="button is-primary">Back to Pricing</Link>
+          {!isPurchased ? (
+            <>
+              <p className="mt-4">
+                This is a dummy purchase page for demonstration purposes. In a real application, this page would include a payment form and other necessary details.
+              </p>
+              <div className="spacer"></div>
+              <button
+                className="button is-success mr-2"
+                onClick={handlePurchaseClick}
+              >
+                Confirm Purchase
+              </button>
+              <Link to="/pricing" className="button is-primary">
+                Back to Pricing
+              </Link>
+            </>
+          ) : (
+            <p className="subtitle is-size-5 has-text-success mt-4">
+              Thank you for your purchase!
+            </p>
+          )}
         </div>
       </div>
     </section>
