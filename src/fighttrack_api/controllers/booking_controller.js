@@ -101,7 +101,9 @@ exports.getBookingsByClassId = async (req, res) => {
     const { classId } = req.params;
 
     try {
-        const bookings = await Booking.find({ class: classId }).populate('user', 'name email');
+        const bookings = await Booking.find({ class: classId })
+            .populate('user', 'name email')
+            .populate('class', 'title schedule');
 
         if (bookings.length === 0) {
             return res.status(404).json({ message: 'No bookings found for this class' });
@@ -109,6 +111,7 @@ exports.getBookingsByClassId = async (req, res) => {
 
         res.json(bookings);
     } catch (error) {
+        console.error('Error fetching bookings:', error);
         res.status(500).json({ message: 'Server error' });
     }
 };

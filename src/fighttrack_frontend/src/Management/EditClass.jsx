@@ -23,7 +23,7 @@ const ClassEditView = ({ classId }) => {
     const fetchBookings = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`https://fighttrack-abws.onrender.com/api/bookings/${classId}`, {
+        const response = await fetch(`https://fighttrack-abws.onrender.com/api/bookings/class/${classId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
