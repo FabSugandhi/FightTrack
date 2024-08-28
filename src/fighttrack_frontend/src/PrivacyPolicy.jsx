@@ -1,6 +1,7 @@
 import React from "react";
 
 const PrivacyPolicy = () => {
+    
   return (
     <div className="container mt-5">
       <section className="section">

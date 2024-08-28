@@ -1,31 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const MobileNavBar = () => {
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleNavbar = () => {
+    setIsActive(!isActive);
+  };
+
   return (
     <nav className="navbar is-dark has-shadow" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <Link className="navbar-item" to="/">
-          <h1 className="is-size-4 has-text-weight-bold">FightTrack</h1>
-        </Link>
         <button
           className="navbar-burger"
           aria-label="menu"
-          aria-expanded="false"
-          data-target="mobileNavbar"
+          aria-expanded={isActive ? "true" : "false"}
+          onClick={toggleNavbar}
         >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </button>
+        <span className="navbar-item navbar-title">Navigate Website</span>
       </div>
-      <div id="mobileNavbar" className="navbar-menu">
+      <div id="mobileNavbar" className={`navbar-menu ${isActive ? "is-active" : ""}`}>
         <div className="navbar-start">
           <Link className="navbar-item is-size-5" to="/">
             Home
-          </Link>
-          <Link className="navbar-item is-size-5" to="/about">
-            About Us
           </Link>
           <Link className="navbar-item is-size-5" to="/facilities">
             Facilities

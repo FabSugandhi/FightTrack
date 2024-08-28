@@ -5,6 +5,7 @@ import Header from "./Header";
 import NavBar from "./NavBar";
 import MobileNavBar from "./MobileNavBar";
 import Footer from "./Footer";
+import ScrollToTop from './ScrollToTop'; // Import ScrollToTop
 import Home from "./Home";
 import Class from "./Class";
 import Facilities from "./Facilities";
@@ -62,6 +63,7 @@ const App = () => {
   return (
     <>
       <Header /> {/* Add Header component */}
+      <ScrollToTop> {/* Add ScrollToTop component */}
       <div className="is-hidden-mobile">
         <NavBar /> {/* Desktop Navbar */}
       </div>
@@ -104,6 +106,7 @@ const App = () => {
         </Route>
         <Route path="*" element={<h3>Page not found!</h3>} />
       </Routes>
+      </ScrollToTop>
       <Footer /> {/* Add Footer component */}
     </>
   );

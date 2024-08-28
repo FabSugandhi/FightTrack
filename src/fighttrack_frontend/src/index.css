@@ -4,6 +4,7 @@ body {
   font-family: 'Roboto', sans-serif;
   background: hsl(0, 0%, 7%);
   margin: 0;
+  overflow-x: hidden; /* Handle horizontal overflow */
 }
 
 h1, h2, h3 {
@@ -18,10 +19,12 @@ h1, h2, h3 {
 
 .navbar-menu .navbar-start {
   display: flex;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  justify-content: center;
 }
 
 .navbar-menu .navbar-item {
-  margin: 0 1rem; /* Space between items */
+  margin: 0 0.5rem; /* Adjust spacing for smaller screens */
 }
 
 .navbar-item.is-active {
@@ -60,4 +63,46 @@ h1, h2, h3 {
   .is-hidden-tablet {
     display: block;
   }
+  
+  .navbar-menu {
+    flex-direction: column; /* Stack navbar items vertically on small screens */
+  }
+
+  .navbar-item {
+    font-size: 0.75rem; /* Adjust font size for better readability */
+    padding: 0.5rem; /* Add padding for better spacing */
+    text-align: center; /* Center-align text in items */
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+
+  /* Adjust navbar-burger visibility */
+  .navbar-burger {
+    display: block; /* Ensure burger icon is visible on mobile */
+  }
+  
+  .navbar-menu {
+    display: none; /* Hide the menu by default on mobile */
+  }
+
+  .navbar-menu.is-active {
+    display: flex; /* Show the menu when active */
+  }
+
+  /* Ensure the burger button and Navigation text are aligned to the left on mobile view */
+  .navbar-brand {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: flex-start; /* Align items to the left */
+  }
+
+  .navbar-title {
+    margin-left: 1rem; /* Space between burger button and text */
+    font-size: 1rem; /* Adjust font size if needed */
+  }
+
+  /* Ensure the burger button is aligned properly */
+  .navbar-burger {
+    margin-left: 0; /* Remove any margin to align it properly */
+  }
+
 }
