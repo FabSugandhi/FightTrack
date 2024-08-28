@@ -1,5 +1,6 @@
 const Class = require('../models/class.js');
 const User = require('../models/user.js');
+const Booking = require('../models/booking.js');
 
 // Create a new class
 // @route POST /api/classes
@@ -107,13 +108,31 @@ exports.getClasses = async (req, res) => {
     }
 };
 
-// get all bookings for a specific class
+// Get all bookings for a specific class
+// @route GET /api/classes/:id/bookings
+// @access Private/Admin
+// @req.params { id }
 exports.getClassBookings = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const bookings = await Booking.find({ class: id }).populate('user', 'name email');
-        res.json(bookings);
+        const bookings = await Booking.find({ class: id })
+            .populate('user', 'name email membershipType')
+            .populate('class', 'title schedule');
+
+        if (bookings.length === 0) {
+            return res.status(404).json({ message: 'No bookings found for this class' });
+        }
+
+        const formattedBookings = bookings.map(booking => ({
+            id: booking._id,
+            userName: booking.user.name,
+            userEmail: booking.user.email,
+            membershipType: booking.user.membershipType,
+            className: booking.class.title,
+        }));
+
+        res.json(formattedBookings);
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }

@@ -59,6 +59,38 @@ const ClassManagement = ({ onClassSelect }) => {
     setCurrentDate(new Date(year, currentDate.getMonth() + 1, 1));
   };
 
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [classToDelete, setClassToDelete] = useState(null);
+
+  const handleDeleteClick = (event, e) => {
+    e.stopPropagation();
+    setClassToDelete(event);
+    setShowConfirmation(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      await fetch(`https://fighttrack-abws.onrender.com/api/classes/:${classToDelete._id}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      // Remove the deleted class from the events state
+      setEvents(prevEvents => {
+        const updatedEvents = { ...prevEvents };
+        const eventDay = new Date(classToDelete.schedule.day).getDate();
+        updatedEvents[eventDay] = updatedEvents[eventDay].filter(e => e._id !== classToDelete._id);
+        return updatedEvents;
+      });
+    } catch (error) {
+      console.error('Error deleting class:', error);
+    }
+    setShowConfirmation(false);
+    setClassToDelete(null);
+  };
+
   return (
     <section className="section">
       <div className="container">
@@ -93,6 +125,15 @@ const ClassManagement = ({ onClassSelect }) => {
                       >
                         <p className="event-title">{event.title}</p>
                         {event.schedule.time && <p className="event-time">{event.schedule.time}</p>}
+                        <button 
+                          className="delete-button" 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDeleteClick(event, e);
+                          }}
+                        >
+                          Delete
+                        </button>
                       </div>
                     )
                   ))}
@@ -102,6 +143,18 @@ const ClassManagement = ({ onClassSelect }) => {
           ))}
         </div>
       </div>
+      {showConfirmation && (
+        <div className="modal is-active">
+          <div className="modal-background"></div>
+          <div className="modal-content">
+            <div className="box">
+              <p>Are you sure you want to delete this class?</p>
+              <button className="button is-danger" onClick={handleConfirmDelete}>Yes</button>
+              <button className="button" onClick={() => setShowConfirmation(false)}>No</button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
