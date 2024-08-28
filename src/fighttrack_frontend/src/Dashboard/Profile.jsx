@@ -15,6 +15,7 @@ const ProfileCard = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedName, setEditedName] = useState('');
   const [editedEmail, setEditedEmail] = useState('');
+  
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -87,8 +88,16 @@ const ProfileCard = () => {
         throw new Error('Failed to update profile');
       }
 
-      const updatedUser = await response.json();
-      setUser(updatedUser);
+      const updatedUserData = await response.json();
+      
+      // Merge the updated data with the existing user data
+      setUser(prevUser => ({
+        ...prevUser,
+        ...updatedUserData,
+        name: editedName,
+        email: editedEmail,
+      }));
+      
       setIsEditing(false);
     } catch (error) {
       setError(error.message);
