@@ -6,6 +6,7 @@ const VerticalNav = ({ setActiveSection }) => {
     { section: "MySchedule", label: "My Schedule" },
     { section: "ClassCalendar", label: "Class Calendar" },
     { section: "Profile", label: "Profile" },
+    { section: "Pricing", label: "Membership Options" }, // Add Pricing to the menu items
   ];
 
   return (

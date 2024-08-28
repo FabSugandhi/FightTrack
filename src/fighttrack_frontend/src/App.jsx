@@ -9,7 +9,7 @@ import ScrollToTop from './ScrollToTop'; // Import ScrollToTop
 import Home from "./Home";
 import Class from "./Class";
 import Facilities from "./Facilities";
-import Membership from "./Membership";
+import Membership from "./Pricing";
 import ContactUs from "./ContactUs";
 import CategorySelection from "./CategorySelection";
 import NewEntry from "./NewEntry";
