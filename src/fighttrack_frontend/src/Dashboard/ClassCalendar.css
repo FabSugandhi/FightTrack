@@ -77,3 +77,24 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.delete-button {
+  background-color: #ff3860;
+  color: white;
+  border: none;
+  padding: 1px 1px;
+  margin-top: 1px;
+  cursor: pointer;
+  font-size: 0.6rem;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.delete-button:hover {
+  background-color: #ff1443;
+}
+
+.event {
+  display: flex;
+  flex-direction: column;
+}
