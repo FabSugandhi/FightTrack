@@ -4,6 +4,9 @@ const e = require('express');
 const jwt = require('jsonwebtoken');
 const { google } = require('googleapis');
 const OAuth2 = google.auth.OAuth2;
+const fs = require('fs');
+const path = require('path');
+const dotenv = require('dotenv');
 
 // Register a new user
 // @route POST /api/auth/register
@@ -158,6 +161,20 @@ exports.oauth2callback = async (req, res) => {
         // Save the tokens to your database or session
         if (tokens.refresh_token) {
             req.session.refresh_token = tokens.refresh_token;
+
+            // Load existing .env file
+            const envPath = path.resolve(__dirname, '../.env');
+            const envConfig = dotenv.parse(fs.readFileSync(envPath));
+
+            // Update the refresh token
+            envConfig.REFRESH_TOKEN = tokens.refresh_token;
+
+            // Write the updated .env file
+            const envContent = Object.entries(envConfig)
+                .map(([key, value]) => `${key}=${value}`)
+                .join('\n');
+            fs.writeFileSync(envPath, envContent);
+
             res.status(200).send(`Authentication successful! You can close this window. Your token is: ${tokens.refresh_token}`);
         } else {
             res.status(200).send('Authentication successful! You can close this window. No refresh token received.');
