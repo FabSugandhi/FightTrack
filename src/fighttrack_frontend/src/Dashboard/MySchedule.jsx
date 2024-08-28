@@ -1,10 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const MySchedule = () => {
-  const schedule = [
-    { date: 'Friday, Apr 26 2024', time: '6:00 pm AEST (45m)', title: 'CardioBox', location: 'Brisbane Boxing Mt Gravatt' },
-    { date: 'Wednesday, Apr 24 2024', time: '7:00 pm AEST (45m)', title: 'CardioBox', location: 'Brisbane Boxing Mt Gravatt' },
-    ];
+  const [schedule, setSchedule] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+  const fetchData = async () => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      setError('No token found');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('https://fighttrack-abws.onrender.com/api/bookings/', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.status === 404) {
+        setError('No bookings found, add a booking to see your schedule');
+        setLoading(false);
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error('Error: Network response was not ok');
+      }
+
+      const data = await response.json();
+      setSchedule(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+}, []);
+
+if (loading) {
+  return <div>Loading...</div>;
+}
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div>
