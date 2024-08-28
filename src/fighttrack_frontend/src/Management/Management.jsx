@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import ManagementNav from "./ManagementNav";
+import ClassManagement from "./ClassManagement";
+import EditClass from "./EditClass"; 
 
 const Dashboard = () => {
   const [activeSection, setActiveSection] = useState("Dashboard");
+  const [selectedClassId, setSelectedClassId] = useState(null);
 
   const renderSection = () => {
     switch (activeSection) {
@@ -37,35 +40,30 @@ const Dashboard = () => {
             <div className="column is-one-third">
               <div className="box has-text-centered">
                 <p className="title">54%</p>
-                <p className="subtitle">Conversion Rate</p>
+                <p className="subtitle">Trial Conversion Rate</p>
               </div>
             </div>
             <div className="column is-one-third">
               <div className="box has-text-centered">
                 <p className="title">$45,231</p>
-                <p className="subtitle">Membership Revenue </p>
+                <p className="subtitle">Membership MMR </p>
               </div>
             </div>
             <div className="column is-one-third">
               <div className="box has-text-centered">
                 <p className="title">82%</p>
-                <p className="subtitle">Attendance Rate</p>
+                <p className="subtitle">Class Attendance Rate</p>
               </div>
             </div>
           </div>
         );
       case "ClassManagement":
-        return (
-          <div className="columns is-multiline">
-            <div className="column is-full">
-              <div className="box has-text-centered">
-                <p className="title">Class Management</p>
-                <p className="subtitle">Manage your classes here</p>
-                {/* Add additional class management content as needed */}
-              </div>
-            </div>
-          </div>
-        );
+        return <ClassManagement onClassSelect={(classId) => {
+          setSelectedClassId(classId);
+          setActiveSection("ClassEditView");
+        }} />;
+      case "ClassEditView":
+        return selectedClassId ? <EditClass classId={selectedClassId} /> : null;
       default:
         return null;
     }
