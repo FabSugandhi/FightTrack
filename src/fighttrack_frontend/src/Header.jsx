@@ -48,9 +48,11 @@ const Header = () => {
           {isAuthenticated ? 'Logout' : 'Login'}
         </button>
       </div>
-      <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-        <h1 className="title is-size-3">South Side Boxing</h1>
-        <p className="subtitle is-size-5">
+      <div className="header-content" style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+        <h1 className="title is-size-4-mobile is-size-3-tablet" style={{ marginTop: '2rem' }}>
+          South Side Boxing
+        </h1>
+        <p className="subtitle is-size-6-mobile is-size-5-tablet">
           Powered by Fighttrack
         </p>
         <p>Health. Fitness. Strength. Balance.</p>
