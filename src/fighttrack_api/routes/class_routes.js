@@ -8,5 +8,6 @@ router.put('/:id', verify, isAdmin, updateClass);
 router.delete('/:id', verify, isAdmin, deleteClass);
 router.get('/:id', verify, getClassById);
 router.get('/', verify, getClasses);
+router.post('/:id/attendance', verify, isAdmin, markAttendance);
 
 module.exports = router;

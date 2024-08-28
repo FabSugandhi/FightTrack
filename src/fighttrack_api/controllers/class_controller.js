@@ -1,4 +1,5 @@
 const Class = require('../models/class.js');
+const User = require('../models/user.js');
 
 // Create a new class
 // @route POST /api/classes
@@ -101,6 +102,103 @@ exports.getClasses = async (req, res) => {
         } else {
             res.json(classes);
         }
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+// get all bookings for a specific class
+exports.getClassBookings = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const bookings = await Booking.find({ class: id }).populate('user', 'name email');
+        res.json(bookings);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+// add an attendee to a class (for walk-ins or on-the-spot additions)
+exports.addAttendee = async (req, res) => {
+    const { id } = req.params;
+    const { userId } = req.body;
+
+    try {
+        const classObj = await Class.findById(id);
+        if (!classObj) {
+            return res.status(404).json({ message: 'Class not found' });
+        }
+
+        if (classObj.currentAttendees >= classObj.maxAttendees) {
+            return res.status(400).json({ message: 'Class is full' });
+        }
+
+        const booking = new Booking({
+            user: userId,
+            class: id,
+            status: 'booked',
+        });
+
+        await booking.save();
+        classObj.currentAttendees += 1;
+        await classObj.save();
+
+        res.status(201).json(booking);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+// remove an attendee from a class (mark as not present)
+exports.removeAttendee = async (req, res) => {
+    const { id, userId } = req.params;
+
+    try {
+        const booking = await Booking.findOneAndUpdate(
+            { class: id, user: userId, status: 'booked' },
+            { status: 'cancelled' },
+            { new: true }
+        );
+
+        if (!booking) {
+            return res.status(404).json({ message: 'Booking not found' });
+        }
+
+        const classObj = await Class.findById(id);
+        classObj.currentAttendees -= 1;
+        await classObj.save();
+
+        res.json({ message: 'Attendee removed successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+// Mark attendance for a user in a class
+// @route POST /api/classes/:id/attendance
+// @access Private/Admin
+// @req.params { id } - class id
+// @req.body { userId }
+exports.markAttendance = async (req, res) => {
+    const { id } = req.params;
+    const { userId } = req.body;
+
+    try {
+        const booking = await Booking.findOne({ class: id, user: userId, status: 'booked' });
+
+        if (!booking) {
+            return res.status(404).json({ message: 'Booking not found or already cancelled' });
+        }
+
+        booking.status = 'attended';
+        await booking.save();
+
+        const user = await User.findById(userId);
+        user.classesAttended += 1;
+        await user.save();
+
+        res.json({ message: 'Attendance marked successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }
