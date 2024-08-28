@@ -10,11 +10,18 @@ const Home = () => {
             <img 
               alt="Boxing Image" 
               className="image is-4by3" 
-              src="https://placehold.co/800x400/000000/FFFFFF?text=Boxing+Image" 
-              style={{ display: "block", margin: "0 auto" }} // Centering the image
+              src="https://images.unsplash.com/photo-1555661530-68c8e98db4e6?q=80&w=800&h=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+              style={{ 
+                display: "block", 
+                margin: "0 auto", 
+                width: "100%", 
+                maxWidth: "800px", 
+                height: "auto", 
+                aspectRatio: "2 / 1" 
+              }} 
             />
             <h2 className="title is-size-4 mt-4">
-              Discover a New Way to Improve Your Well-Being
+             FUEL THE FIGHTER WITHIN
             </h2>
             <p className="mt-2">
               Contact Our Team Now and Revitalize Your Lifestyle!
