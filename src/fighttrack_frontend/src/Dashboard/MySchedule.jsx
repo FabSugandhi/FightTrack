@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const MySchedule = () => {
   const [activeTab, setActiveTab] = useState('upcoming');
@@ -96,7 +97,7 @@ const MySchedule = () => {
       </div>
 
       {bookingsToDisplay.map((item, index) => (
-        <div key={index} className="box">
+        <Link key={index} to={`/booking/${item.class._id}`} className="box">
           <p className="has-text-grey-dark has-text-weight-semibold">
             Booking made on {new Date(item.bookingDate).toLocaleDateString()} at {new Date(item.bookingDate).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}
           </p>
@@ -109,7 +110,7 @@ const MySchedule = () => {
               <p className="has-text-grey">Status: {item.status}</p>
             </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
