@@ -47,11 +47,4 @@ const registerValidation = [
     }
 ];
 
-app.use(session({
-    secret: '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',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false } // Set to true if using HTTPS
-}));
-
 module.exports = { verify, isAdmin, registerValidation };

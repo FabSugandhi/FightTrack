@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const cors = require('cors');
 const axios = require('axios');
+const session = require('express-session');
 
 dotenv.config();
 connectDB();
@@ -11,6 +12,13 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use(session({
+    secret: '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',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Set to true if using HTTPS
+}));
 
 // test route
 app.get('/', async (_req, res) => {
