@@ -25,22 +25,31 @@ const Header = () => {
     setIsLoading(false);
   };
 
+  const handleDashboardClick = () => {
+    navigate('/dashboard');
+  };
+
   return (
     <header className="mb-6" style={{ position: 'relative', paddingTop: '10px' }}>
-      <button
-        className={`button is-primary ${isLoading ? 'is-loading' : ''}`}
-        style={{
-          position: 'absolute',
-          top: '10px',
-          right: '20px',
-        }}
-        onClick={handleAuthClick}
-        disabled={isLoading}
-      >
-        {isAuthenticated ? 'Logout' : 'Login'}
-      </button>
+      <div style={{ position: 'absolute', top: '10px', right: '20px', display: 'flex', gap: '10px' }}>
+        {isAuthenticated && (
+          <button
+            className="button is-info"
+            onClick={handleDashboardClick}
+          >
+            Dashboard
+          </button>
+        )}
+        <button
+          className={`button is-primary ${isLoading ? 'is-loading' : ''}`}
+          onClick={handleAuthClick}
+          disabled={isLoading}
+        >
+          {isAuthenticated ? 'Logout' : 'Login'}
+        </button>
+      </div>
       <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-        <h1 className="title is-size-3 ">South Side Boxing</h1>
+        <h1 className="title is-size-3">South Side Boxing</h1>
         <p className="subtitle is-size-5">
           Powered by Fighttrack
         </p>
