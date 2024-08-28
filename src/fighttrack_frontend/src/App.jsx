@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useParams } from "react-router-dom";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import ProtectedRoute from './ProtectedRoute';
 import Header from "./Header";
 import NavBar from "./NavBar";
@@ -23,7 +25,9 @@ import Login from "./Login"; // Import Login
 import Booking from './Booking'; // Import BookingPage
 import Dashboard from './Dashboard/Dashboard'; // Import Dashboard
 import Management from './Management/Management'; // Import Management
+import CheckoutForm from "./CheckoutForm"; // Update the import name
 
+const stripePromise = loadStripe("your_stripe_publishable_key_here"); // Replace with your actual Stripe publishable key
 
 const App = () => {
   const [entries, setEntries] = useState([]);
@@ -92,7 +96,7 @@ const App = () => {
         <Route path="/class" element={<Class />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/membership" element={<Membership />} />
-        <Route path="/pricing" element={<Pricing />} /> {/* Add PricingTable Route */}
+        <Route path="/pricing" element={<Pricing />} /> {/* Remove Elements wrapper */}
         <Route path="/purchase" element={<Purchase />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/category" element={<CategorySelection categories={categories} />} />
@@ -104,6 +108,11 @@ const App = () => {
           <Route path=":id" element={<ShowEntryWrapper />} />
           <Route path="new/:cat_id" element={<NewEntry categories={categories} addEntry={addEntry} />} />
         </Route>
+        <Route path="/checkout/6-month" element={
+          <Elements stripe={stripePromise}>
+            <CheckoutForm priceId="price_6month_membership" />
+          </Elements>
+        } />
         <Route path="*" element={<h3>Page not found!</h3>} />
       </Routes>
       </ScrollToTop>
