@@ -4,10 +4,11 @@ import './ClassCalendar.css'; // Import the CSS file for calendar styling
 
 const Calendar = () => {
   const today = new Date();
-  const year = today.getFullYear();
-  const month = today.toLocaleString('default', { month: 'long' });
-  const daysInMonth = new Date(year, today.getMonth() + 1, 0).getDate();
-  const firstDayOfMonth = new Date(year, today.getMonth(), 1).getDay();
+  const [currentDate, setCurrentDate] = useState(today);
+  const year = currentDate.getFullYear();
+  const month = currentDate.toLocaleString('default', { month: 'long' });
+  const daysInMonth = new Date(year, currentDate.getMonth() + 1, 0).getDate();
+  const firstDayOfMonth = new Date(year, currentDate.getMonth(), 1).getDay();
 
   const [events, setEvents] = useState({});
   const [loading, setLoading] = useState(true);
@@ -39,7 +40,7 @@ const Calendar = () => {
     };
 
     fetchEvents();
-  }, []);
+  }, [currentDate]);
 
   // Generate an array representing the days of the current month
   const days = [...Array(daysInMonth).keys()].map(i => i + 1);
@@ -49,6 +50,14 @@ const Calendar = () => {
     days.unshift(null);
   }
 
+  const handlePrevMonth = () => {
+    setCurrentDate(new Date(year, currentDate.getMonth() - 1, 1));
+  };
+
+  const handleNextMonth = () => {
+    setCurrentDate(new Date(year, currentDate.getMonth() + 1, 1));
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -56,7 +65,11 @@ const Calendar = () => {
   return (
     <section className="section">
       <div className="container">
-        <h1 className="title has-text-centered">{month} {year}</h1>
+        <div className="calendar-header">
+          <button className="arrow-button" onClick={handlePrevMonth}>&lt;</button>
+          <h1 className="title has-text-centered">{month} {year}</h1>
+          <button className="arrow-button" onClick={handleNextMonth}>&gt;</button>
+        </div>
         <div className="columns is-multiline is-mobile calendar-grid">
           {/* Render day names */}
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
