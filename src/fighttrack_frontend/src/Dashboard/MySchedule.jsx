@@ -6,47 +6,47 @@ const MySchedule = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-  const fetchData = async () => {
-    const token = localStorage.getItem('token');
+    const fetchData = async () => {
+      const token = localStorage.getItem('token');
 
-    if (!token) {
-      setError('No token found');
-      setLoading(false);
-      return;
-    }
-
-    try {
-      const response = await fetch('https://fighttrack-abws.onrender.com/api/bookings/', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-
-      if (response.status === 404) {
-        setError('No bookings found, add a booking to see your schedule');
+      if (!token) {
+        setError('No token found');
         setLoading(false);
         return;
       }
 
-      if (!response.ok) {
-        throw new Error('Error: Network response was not ok');
+      try {
+        const response = await fetch('https://fighttrack-abws.onrender.com/api/bookings/', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (response.status === 404) {
+          setError('No bookings found, add a booking to see your schedule');
+          setLoading(false);
+          return;
+        }
+
+        if (!response.ok) {
+          throw new Error('Error: Network response was not ok');
+        }
+
+        const data = await response.json();
+        setSchedule(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
+    };
 
-      const data = await response.json();
-      setSchedule(data);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+    fetchData();
+  }, []);
 
-  fetchData();
-}, []);
-
-if (loading) {
-  return <div>Loading...</div>;
-}
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (error) {
     return <div>{error}</div>;
@@ -70,12 +70,13 @@ if (loading) {
 
       {schedule.map((item, index) => (
         <div key={index} className="box">
-          <p className="has-text-grey-dark has-text-weight-semibold">{item.date}</p>
+          <p className="has-text-grey-dark has-text-weight-semibold">{new Date(item.bookingDate).toLocaleDateString()}</p>
           <div className="columns is-vcentered">
             <div className="column">
-              <p className="title is-6 has-text-dark">{item.time}</p>
-              <p className="subtitle is-6">{item.title}</p>
-              <p className="has-text-grey">{item.location}</p>
+              <p className="title is-6 has-text-dark">{item.class.title}</p>
+              <p className="subtitle is-6">{item.class.description}</p>
+              <p className="has-text-grey">{item.class.location}</p> 
+              <p className="has-text-grey">Status: {item.status}</p>
             </div>
           </div>
         </div>
