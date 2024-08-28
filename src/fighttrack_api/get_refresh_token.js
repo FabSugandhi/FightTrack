@@ -4,9 +4,9 @@ const readline = require('readline');
 const OAuth2 = google.auth.OAuth2;
 
 const oauth2Client = new OAuth2(
-    process.env.CLIENT_ID, // Client ID
-    process.env.CLIENT_SECRET, // Client Secret
-    "https://fighttrack-abws.onrender.com/oauth2callback" // Redirect URL
+    process.env.CLIENT_ID, 
+    process.env.CLIENT_SECRET, 
+    "https://fighttrack-abws.onrender.com/auth/oauth2callback" 
 );
 
 const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];

@@ -137,7 +137,7 @@ exports.oauth2callback = async (req, res) => {
     const oauth2Client = new OAuth2(
         process.env.CLIENT_ID,
         process.env.CLIENT_SECRET,
-        'https://fighttrack-abws.onrender.com/oauth2callback'
+        'https://fighttrack-abws.onrender.com/auth/oauth2callback'
     );
 
     const { code } = req.query;
