@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use(session({
-    secret: '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',
+    secret: process.env.CLIENT_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false } // Set to true if using HTTPS
