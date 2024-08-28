@@ -8,6 +8,8 @@ const Booking = () => {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
+  const [isBooked, setIsBooked] = useState(false);
+  const [bookingId, setBookingId] = useState(null); // New state for booking ID
 
   useEffect(() => {
     const fetchBookingData = async () => {
@@ -27,7 +29,28 @@ const Booking = () => {
       }
     };
 
+    const checkIfBooked = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch('https://fighttrack-abws.onrender.com/api/bookings/', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const bookings = await response.json();
+        const booked = bookings.some(booking => booking.class && booking.class._id === id && booking.status === 'booked');
+        if (booked) {
+          const booking = bookings.find(booking => booking.class && booking.class._id === id && booking.status === 'booked');
+          setBookingId(booking._id);
+        }
+        setIsBooked(booked);
+      } catch (error) {
+        console.error('Error checking booking status:', error);
+      }
+    };
+
     fetchBookingData();
+    checkIfBooked();
   }, [id]);
 
   const handleBookNow = async () => {
@@ -59,6 +82,35 @@ const Booking = () => {
     }
   };
 
+  const handleCancelBooking = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`https://fighttrack-abws.onrender.com/api/bookings/cancel/${bookingId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        setMessage(`Booking cancelled: Redirecting to the dashboard...`);
+        setMessageType('success');
+        setIsBooked(false);
+        setTimeout(() => {
+          navigate('/dashboard');
+        }, 5000); 
+      } else {
+        const error = await response.json();
+        setMessage(`Cancellation failed: ${error.message}`);
+        setMessageType('error');
+      }
+    } catch (error) {
+      setMessage(`Cancellation failed: ${error.message}`);
+      setMessageType('error');
+    }
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -80,13 +132,14 @@ const Booking = () => {
           <p className="has-text-centered">No booking data available.</p>
         )}
         <Link to="/dashboard" className="button is-link">Back to Dashboard</Link>
-        <button onClick={handleBookNow} className="button is-link is-pulled-right">Book Now</button>
+        {isBooked ? (
+          <button onClick={handleCancelBooking} className="button is-danger is-pulled-right">Cancel Booking</button>
+        ) : (
+          <button onClick={handleBookNow} className="button is-link is-pulled-right">Book Now</button>
+        )}
         {message && (
           <div className={`notification ${messageType === 'success' ? 'is-success' : 'is-danger'}`}>
             {message}
-            {messageType === 'success' && (
-              <p>Redirecting to the dashboard in 5 seconds...</p>
-            )}
           </div>
         )}
       </div>

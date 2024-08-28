@@ -23,7 +23,11 @@ const Calendar = () => {
           }
         });
         const data = await response.json();
-        const organizedEvents = data.reduce((acc, event) => {
+        const filteredEvents = data.filter(event => {
+          const eventDate = new Date(event.schedule.day);
+          return eventDate.getMonth() === currentDate.getMonth() && eventDate.getFullYear() === currentDate.getFullYear();
+        });
+        const organizedEvents = filteredEvents.reduce((acc, event) => {
           const eventDay = new Date(event.schedule.day).getDate();
           if (!acc[eventDay]) {
             acc[eventDay] = [];
@@ -38,7 +42,7 @@ const Calendar = () => {
         setLoading(false);
       }
     };
-
+  
     fetchEvents();
   }, [currentDate]);
 
