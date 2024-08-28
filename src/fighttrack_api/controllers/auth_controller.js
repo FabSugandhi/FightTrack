@@ -142,16 +142,26 @@ exports.oauth2callback = async (req, res) => {
 
     const { code } = req.query;
 
+    if (!code) {
+        console.error('Authorisation code not found in query parameters');
+        return res.status(400).send('Missing authorization code');
+    }
+
+    console.log('Received authorisation code:', code);
+
     try {
         const { tokens } = await oauth2Client.getToken(code);
         oauth2Client.setCredentials(tokens);
 
+        console.log('Received tokens:', tokens);
+
         // Save the tokens to your database or session
         if (tokens.refresh_token) {
             req.session.refresh_token = tokens.refresh_token;
+            res.status(200).send(`Authentication successful! You can close this window. Your token is: ${tokens.refresh_token}`);
+        } else {
+            res.status(200).send('Authentication successful! You can close this window. No refresh token received.');
         }
-
-        res.status(200).send(`Authentication successful! You can close this window. Your token is: ${tokens.refresh_token}`);
     } catch (error) {
         console.error('Error retrieving access token', error);
         res.status(500).send('Error retrieving access token');
