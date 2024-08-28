@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
-import "./Pricing.css"; // Import the CSS file
+import { Link } from "react-router-dom";
+import "./Pricing.css";
 
 const Pricing = () => {
   return (
@@ -22,15 +22,6 @@ const Pricing = () => {
               <h2 className="title is-2 has-text-weight-bold">$0</h2>
             </div>
             <div className="spacer"></div>
-            {/* <div className="features has-text-white">
-              <p>First time at our gym?</p>
-              <p>Try any one of our classes for free</p>
-              <p>No commitment required</p>
-              <p>Only one use per customer</p>
-              <p>Visit our gym reception to claim your free trial</p>
-              <p>and start your fitness journey today!</p>
-              <br></br>
-            </div> */}
             <div className="spacer"></div>
             <Link to="/purchase" className="button is-primary">Get Started Now</Link>
           </div>
@@ -42,17 +33,8 @@ const Pricing = () => {
               <h2 className="title is-2 has-text-weight-bold">$79</h2>
             </div>
             <div className="spacer"></div>
-            {/* <div className="features has-text-white">
-              <p>Valid for 1 session</p>
-              <p>Does not expire</p>
-              <p>Access to all classes</p>
-              <p>No access to events</p>
-              <br></br>
-              <br></br>
-              <br></br>
-            </div> */}
             <div className="spacer"></div>
-            <Link to="/purchase" className="button is-primary best_selling_btn">Get Started Now</Link>
+            <Link to="/checkout/6-month" className="button is-primary best_selling_btn">Get Started Now</Link>
           </div>
           <div className="column is-one-third has-text-centered has-background-dark">
             <h2 className="title is-4 plan_title has-text-weight-bold">Monthly Membership</h2>
@@ -62,15 +44,6 @@ const Pricing = () => {
               <h2 className="title is-2 has-text-weight-bold">$99</h2>
             </div>
             <div className="spacer"></div>
-            {/* <div className="features has-text-white">
-              <p>Valid for 10 sessions</p>
-              <p>3 Month Expiry</p>
-              <p>Access to all classes</p>
-              <p>No access to events</p>
-              <br></br>
-              <br></br>
-              <br></br>
-            </div> */}
             <div className="spacer"></div>
             <Link to="/purchase" className="button is-primary">Get Started Now</Link>
           </div>
