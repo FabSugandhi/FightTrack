@@ -105,4 +105,7 @@ h1, h2, h3 {
     margin-left: 0; /* Remove any margin to align it properly */
   }
 
+  .header-content {
+    padding-top: 1rem;
+  }
 }
