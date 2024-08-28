@@ -1,37 +1,32 @@
-const { google } = require('googleapis');
-const readline = require('readline');
-
-const OAuth2 = google.auth.OAuth2;
-
-const oauth2Client = new OAuth2(
-    process.env.CLIENT_ID, 
-    process.env.CLIENT_SECRET, 
-    "https://fighttrack-abws.onrender.com/api/auth/oauth2callback" 
-);
-
-const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-const getAccessToken = () => {
-    const authUrl = oauth2Client.generateAuthUrl({
-        access_type: 'offline',
-        scope: SCOPES
-    });
-    console.log('Authorize this app by visiting this url:', authUrl);
-    rl.question('Enter the code from that page here: ', (code) => {
-        oauth2Client.getToken(code, (err, token) => {
-            if (err) {
-                console.error('Error retrieving access token', err);
-                return;
-            }
-            console.log('Your refresh token is:', token.refresh_token);
-            rl.close();
-        });
-    });
-};
-
-getAccessToken();
+function oauthSignIn() {
+    // Google's OAuth 2.0 endpoint for requesting an access token
+    var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+  
+    // Create <form> element to submit parameters to OAuth 2.0 endpoint.
+    var form = document.createElement('form');
+    form.setAttribute('method', 'GET'); // Send as a GET request.
+    form.setAttribute('action', oauth2Endpoint);
+  
+    // Parameters to pass to OAuth 2.0 endpoint.
+    var params = {
+        'client_id': CLIENT_ID,
+        'redirect_uri': 'https://fighttrack-abws.onrender.com/api/auth/oauth2callback',
+        'response_type': 'code', // Changed from 'token' to 'code'
+        'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
+        'include_granted_scopes': 'true',
+        'state': 'pass-through value'
+    };
+  
+    // Add form parameters as hidden input values.
+    for (var p in params) {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('name', p);
+        input.setAttribute('value', params[p]);
+        form.appendChild(input);
+    }
+  
+    // Add form to page and submit it to open the OAuth 2.0 endpoint.
+    document.body.appendChild(form);
+    form.submit();
+}

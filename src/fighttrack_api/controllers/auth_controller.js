@@ -143,11 +143,11 @@ exports.oauth2callback = async (req, res) => {
     const { code } = req.query;
 
     if (!code) {
-        console.error('Authorisation code not found in query parameters');
+        console.error('Authorization code not found in query parameters');
         return res.status(400).send('Missing authorization code');
     }
 
-    console.log('Received authorisation code:', code);
+    console.log('Received authorization code:', code);
 
     try {
         const { tokens } = await oauth2Client.getToken(code);
