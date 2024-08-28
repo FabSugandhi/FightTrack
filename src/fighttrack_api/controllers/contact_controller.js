@@ -1,4 +1,3 @@
-const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 const { encode } = require('js-base64');
 
@@ -31,20 +30,10 @@ exports.sendContactEmail = async (req, res) => {
             return res.status(500).send('Error getting access token');
         }
 
-        // Create a transporter object
-        let transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                type: 'OAuth2',
-                user: process.env.EMAIL_USER,
-                clientId: process.env.CLIENT_ID,
-                clientSecret: process.env.CLIENT_SECRET,
-                refreshToken: process.env.REFRESH_TOKEN,
-                accessToken: accessToken
-            }
-        });
+        // Set the credentials for the Gmail API client
+        oauth2Client.setCredentials({ access_token: accessToken });
 
-        // Setup email data
+        // Create the email content
         const emailContent = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`;
         const rawEmail = [
             `From: ${email}`,
@@ -54,14 +43,20 @@ exports.sendContactEmail = async (req, res) => {
             emailContent
         ].join('\n');
 
-        const encodedEmail = encode(rawEmail);
+        // Encode the email content in base64
+        const encodedEmail = encode(rawEmail).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
-        const mailOptions = {
-            raw: encodedEmail
-        };
+        // Create the Gmail API client
+        const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
 
-        // Send mail with defined transport object
-        await transporter.sendMail(mailOptions);
+        // Send the email using the Gmail API
+        await gmail.users.messages.send({
+            userId: 'me',
+            requestBody: {
+                raw: encodedEmail
+            }
+        });
+
         res.status(200).send({ message: 'Email sent successfully!' });
     } catch (error) {
         console.error('Error sending email', error);
