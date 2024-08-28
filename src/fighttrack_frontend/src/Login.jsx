@@ -38,7 +38,9 @@ const Login = () => {
                 const data = await response.json();
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("isAuthenticated", "true");
-                navigate("/dashboard");
+                localStorage.setItem("userRole", data.role); // Make sure this matches your API response
+                console.log("User role:", data.role); // Add this line for debugging
+                navigate(data.role === "admin" ? "/management" : "/dashboard");
             } else {
                 const errorData = await response.json();
                 if (errorData.errors) {

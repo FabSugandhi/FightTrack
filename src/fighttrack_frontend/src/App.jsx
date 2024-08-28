@@ -21,7 +21,7 @@ import PrivacyPolicy from "./PrivacyPolicy"; // Import Terms
 import Login from "./Login"; // Import Login
 import Booking from './Booking'; // Import BookingPage
 import Dashboard from './Dashboard/Dashboard'; // Import Dashboard
-// import Management from './Management'; // Import Management
+import Management from './Management/Management'; // Import Management
 
 
 const App = () => {
@@ -76,6 +76,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/management" 
+          element={
+            <ProtectedRoute adminOnly={true}>
+              <Management />
             </ProtectedRoute>
           } 
         />
