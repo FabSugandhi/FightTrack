@@ -9,6 +9,7 @@ router.get('/profile', verify, getProfile);
 router.put('/profile', verify, updateProfile);
 router.get('/users', verify, getAllUsers);
 router.get('/oauth2callback', oauth2callback);
+router.post('/seed', verify, register);
 
 module.exports = router;
 

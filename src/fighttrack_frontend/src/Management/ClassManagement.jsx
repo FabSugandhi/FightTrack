@@ -12,6 +12,14 @@ const ClassManagement = ({ onClassSelect }) => {
 
   const [events, setEvents] = useState({});
 
+  const [showAddClassModal, setShowAddClassModal] = useState(false);
+  const [newClass, setNewClass] = useState({
+    title: '',
+    description: '',
+    schedule: { day: '', time: '' },
+    maxAttendees: 0,
+  });
+
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -71,12 +79,17 @@ const ClassManagement = ({ onClassSelect }) => {
   const handleConfirmDelete = async () => {
     try {
       const token = localStorage.getItem('token');
-      await fetch(`https://fighttrack-abws.onrender.com/api/classes/:${classToDelete._id}`, {
+      const response = await fetch(`https://fighttrack-abws.onrender.com/api/classes/${classToDelete._id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
         }
       });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete class');
+      }
+
       // Remove the deleted class from the events state
       setEvents(prevEvents => {
         const updatedEvents = { ...prevEvents };
@@ -86,14 +99,55 @@ const ClassManagement = ({ onClassSelect }) => {
       });
     } catch (error) {
       console.error('Error deleting class:', error);
+      // Optionally, show an error message to the user
     }
     setShowConfirmation(false);
     setClassToDelete(null);
   };
 
+  const handleAddClass = async (e) => {
+    e.preventDefault();
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('https://fighttrack-abws.onrender.com/api/classes', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newClass),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to add class');
+      }
+
+      const addedClass = await response.json();
+      
+      // Update the events state with the new class
+      setEvents(prevEvents => {
+        const newEvents = { ...prevEvents };
+        const eventDay = new Date(addedClass.schedule.day).getDate();
+        if (!newEvents[eventDay]) {
+          newEvents[eventDay] = [];
+        }
+        newEvents[eventDay].push(addedClass);
+        return newEvents;
+      });
+
+      setShowAddClassModal(false);
+      setNewClass({ title: '', description: '', schedule: { day: '', time: '' }, maxAttendees: 0 });
+    } catch (error) {
+      console.error('Error adding class:', error);
+    }
+  };
+
   return (
     <section className="section">
       <div className="container">
+        <button className="button is-primary mb-4" onClick={() => setShowAddClassModal(true)}>
+          Add Class
+        </button>
         <div className="calendar-header">
           <button className="arrow-button" onClick={handlePrevMonth}>&lt;</button>
           <h1 className="title has-text-centered">{month} {year}</h1>
@@ -143,6 +197,88 @@ const ClassManagement = ({ onClassSelect }) => {
           ))}
         </div>
       </div>
+
+      {/* Add Class Modal */}
+      {showAddClassModal && (
+        <div className="modal is-active">
+          <div className="modal-background" onClick={() => setShowAddClassModal(false)}></div>
+          <div className="modal-content">
+            <div className="box">
+              <h2 className="title is-4">Add New Class</h2>
+              <form onSubmit={handleAddClass}>
+                <div className="field">
+                  <label className="label">Title</label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      type="text"
+                      value={newClass.title}
+                      onChange={(e) => setNewClass({...newClass, title: e.target.value})}
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label">Description (Optional)</label>
+                  <div className="control">
+                    <textarea
+                      className="textarea"
+                      value={newClass.description}
+                      onChange={(e) => setNewClass({...newClass, description: e.target.value})}
+                    ></textarea>
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label">Day</label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      type="date"
+                      value={newClass.schedule.day}
+                      onChange={(e) => setNewClass({...newClass, schedule: {...newClass.schedule, day: e.target.value}})}
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label">Time</label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      type="time"
+                      value={newClass.schedule.time}
+                      onChange={(e) => setNewClass({...newClass, schedule: {...newClass.schedule, time: e.target.value}})}
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label">Max Attendees</label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      type="number"
+                      value={newClass.maxAttendees}
+                      onChange={(e) => setNewClass({...newClass, maxAttendees: parseInt(e.target.value)})}
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="field is-grouped">
+                  <div className="control">
+                    <button type="submit" className="button is-link">Confirm</button>
+                  </div>
+                  <div className="control">
+                    <button type="button" className="button" onClick={() => setShowAddClassModal(false)}>Cancel</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <button className="modal-close is-large" aria-label="close" onClick={() => setShowAddClassModal(false)}></button>
+        </div>
+      )}
+
       {showConfirmation && (
         <div className="modal is-active">
           <div className="modal-background"></div>
