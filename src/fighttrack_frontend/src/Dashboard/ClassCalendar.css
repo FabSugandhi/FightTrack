@@ -58,3 +58,22 @@
 .event.closed {
   background-color: red; /* Red for closed days */
 }
+
+.arrow-button {
+  font-size: 2rem; /* Increase the font size */
+  background: none; /* Remove default button background */
+  border: none; /* Remove default button border */
+  cursor: pointer; /* Change cursor to pointer */
+  color: white; /* Set arrow color */
+  padding: 40px 100px; /* Add some padding */
+}
+
+.arrow-button:hover {
+  color: grey; /* Darken color on hover */
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -69,6 +69,26 @@ exports.deleteClass = async (req, res) => {
     }
 };
 
+// Get a class by ID
+// @route GET /api/classes/:id
+// @access Private
+// @req.params { id }
+exports.getClassById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const foundClass = await Class.findById(id);
+
+        if (!foundClass) {
+            return res.status(404).json({ message: 'Class not found' });
+        }
+
+        res.json(foundClass);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
 // Get all classes
 // @route GET /api/classes
 // @access Private
