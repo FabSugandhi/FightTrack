@@ -87,7 +87,7 @@ const App = () => {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/category" element={<CategorySelection categories={categories} />} />
         <Route path="/calendar" element={<Calendar />} /> {/* Add Calendar Route */}
-        <Route path="/booking/:day/:event" element={<Booking />} />
+        <Route path="/booking/:id" element={<Booking />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/entry">

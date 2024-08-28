@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './ClassCalendar.css'; // Import the CSS file for calendar styling
 
@@ -9,59 +9,37 @@ const Calendar = () => {
   const daysInMonth = new Date(year, today.getMonth() + 1, 0).getDate();
   const firstDayOfMonth = new Date(year, today.getMonth(), 1).getDay();
 
-  // Sample events data organized by day of the week
-  const events = {
-    0: [{ title: 'CLOSED' }],
-    1: [
-      { title: 'Cardi Box', time: '5:00 - 5:45 AM' },
-      { title: 'Cardi Box', time: '6:00 - 6:45 AM' },
-      { title: 'Cardi Box', time: '7:00 - 7:45 AM' },
-      { title: 'Fighters Academy', time: '4:00 PM' },
-      { title: 'Cardi Box', time: '5:00 - 5:45 PM' },
-      { title: 'Cardi Box', time: '6:00 - 6:45 PM' },
-      { title: 'Cardi Box', time: '7:00 - 7:45 PM' }
-    ],
-    2: [
-      { title: 'Cardi Box', time: '5:00 - 5:45 AM' },
-      { title: 'Cardi Box', time: '6:00 - 6:45 AM' },
-      { title: 'Cardi Box', time: '7:00 - 7:45 AM' },
-      { title: 'Kids Boxing', time: '4:00 PM' },
-      { title: 'Cardi Box', time: '5:00 - 5:45 PM' },
-      { title: 'Cardi Box', time: '6:00 - 6:45 PM' },
-      { title: 'Cardi Box', time: '7:00 - 7:45 PM' }
-    ],
-    3: [
-      { title: 'Cardi Box', time: '5:00 - 5:45 AM' },
-      { title: 'Cardi Box', time: '6:00 - 6:45 AM' },
-      { title: 'Cardi Box', time: '7:00 - 7:45 AM' },
-      { title: 'Fighters Academy', time: '4:00 PM' },
-      { title: 'Cardi Box', time: '5:00 - 5:45 PM' },
-      { title: 'Cardi Box', time: '6:00 - 6:45 PM' },
-      { title: 'Cardi Box', time: '7:00 - 7:45 PM' }
-    ],
-    4: [
-      { title: 'Cardi Box', time: '5:00 - 5:45 AM' },
-      { title: 'Cardi Box', time: '6:00 - 6:45 AM' },
-      { title: 'Cardi Box', time: '7:00 - 7:45 AM' },
-      { title: 'Kids Boxing', time: '4:00 PM' },
-      { title: 'Cardi Box', time: '5:00 - 5:45 PM' },
-      { title: 'Cardi Box', time: '6:00 - 6:45 PM' },
-      { title: 'Cardi Box', time: '7:00 - 7:45 PM' }
-    ],
-    5: [
-      { title: 'Cardi Box', time: '5:00 - 5:45 AM' },
-      { title: 'Cardi Box', time: '6:00 - 6:45 AM' },
-      { title: 'Cardi Box', time: '7:00 - 7:45 AM' },
-      { title: 'Kids Boxing', time: '4:00 PM' },
-      { title: 'Cardi Box', time: '5:00 - 5:45 PM' },
-      { title: 'Cardi Box', time: '6:00 - 6:45 PM' }
-    ],
-    6: [
-      { title: 'Cardi Box', time: '6:00 - 6:45 AM' },
-      { title: 'Cardi Box', time: '7:00 - 7:45 AM' },
-      { title: 'Cardi Box', time: '8:00 - 8:45 AM' }
-    ]
-  };
+  const [events, setEvents] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const token = localStorage.getItem('token'); 
+        const response = await fetch('https://fighttrack-abws.onrender.com/api/classes/', {
+          headers: {
+            'Authorization': `Bearer ${token}` 
+          }
+        });
+        const data = await response.json();
+        const organizedEvents = data.reduce((acc, event) => {
+          const eventDay = new Date(event.schedule.day).getDate();
+          if (!acc[eventDay]) {
+            acc[eventDay] = [];
+          }
+          acc[eventDay].push(event);
+          return acc;
+        }, {});
+        setEvents(organizedEvents);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   // Generate an array representing the days of the current month
   const days = [...Array(daysInMonth).keys()].map(i => i + 1);
@@ -69,6 +47,10 @@ const Calendar = () => {
   // Add empty days to the start if the month doesn't start on a Sunday
   for (let i = 0; i < firstDayOfMonth; i++) {
     days.unshift(null);
+  }
+
+  if (loading) {
+    return <p>Loading...</p>;
   }
 
   return (
@@ -88,7 +70,7 @@ const Calendar = () => {
               {day && (
                 <div className="day-cell">
                   <p className="day-number">{day}</p>
-                  {events[index % 7] && events[index % 7].map((event, i) => (
+                  {events[day] && events[day].map((event, i) => (
                     event.title === 'CLOSED' ? (
                       <div key={i} className="event closed">
                         <p className="event-title">{event.title}</p>
@@ -96,11 +78,11 @@ const Calendar = () => {
                     ) : (
                       <Link
                         key={i}
-                        to={`/booking/${day}/${event.title.replace(/\s+/g, '-').toLowerCase()}`}
+                        to={`/booking/${event._id}`}
                         className="event"
                       >
                         <p className="event-title">{event.title}</p>
-                        {event.time && <p className="event-time">{event.time}</p>}
+                        {event.schedule.time && <p className="event-time">{event.schedule.time}</p>}
                       </Link>
                     )
                   ))}
