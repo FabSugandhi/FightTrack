@@ -47,6 +47,88 @@ const classes = [
       maxAttendees: 50,
       currentAttendees: 45,
     },
+    // August 2024 classes
+    {
+      title: 'CardioBox',
+      description: 'High-intensity cardio boxing session.',
+      schedule: {
+        day: 'Monday, Aug 12 2024',
+        time: '7:00 pm AEST (45m)',
+      },
+      maxAttendees: 20,
+      currentAttendees: 18,
+    },
+    {
+      title: 'Fighters Academy',
+      description: 'Advanced techniques for competitive fighters.',
+      schedule: {
+        day: 'Tuesday, Aug 20 2024',
+        time: '6:00 pm AEST (1h)',
+      },
+      maxAttendees: 15,
+      currentAttendees: 15,
+    },
+    {
+      title: 'Kids Boxing',
+      description: 'Fun and engaging boxing classes for kids.',
+      schedule: {
+        day: 'Wednesday, Aug 21 2024',
+        time: '4:00 pm AEST (30m)',
+      },
+      maxAttendees: 10,
+      currentAttendees: 9,
+    },
+    {
+      title: 'Open Gym Pass',
+      description: 'Access to the gym for personal workouts.',
+      schedule: {
+        day: 'Friday, Aug 23 2024',
+        time: '6:00 pm AEST (45m)',
+      },
+      maxAttendees: 50,
+      currentAttendees: 45,
+    },
+    // September 2024 classes
+    {
+      title: 'CardioBox',
+      description: 'High-intensity cardio boxing session.',
+      schedule: {
+        day: 'Monday, Sep 9 2024',
+        time: '7:00 pm AEST (45m)',
+      },
+      maxAttendees: 20,
+      currentAttendees: 18,
+    },
+    {
+      title: 'Fighters Academy',
+      description: 'Advanced techniques for competitive fighters.',
+      schedule: {
+        day: 'Tuesday, Sep 17 2024',
+        time: '6:00 pm AEST (1h)',
+      },
+      maxAttendees: 15,
+      currentAttendees: 15,
+    },
+    {
+      title: 'Kids Boxing',
+      description: 'Fun and engaging boxing classes for kids.',
+      schedule: {
+        day: 'Wednesday, Sep 18 2024',
+        time: '4:00 pm AEST (30m)',
+      },
+      maxAttendees: 10,
+      currentAttendees: 9,
+    },
+    {
+      title: 'Open Gym Pass',
+      description: 'Access to the gym for personal workouts.',
+      schedule: {
+        day: 'Friday, Sep 20 2024',
+        time: '6:00 pm AEST (45m)',
+      },
+      maxAttendees: 50,
+      currentAttendees: 45,
+    },
 ];
 
 const seed = async () => {
