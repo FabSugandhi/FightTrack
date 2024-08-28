@@ -13,7 +13,7 @@ exports.sendContactEmail = async (req, res) => {
     const oauth2Client = new OAuth2(
         process.env.CLIENT_ID, // Client ID
         process.env.CLIENT_SECRET, // Client Secret
-        "https://fighttrack-abws.onrender.com/auth/oauth2callback" // Redirect URL
+        "https://fighttrack-abws.onrender.com/api/auth/oauth2callback" // Redirect URL
     );
 
     // Set the refresh token
