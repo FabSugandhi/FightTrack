@@ -25,7 +25,7 @@ import Login from "./Login"; // Import Login
 import Booking from './Booking'; // Import BookingPage
 import Dashboard from './Dashboard/Dashboard'; // Import Dashboard
 import Management from './Management/Management'; // Import Management
-import CheckoutForm from "./CheckoutForm"; // Update the import name
+import CheckOutForm from "./CheckOutForm"; // Update the import name
 
 const stripePromise = loadStripe("your_stripe_publishable_key_here"); // Replace with your actual Stripe publishable key
 
@@ -110,7 +110,7 @@ const App = () => {
         </Route>
         <Route path="/checkout/6-month" element={
           <Elements stripe={stripePromise}>
-            <CheckoutForm priceId="price_6month_membership" />
+            <CheckOutForm priceId="price_6month_membership" />
           </Elements>
         } />
         <Route path="*" element={<h3>Page not found!</h3>} />
