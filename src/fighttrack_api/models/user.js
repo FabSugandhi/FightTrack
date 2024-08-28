@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema({
     password: { type: String, required: true },
     role: { type: String, enum: ['member', 'admin'], default: 'member' },
     joinDate: { type: Date, default: Date.now },
-    membershipType: { type: String, default: 'free' },
+    membershipType: { type: String, default: 'monthly' },
     classesAttended: { type: Number, default: 0 }
 });
 
