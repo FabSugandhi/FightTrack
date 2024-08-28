@@ -6,6 +6,6 @@ const { verify } = require('../middleware/auth_middleware.js');
 router.post('/book', verify, bookClass);
 router.put('/cancel/:id', verify, cancelBooking);
 router.get('/', verify, getBookings);
-router.get('/class/:classId', verify, getBookingsByClassId);
+router.get('/class', verify, getBookingsByClassId);
 
 module.exports = router;
