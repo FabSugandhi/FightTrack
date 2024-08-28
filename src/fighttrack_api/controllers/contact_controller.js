@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
+const { encode } = require('js-base64');
 
 const OAuth2 = google.auth.OAuth2;
 
@@ -39,16 +40,24 @@ exports.sendContactEmail = async (req, res) => {
                 clientId: process.env.CLIENT_ID,
                 clientSecret: process.env.CLIENT_SECRET,
                 refreshToken: process.env.REFRESH_TOKEN,
-                accessToken: accessToken.token
+                accessToken: accessToken
             }
         });
 
         // Setup email data
-        let mailOptions = {
-            from: email, // sender address
-            to: process.env.COMPANY_EMAIL, // list of receiver emails
-            subject: 'Contact Us Form Submission', // Subject line
-            text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}` // text body filled with the form data
+        const emailContent = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`;
+        const rawEmail = [
+            `From: ${email}`,
+            `To: ${process.env.COMPANY_EMAIL}`,
+            'Subject: Contact Us Form Submission',
+            '',
+            emailContent
+        ].join('\n');
+
+        const encodedEmail = encode(rawEmail);
+
+        const mailOptions = {
+            raw: encodedEmail
         };
 
         // Send mail with defined transport object
