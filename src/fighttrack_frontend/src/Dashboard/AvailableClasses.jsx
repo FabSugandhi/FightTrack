@@ -1,8 +1,6 @@
 import React from "react";
 
-
-
-const AvailableClassesCard = () => {
+const AvailableClassesCard = ({ setActiveSection }) => {
     const classes = [
       'Cardi Box',
       'Fighters Academy',
@@ -10,6 +8,10 @@ const AvailableClassesCard = () => {
       'Open Gym Pass',
     ];
   
+    const handleBookClick = () => {
+      setActiveSection("ClassCalendar");
+    };
+
     return (
       <div className="card">
         <div className="card-content">
@@ -25,7 +27,7 @@ const AvailableClassesCard = () => {
                   <p>{className}</p>
                 </div>
                 <div className="column is-narrow">
-                  <button className="button is-dark">Book</button>
+                  <button className="button is-success" onClick={handleBookClick}>Book</button>
                 </div>
               </div>
             </div>
@@ -35,5 +37,13 @@ const AvailableClassesCard = () => {
       </div>
     );
   };
-  
-  export default AvailableClassesCard;
+
+const AvailableClasses = ({ setActiveSection }) => {
+  return (
+    <div className="container">
+      <AvailableClassesCard setActiveSection={setActiveSection} />
+    </div>
+  );
+};
+
+export default AvailableClasses;

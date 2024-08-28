@@ -6,12 +6,12 @@ import ClassCalendar from "./ClassCalendar";
 import Profile from "./Profile";
 
 const Dashboard = () => {
-    const [activeSection, setActiveSection] = useState("availableClasses");
+    const [activeSection, setActiveSection] = useState("AvailableClasses");
     
     const renderSection = () => {
         switch (activeSection) {
             case "AvailableClasses":
-                return <AvailableClasses />;
+                return <AvailableClasses setActiveSection={setActiveSection} />;
             case "MySchedule":
                 return <MySchedule />;
             case "ClassCalendar":
@@ -19,7 +19,7 @@ const Dashboard = () => {
             case "Profile":
                 return <Profile />;
             default:
-                return <AvailableClasses />;
+                return <AvailableClasses setActiveSection={setActiveSection} />;
         }
     };
 
