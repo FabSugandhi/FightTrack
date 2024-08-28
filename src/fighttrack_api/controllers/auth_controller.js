@@ -151,7 +151,7 @@ exports.oauth2callback = async (req, res) => {
             req.session.refresh_token = tokens.refresh_token;
         }
 
-        res.status(200).send('Authentication successful! You can close this window.');
+        res.status(200).send(`Authentication successful! You can close this window. Your token is: ${tokens.refresh_token}`);
     } catch (error) {
         console.error('Error retrieving access token', error);
         res.status(500).send('Error retrieving access token');
