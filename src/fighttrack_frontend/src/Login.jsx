@@ -25,6 +25,8 @@ const Login = () => {
         const endpoint = isSignUp ? "https://fighttrack-abws.onrender.com/api/auth/register" : "https://fighttrack-abws.onrender.com/api/auth/login";
         const userData = isSignUp ? { name, email, password } : { email, password };
 
+        
+
         try {
             const response = await fetch(endpoint, {
                 method: "POST",
@@ -33,13 +35,13 @@ const Login = () => {
                 },
                 body: JSON.stringify(userData),
             });
-
+            console.log("Raw response:", response);
+            
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("isAuthenticated", "true");
-                localStorage.setItem("userRole", data.role); // Make sure this matches your API response
-                console.log("User role:", data.role); // Add this line for debugging
+                localStorage.setItem("userRole", data.role); 
                 navigate(data.role === "admin" ? "/management" : "/dashboard");
             } else {
                 const errorData = await response.json();
