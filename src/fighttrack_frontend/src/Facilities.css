@@ -1,8 +1,0 @@
-/* Facilities.css */
-@media (max-width: 768px) {
-    .is-reverse-on-mobile {
-      display: flex;
-      flex-direction: column-reverse;
-    }
-  }
-  
