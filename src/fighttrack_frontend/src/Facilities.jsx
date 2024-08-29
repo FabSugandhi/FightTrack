@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
+import './Facilities.css'; // Import your custom CSS
 
 const Facilities = () => {
   return (
@@ -13,9 +14,13 @@ const Facilities = () => {
           <div className="columns mt-4">
             <div className="column is-half">
               <img 
-                alt="Person wrapping hands with boxing wraps" 
+                alt="Boxing Training" 
                 className="image is-4by3" 
-                src="https://placehold.co/320x240" 
+                src="https://images.unsplash.com/photo-1517438322307-e67111335449?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                style={{ 
+                  width: "100%", 
+                  maxWidth: "400px"  
+                }} 
               />
             </div>
             <div className="column is-half">
@@ -30,17 +35,21 @@ const Facilities = () => {
             </div>
           </div>
 
-          <div className="columns mt-4">
-            <div className="column is-half">
+          <div className="columns mt-4 is-reverse-on-mobile">
+            <div className="column is-half mobile-order"> {/* This column will reverse order on mobile */}
               <p>
                 Our state-of-the-art equipment and well-maintained facilities are designed to enhance your workout experience. We offer modern workout areas, relaxing lounges, and clean, spacious locker rooms to ensure that you feel comfortable and motivated during every visit.
               </p>
             </div>
             <div className="column is-half">
               <img 
-                alt="Boxing ring with punching bags" 
+                alt="Gym Equipment" 
                 className="image is-4by3" 
-                src="https://placehold.co/320x240" 
+                src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                style={{ 
+                  width: "100%", 
+                  maxWidth: "400px"  
+                }} 
               />
             </div>
           </div>
@@ -48,9 +57,13 @@ const Facilities = () => {
           <div className="columns mt-4">
             <div className="column is-half">
               <img 
-                alt="Row of red boxing gloves hanging" 
+                alt="Gym Trainer" 
                 className="image is-4by3" 
-                src="https://placehold.co/320x240" 
+                src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                style={{ 
+                  width: "100%", 
+                  maxWidth: "400px"  
+                }} 
               />
             </div>
             <div className="column is-half">

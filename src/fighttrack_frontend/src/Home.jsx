@@ -37,8 +37,8 @@ const Home = () => {
             <div className="box has-text-centered">
               <img 
                 alt="Workshop Image" 
-                className="image" 
-                src="https://placehold.co/400x300/000000/FFFFFF?text=Workshop+Image" 
+                className="image is-4by3" 
+                src="https://images.unsplash.com/photo-1517931524326-bdd55a541177?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
               />
               <h2 className="title is-size-4 mb-3 mt-4">Join the Experience</h2>
               <p className="mb-3">Multiple Membership Options - Free Trial Available!</p>
@@ -52,8 +52,8 @@ const Home = () => {
             <div className="box has-text-centered">
               <img 
                 alt="Workshop Image" 
-                className="image" 
-                src="https://placehold.co/400x300/000000/FFFFFF?text=Workshop+Image" 
+                className="image is-4by3" 
+                src="https://images.unsplash.com/photo-1517343985841-f8b2d66e010b?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
               />
               <h2 className="title is-size-4 mb-3 mt-4">Explore Our Facilities</h2>
               <p className="mb-3">State-of-the-Art Equipment & Expert Trainers for All Your Fitness Needs</p>
@@ -67,8 +67,8 @@ const Home = () => {
             <div className="box has-text-centered">
               <img 
                 alt="Mindfulness Image" 
-                className="image" 
-                src="https://placehold.co/400x300/000000/FFFFFF?text=Mindfulness+Image" 
+                className="image is-4by3" 
+                src="https://images.unsplash.com/photo-1593234270323-0414ec1574e1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
               />
               <h2 className="title is-size-4 mb-3 mt-4">Discover Our Classes</h2>
               <p className="mb-3">Varied Training Sessions - Suitable for All Levels</p>
