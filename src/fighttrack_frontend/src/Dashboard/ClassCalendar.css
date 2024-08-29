@@ -65,7 +65,7 @@
   border: none; /* Remove default button border */
   cursor: pointer; /* Change cursor to pointer */
   color: white; /* Set arrow color */
-  padding: 40px 100px; /* Add some padding */
+  padding: 10px; /* Adjust padding */
 }
 
 .arrow-button:hover {
@@ -74,8 +74,19 @@
 
 .calendar-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the month/year horizontally */
   align-items: center;
+  width: 100%;
+  margin-bottom: 10px; /* Add space below the header */
+}
+
+.calendar-header button {
+  margin: 0 15px; /* Add spacing between arrows and month/year */
+}
+
+.calendar-header h1 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.5rem; /* Adjust font size if needed */
 }
 
 .delete-button {
