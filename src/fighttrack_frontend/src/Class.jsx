@@ -19,7 +19,7 @@ const Class = () => {
             </button>
           </Link>
 
-          <div className="columns mt-4">
+          <div className="columns mt-4 is-reverse-on-mobile">
             <div className="column is-half">
               <h2 className="title is-size-4">Cardi Box</h2>
               <p>
@@ -30,7 +30,11 @@ const Class = () => {
               <img 
                 alt="Cardi Box" 
                 className="image is-4by3" 
-                src="https://placehold.co/320x240" 
+                src="https://images.unsplash.com/photo-1651707999611-b3d3b849b8f4?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                style={{ 
+                  width: "100%", 
+                  maxWidth: "320px"  
+                }} 
               />
             </div>
           </div>
@@ -40,7 +44,11 @@ const Class = () => {
               <img 
                 alt="Fighters Academy" 
                 className="image is-4by3" 
-                src="https://placehold.co/320x240" 
+                src="https://images.unsplash.com/photo-1615117079816-077715446270?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                style={{ 
+                  width: "100%", 
+                  maxWidth: "320px"  
+                }} 
               />
             </div>
             <div className="column is-half">
@@ -51,7 +59,7 @@ const Class = () => {
             </div>
           </div>
 
-          <div className="columns mt-4">
+          <div className="columns mt-4 is-reverse-on-mobile">
             <div className="column is-half">
               <h2 className="title is-size-4">Open Gym</h2>
               <p>
@@ -62,7 +70,11 @@ const Class = () => {
               <img 
                 alt="Open Gym" 
                 className="image is-4by3" 
-                src="https://placehold.co/320x240" 
+                src="https://images.unsplash.com/photo-1514994444123-10094655bdb5?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                style={{ 
+                  width: "100%", 
+                  maxWidth: "320px"  
+                }} 
               />
             </div>
           </div>
@@ -72,7 +84,11 @@ const Class = () => {
               <img 
                 alt="Kids Boxing" 
                 className="image is-4by3" 
-                src="https://placehold.co/320x240" 
+                src="https://images.unsplash.com/photo-1522187030730-5485088c6bfd?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                style={{ 
+                  width: "100%", 
+                  maxWidth: "320px"  
+                }} 
               />
             </div>
             <div className="column is-half">
@@ -83,7 +99,7 @@ const Class = () => {
             </div>
           </div>
 
-          <div className="columns mt-4">
+          <div className="columns mt-4 is-reverse-on-mobile">
             <div className="column is-half">
               <h2 className="title is-size-4">Personal Training</h2>
               <p>
@@ -94,7 +110,11 @@ const Class = () => {
               <img 
                 alt="Personal Training" 
                 className="image is-4by3" 
-                src="https://placehold.co/320x240" 
+                src="https://images.unsplash.com/photo-1636581563711-cd454f1bf99a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                style={{ 
+                  width: "100%", 
+                  maxWidth: "320px"  
+                }} 
               />
             </div>
           </div>

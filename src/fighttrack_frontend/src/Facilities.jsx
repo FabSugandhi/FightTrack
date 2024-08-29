@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Facilities.css'; // Import your custom CSS
 
 const Facilities = () => {
   return (
@@ -36,7 +35,7 @@ const Facilities = () => {
           </div>
 
           <div className="columns mt-4 is-reverse-on-mobile">
-            <div className="column is-half mobile-order"> {/* This column will reverse order on mobile */}
+            <div className="column is-half"> {/* This column will reverse order on mobile */}
               <p>
                 Our state-of-the-art equipment and well-maintained facilities are designed to enhance your workout experience. We offer modern workout areas, relaxing lounges, and clean, spacious locker rooms to ensure that you feel comfortable and motivated during every visit.
               </p>

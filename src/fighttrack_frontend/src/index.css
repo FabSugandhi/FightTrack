@@ -47,6 +47,13 @@ h1, h2, h3 {
   display: none;
 }
 
+@media (max-width: 768px) {
+  .is-reverse-on-mobile {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
 @media screen and (min-width: 769px) {
   .is-hidden-mobile {
     display: block;
