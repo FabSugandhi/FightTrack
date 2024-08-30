@@ -1,12 +1,14 @@
-# T3A2-A: Full Stack App (Part A)
+# T3A2-A: Full Stack App
 
-Coder Academy Term 3 Assignment 2 - Part A
+Coder Academy Term 3 Assignment 2
 
 ### Student Name:
 
 Kasun Don\
 Fabian Sugandhi\
 Ryley Croucher
+
+# Part A
 
 ## R1
 
@@ -238,3 +240,14 @@ Below are the screenshots of the project overview, as well as the individual ite
 ### Documentation
 
 ![Project14Documentation](./docs/R6/Project14Documentation.png)
+
+# Part B
+
+## R10
+
+The website is deployed and hosted at https://fighttrack.xyz/ \
+You can also click this [LINK](https://fighttrack.xyz/) to go the home page of the website.
+
+## R11
+The GitHub repository of this website can be accessed by clicking this [LINK](https://github.com/FabSugandhi/FightTrack).
+
