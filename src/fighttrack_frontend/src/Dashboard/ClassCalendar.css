@@ -1,3 +1,4 @@
+/* Original CSS */
 .calendar-grid {
   display: flex;
   flex-wrap: wrap;
@@ -108,4 +109,24 @@
 .event {
   display: flex;
   flex-direction: column;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .calendar-grid .column {
+    padding: 5px; /* Reduce padding for mobile view */
+    flex-basis: 14%; /* Adjust the column width for mobile view */
+  }
+
+  .calendar-grid .column.has-text-centered {
+    min-height: 80px; /* Adjust minimum height for mobile view */
+  }
+
+  .event-title {
+    font-size: calc(0.35rem + 0.3vw); /* Smaller font size and scaling */
+  }
+
+  .event-time {
+    font-size: calc(0.3rem + 0.2vw); /* Smaller font size and scaling */
+  }
 }
