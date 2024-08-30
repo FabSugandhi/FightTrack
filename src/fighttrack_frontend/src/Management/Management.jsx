@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ManagementNav from "./ManagementNav";
 import ClassManagement from "./ClassManagement";
 import EditClass from "./EditClass"; 
-import useAdminProtection from "../../hooks/useAdminProtection";
+import useAdminProtection from "../hooks/useAdminProtection";
 
 const Dashboard = () => {
   const [activeSection, setActiveSection] = useState("Dashboard");
