@@ -241,7 +241,65 @@ Below are the screenshots of the project overview, as well as the individual ite
 
 ![Project14Documentation](./docs/R6/Project14Documentation.png)
 
-# Part B
+# Addendum to Part A
+
+## R5: Wireframes - Updates
+
+As mentioned in Part A's R5, which can be seen above, the structure and features of the final website expectedly differed from the original plan. Some additional functionalities were added. These include: 
+
+### Minor Changes to the Home Page (Layout and Login Button) (Mobile)
+
+![FinalHomeMobile](./docs/R5/FinalHomeMobile.png)
+
+### Minor Changes to the Home Page (Layout and Login Button) (Laptop)
+
+![FinalHomeLaptop](./docs/R5/FinalHomeLaptop.png)
+
+### User Dashboard (Mobile)
+
+![DashboardMobile](./docs/R5/DashboardMobile.png)
+
+### User Dashboard (Laptop)
+
+![DashboardLaptop](./docs/R5/DashboardLaptop.png)
+
+### Admin-Exclusive Dashboard (Mobile)
+
+![AdminMobile](./docs/R5/AdminMobile.png)
+
+### Admin-Exclusive Dashboard (Laptop)
+
+![AdminLaptop](./docs/R5/AdminLaptop.png)
+
+### Class Schedule (Mobile)
+
+![ScheduleMobile](./docs/R5/ScheduleMobile.png)
+
+### Class Schedule (Laptop)
+
+![ScheduleLaptop](./docs/R5/ScheduleLaptop.png)
+
+### Membership Purchase (Mobile)
+
+![PurchaseMobile](./docs/R5/PurchaseMobile.png)
+
+### Membership Purchase (Laptop)
+
+![PurchaseLaptop](./docs/R5/PurchaseLaptop.png)
+
+Membership Purchase
+
+## R6
+
+Additional one-off issue occured during the production of this website. These were immediately added to the Project Management Board in order to warrant action. The following issues were added:
+
+### Additional Project Folder Required
+
+![AdditionalIssue1](./docs/R6/AdditionalIssue1.png)
+
+### Additional Features to Login System Required
+
+![AdditionalIssue2](./docs/R6/AdditionalIssue2.png)
 
 ## R10
 
@@ -249,5 +307,5 @@ The website is deployed and hosted at https://fighttrack.xyz/ \
 You can also click this [LINK](https://fighttrack.xyz/) to go the home page of the website.
 
 ## R11
-The GitHub repository of this website can be accessed by clicking this [LINK](https://github.com/FabSugandhi/FightTrack).
 
+The GitHub repository of this website can be accessed by clicking this [LINK](https://github.com/FabSugandhi/FightTrack).
