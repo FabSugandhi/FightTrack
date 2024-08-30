@@ -4,12 +4,15 @@ import { useNavigate, useLocation } from 'react-router-dom';
 const Header = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false); // Add state for admin check
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     const authStatus = localStorage.getItem("isAuthenticated");
+    const userRole = localStorage.getItem("userRole"); // Retrieve user role
     setIsAuthenticated(authStatus === "true");
+    setIsAdmin(userRole === "admin"); // Set admin status
   }, [location]);
 
   const handleAuthClick = () => {
@@ -17,7 +20,9 @@ const Header = () => {
     if (isAuthenticated) {
       localStorage.removeItem("isAuthenticated");
       localStorage.removeItem("token");
+      localStorage.removeItem("userRole"); // Remove user role on logout
       setIsAuthenticated(false);
+      setIsAdmin(false); // Reset admin status
       navigate('/');
     } else {
       navigate('/login');
@@ -26,7 +31,11 @@ const Header = () => {
   };
 
   const handleDashboardClick = () => {
-    navigate('/dashboard');
+    if (isAdmin) {
+      navigate('/management'); // Navigate to management if admin
+    } else {
+      navigate('/dashboard'); // Navigate to dashboard if not admin
+    }
   };
 
   return (
@@ -37,7 +46,7 @@ const Header = () => {
             className="button is-info"
             onClick={handleDashboardClick}
           >
-            Dashboard
+            {isAdmin ? 'Admin Dashboard' : 'Dashboard'} {/* Update button text */}
           </button>
         )}
         <button
