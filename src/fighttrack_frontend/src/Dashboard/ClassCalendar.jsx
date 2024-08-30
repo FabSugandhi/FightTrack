@@ -9,6 +9,7 @@ const Calendar = () => {
   const month = currentDate.toLocaleString('default', { month: 'long' });
   const daysInMonth = new Date(year, currentDate.getMonth() + 1, 0).getDate();
   const firstDayOfMonth = new Date(year, currentDate.getMonth(), 1).getDay();
+  const lastDayOfMonth = new Date(year, currentDate.getMonth() + 1, 0).getDay(); // Day of the week the month ends on
 
   const [events, setEvents] = useState({});
   const [loading, setLoading] = useState(true);
@@ -52,6 +53,11 @@ const Calendar = () => {
   // Add empty days to the start if the month doesn't start on a Sunday
   for (let i = 0; i < firstDayOfMonth; i++) {
     days.unshift(null);
+  }
+
+  // Add empty days to the end if the month doesn't end on a Saturday
+  for (let i = lastDayOfMonth + 1; i < 7; i++) {
+    days.push(null);
   }
 
   const handlePrevMonth = () => {

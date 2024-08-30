@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import '../Dashboard/ClassCalendar.css'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../Dashboard/ClassCalendar.css';
 
 const ClassManagement = ({ onClassSelect }) => {
   const today = new Date();
@@ -9,9 +9,9 @@ const ClassManagement = ({ onClassSelect }) => {
   const month = currentDate.toLocaleString('default', { month: 'long' });
   const daysInMonth = new Date(year, currentDate.getMonth() + 1, 0).getDate();
   const firstDayOfMonth = new Date(year, currentDate.getMonth(), 1).getDay();
+  const lastDayOfMonth = new Date(year, currentDate.getMonth() + 1, 0).getDay(); // Day of the week the month ends on
 
   const [events, setEvents] = useState({});
-
   const [showAddClassModal, setShowAddClassModal] = useState(false);
   const [newClass, setNewClass] = useState({
     title: '',
@@ -19,6 +19,8 @@ const ClassManagement = ({ onClassSelect }) => {
     schedule: { day: '', time: '' },
     maxAttendees: 0,
   });
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [classToDelete, setClassToDelete] = useState(null);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -59,6 +61,11 @@ const ClassManagement = ({ onClassSelect }) => {
     days.unshift(null);
   }
 
+  // Add empty days to the end if the month doesn't end on a Saturday
+  for (let i = lastDayOfMonth + 1; i < 7; i++) {
+    days.push(null);
+  }
+
   const handlePrevMonth = () => {
     setCurrentDate(new Date(year, currentDate.getMonth() - 1, 1));
   };
@@ -66,9 +73,6 @@ const ClassManagement = ({ onClassSelect }) => {
   const handleNextMonth = () => {
     setCurrentDate(new Date(year, currentDate.getMonth() + 1, 1));
   };
-
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [classToDelete, setClassToDelete] = useState(null);
 
   const handleDeleteClick = (event, e) => {
     e.stopPropagation();
@@ -99,7 +103,6 @@ const ClassManagement = ({ onClassSelect }) => {
       });
     } catch (error) {
       console.error('Error deleting class:', error);
-      // Optionally, show an error message to the user
     }
     setShowConfirmation(false);
     setClassToDelete(null);
@@ -259,18 +262,14 @@ const ClassManagement = ({ onClassSelect }) => {
                       className="input"
                       type="number"
                       value={newClass.maxAttendees}
-                      onChange={(e) => setNewClass({...newClass, maxAttendees: parseInt(e.target.value)})}
+                      onChange={(e) => setNewClass({...newClass, maxAttendees: e.target.value})}
                       required
                     />
                   </div>
                 </div>
-                <div className="field is-grouped">
-                  <div className="control">
-                    <button type="submit" className="button is-link">Confirm</button>
-                  </div>
-                  <div className="control">
-                    <button type="button" className="button" onClick={() => setShowAddClassModal(false)}>Cancel</button>
-                  </div>
+                <div className="field">
+                  <button className="button is-primary" type="submit">Add Class</button>
+                  <button className="button is-light" type="button" onClick={() => setShowAddClassModal(false)}>Cancel</button>
                 </div>
               </form>
             </div>
@@ -279,16 +278,21 @@ const ClassManagement = ({ onClassSelect }) => {
         </div>
       )}
 
+      {/* Confirmation Modal */}
       {showConfirmation && (
         <div className="modal is-active">
-          <div className="modal-background"></div>
+          <div className="modal-background" onClick={() => setShowConfirmation(false)}></div>
           <div className="modal-content">
             <div className="box">
+              <h2 className="title is-4">Confirm Deletion</h2>
               <p>Are you sure you want to delete this class?</p>
-              <button className="button is-danger" onClick={handleConfirmDelete}>Yes</button>
-              <button className="button" onClick={() => setShowConfirmation(false)}>No</button>
+              <div className="field">
+                <button className="button is-danger" onClick={handleConfirmDelete}>Yes, Delete</button>
+                <button className="button is-light" onClick={() => setShowConfirmation(false)}>Cancel</button>
+              </div>
             </div>
           </div>
+          <button className="modal-close is-large" aria-label="close" onClick={() => setShowConfirmation(false)}></button>
         </div>
       )}
     </section>
