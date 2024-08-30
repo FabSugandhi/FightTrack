@@ -47,7 +47,7 @@ const ContactUs = () => {
         <div className="box">
           <h2 className="title is-2">Contact Us</h2>
           <p>
-            We'd love to hear from you! Whether you have questions about our classes, facilities, or membership options, feel free to reach out to us.
+            We&rsquo;d love to hear from you! Whether you have questions about our classes, facilities, or membership options, feel free to reach out to us.
           </p>
           
           <div className="columns mt-4">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import './ClassCalendar.css'; // Import the CSS file for calendar styling
+import { Link } from 'react-router-dom';
+import './ClassCalendar.css';
 
 const Calendar = () => {
   const today = new Date();
