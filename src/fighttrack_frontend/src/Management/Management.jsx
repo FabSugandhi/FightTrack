@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
 import ManagementNav from "./ManagementNav";
 import ClassManagement from "./ClassManagement";
 import EditClass from "./EditClass"; 
+import useAdminProtection from "../../hooks/useAdminProtection";
 
 const Dashboard = () => {
   const [activeSection, setActiveSection] = useState("Dashboard");
   const [selectedClassId, setSelectedClassId] = useState(null);
+
+  useAdminProtection();
 
   const renderSection = () => {
     switch (activeSection) {

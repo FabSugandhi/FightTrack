@@ -4,7 +4,7 @@ import AvailableClasses from "./AvailableClasses";
 import MySchedule from "./MySchedule";
 import ClassCalendar from "./ClassCalendar";
 import Profile from "./Profile";
-import Pricing from "../Pricing"; // Import the Pricing component
+import Pricing from "../Pricing";
 
 const Dashboard = () => {
     const [activeSection, setActiveSection] = useState("AvailableClasses");
