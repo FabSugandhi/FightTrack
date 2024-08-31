@@ -23,7 +23,7 @@ const Pricing = () => {
             </div>
             <div className="spacer"></div>
             <div className="spacer"></div>
-            <Link to="/purchase" className="button is-primary">Get Started Now</Link>
+            <Link to="/checkout/6-month" className="button is-primary">Get Started Now</Link>
           </div>
           <div className="column is-one-third has-text-centered best_selling">
             <h2 className="title is-4 plan_title has-text-white has-text-weight-bold">6 Month Membership</h2>
@@ -45,7 +45,7 @@ const Pricing = () => {
             </div>
             <div className="spacer"></div>
             <div className="spacer"></div>
-            <Link to="/purchase" className="button is-primary">Get Started Now</Link>
+            <Link to="/checkout/6-month" className="button is-primary">Get Started Now</Link>
           </div>
         </div>
       </div>
@@ -53,4 +53,8 @@ const Pricing = () => {
   );
 };
 
+
 export default Pricing;
+
+
+
