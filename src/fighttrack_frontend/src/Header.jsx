@@ -62,7 +62,7 @@ const Header = () => {
           South Side Boxing
         </h1>
         <p className="subtitle is-size-6-mobile is-size-5-tablet">
-          Powered by Fighttrack
+          Powered by Fighttrack.xyz
         </p>
         <p>Health. Fitness. Strength. Balance.</p>
         <p className="mt-2">

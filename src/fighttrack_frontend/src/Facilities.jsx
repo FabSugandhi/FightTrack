@@ -17,9 +17,12 @@ const Facilities = () => {
                 className="image is-4by3" 
                 src="https://images.unsplash.com/photo-1517438322307-e67111335449?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                 style={{ 
+                  display: "flex", 
+                  margin: "0 auto", 
                   width: "100%", 
-                  maxWidth: "400px"  
-                }} 
+                  maxWidth: "400px", 
+                  height: "auto", 
+                }}  
               />
             </div>
             <div className="column is-half">
@@ -28,7 +31,7 @@ const Facilities = () => {
               </p>
               <Link to="/class">
                 <button className="button is-primary mt-5">
-                  Explore Classes &gt;
+                  Explore Classes
                 </button>
               </Link>
             </div>

@@ -12,7 +12,7 @@ const Home = () => {
               className="image is-4by3" 
               src="https://images.unsplash.com/photo-1555661530-68c8e98db4e6?q=80&w=800&h=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
               style={{ 
-                display: "block", 
+                display: "flex", 
                 margin: "0 auto", 
                 width: "100%", 
                 maxWidth: "800px", 
@@ -27,7 +27,7 @@ const Home = () => {
               Contact Our Team Now and Revitalize Your Lifestyle!
             </p>
             <Link to="/contact" className="button is-primary mt-4">
-              Get in Touch &gt;
+              Get in Touch
             </Link>
           </div>
         </section>
@@ -43,7 +43,7 @@ const Home = () => {
               <h2 className="title is-size-4 mb-3 mt-4">Join the Experience</h2>
               <p className="mb-3">Multiple Membership Options - Free Trial Available!</p>
               <Link to="/pricing" className="button is-primary">
-                Membership Packages &gt;
+                Membership Packages
               </Link>
             </div>
           </div>
@@ -58,7 +58,7 @@ const Home = () => {
               <h2 className="title is-size-4 mb-3 mt-4">Explore Our Facilities</h2>
               <p className="mb-3">State-of-the-Art Equipment & Expert Trainers for All Your Fitness Needs</p>
               <Link to="/facilities" className="button is-primary">
-                Learn More &gt;
+                Learn More
               </Link>
             </div>
           </div>
@@ -73,7 +73,7 @@ const Home = () => {
               <h2 className="title is-size-4 mb-3 mt-4">Discover Our Classes</h2>
               <p className="mb-3">Varied Training Sessions - Suitable for All Levels</p>
               <Link to="/class" className="button is-primary">
-                Explore Classes &gt;
+                Explore Classes
               </Link>
             </div>
           </div>
