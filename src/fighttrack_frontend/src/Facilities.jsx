@@ -27,7 +27,7 @@ const Facilities = () => {
             </div>
             <div className="column is-half">
               <p>
-                At FightTrack, we offer a wide range of classes designed to cater to all fitness levels and interests. Whether you're looking to improve your boxing skills, enhance your cardio, or find a fun way to stay in shape, our expert trainers have crafted programs that are perfect for you. From beginner-friendly sessions to advanced training, we provide a supportive environment where you can challenge yourself and achieve your fitness goals.
+                At FightTrack, we offer a wide range of classes designed to cater to all fitness levels and interests. Whether you&apos;re looking to improve your boxing skills, enhance your cardio, or find a fun way to stay in shape, our expert trainers have crafted programs that are perfect for you. From beginner-friendly sessions to advanced training, we provide a supportive environment where you can challenge yourself and achieve your fitness goals.
               </p>
               <Link to="/class">
                 <button className="button is-primary mt-5">

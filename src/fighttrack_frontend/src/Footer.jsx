@@ -47,6 +47,21 @@ const Footer = () => {
               loading="lazy"
             ></iframe>
           </div>
+
+          <div className="column">
+            <h3 className="title is-size-5">Credits</h3>
+            <p>
+              Created by <a target="_blank" href="https://github.com/Kasun1Don">Kasun</a>, <a target="_blank" href="https://github.com/FabSugandhi">Fabian</a> & <a target="_blank" href="https://github.com/Reyleth">Ryley</a>
+            </p>
+            <br />
+            <p>
+              Hosted by <a target="_blank" href="https://www.netlify.com/">Netlify</a> & <a target="_blank" href="https://render.com/">Render</a>
+            </p>
+            <br />
+            <p>
+              <a target="_blank" href="https://icons8.com/icon/l5Br0fxxE35Q/gym">Gym</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+            </p>
+          </div>
         </div>
         <p className="has-text-centered mt-6">© 2024 by FightTrack ltd.</p>
       </div>
