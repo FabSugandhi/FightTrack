@@ -34,6 +34,55 @@ describe('GET /', () => {
     });
 });
 
+describe('POST /api/auth/register', () => {
+    it('should return 400 for short password', async () => {
+        const res = await request(server)
+            .post('/api/auth/register')
+            .send({
+                name: 'Test User',
+                email: 'testing@gmail.com',
+                password: 'test'
+            });
+        expect(res.status).toBe(400);
+    });
+
+    it('should return 400 for invalid email', async () => {
+        const res = await request(server)
+            .post('/api/auth/register')
+            .send({
+                name: 'Test User',
+                email: 'test',
+                password: 'thisisatest'
+            });
+        expect(res.status).toBe(400);
+    });
+
+    it('should return 400 for number in name', async () => {
+        const res = await request(server)
+            .post('/api/auth/register')
+            .send({
+                name: 'Test 123',
+                email: 'test123@gmail.com',
+                password: 'thisisatest'
+            });
+        expect(res.status).toBe(400);
+    });
+
+    it('should return 201 for valid registration', async () => {
+        const res = await request(server)
+            .post('/api/auth/register')
+            .send({
+                name: 'Testing',
+                email: 'hellothere@mail.com',
+                password: 'thisisatest'
+            });
+        expect(res.status).toBe(201);
+        // delete the user after the test
+        await mongoose.connection.collection('users').deleteOne({ email: 'hellothere@mail.com' });
+    });
+
+});
+
 describe('POST /api/auth/login', () => {
     it('should return 200 and a token when logging in', async () => {
         const res = await request(server)
