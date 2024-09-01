@@ -46,7 +46,7 @@ const Pricing = () => {
             </div>
             <div className="spacer"></div>
             <div className="spacer"></div>
-            <Link to="/checkout/6-month" className="button is-primary">Get Started Now</Link>
+            <Link to="/checkout/monthly" className="button is-primary">Get Started Now</Link>
           </div>
         </div>
       </div>
