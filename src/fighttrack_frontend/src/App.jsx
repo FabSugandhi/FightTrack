@@ -24,13 +24,13 @@ import Dashboard from './Dashboard/Dashboard';
 import Management from './Management/Management';
 import CheckOutForm from "./CheckOutForm";
 
-const stripePromise = loadStripe("your_stripe_publishable_key_here"); // Replace with your actual Stripe publishable key
+const stripePromise = loadStripe("your_stripe_publishable_key_here"); 
 
 const App = () => {
   return (
     <>
-      <Header /> {/* Add Header component */}
-      <ScrollToTop> {/* Add ScrollToTop component */}
+      <Header /> 
+      <ScrollToTop>
       <div className="is-hidden-mobile">
         <NavBar /> {/* Desktop Navbar */}
       </div>
@@ -59,10 +59,10 @@ const App = () => {
         <Route path="/class" element={<Class />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/membership" element={<Membership />} />
-        <Route path="/pricing" element={<Pricing />} /> {/* Remove Elements wrapper */}
+        <Route path="/pricing" element={<Pricing />} /> 
         <Route path="/purchase" element={<Purchase />} />
         <Route path="/contact" element={<ContactUs />} />
-        <Route path="/calendar" element={<Calendar />} /> {/* Add Calendar Route */}
+        <Route path="/calendar" element={<Calendar />} />
         <Route path="/booking/:id" element={<Booking />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -74,7 +74,7 @@ const App = () => {
         <Route path="*" element={<h3>Page not found!</h3>} />
       </Routes>
       </ScrollToTop>
-      <Footer /> {/* Add Footer component */}
+      <Footer />
     </>
   );
 };
