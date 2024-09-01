@@ -13,11 +13,6 @@ const Class = () => {
             <br /><br />
             For more details on our class schedules, please check out our calendar to see the available slots and plan your visits accordingly.
           </p>
-          <Link to="/calendar">
-            <button className="button is-primary mt-5">
-              View Class Schedule &gt;
-            </button>
-          </Link>
 
           <div className="columns mt-4 is-reverse-on-mobile">
             <div className="column is-half">
@@ -27,29 +22,55 @@ const Class = () => {
               </p>
             </div>
             <div className="column is-half">
-              <img 
-                alt="Cardi Box" 
-                className="image is-4by3" 
-                src="https://images.unsplash.com/photo-1651707999611-b3d3b849b8f4?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              <div 
+                className="image-window" 
                 style={{ 
-                  width: "100%", 
-                  maxWidth: "320px"  
-                }} 
-              />
+                  width: "100%",
+                  height: "20rem",
+                  aspectRatio: "16 / 9", 
+                  overflow: "hidden", 
+                  position: "relative" 
+                }}
+              >
+                <img 
+                  alt="Cardi Box" 
+                  className="image is-4by3" 
+                  src="https://images.unsplash.com/photo-1651707999611-b3d3b849b8f4?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover", 
+                    objectPosition: "center" 
+                  }} 
+                />
+              </div>
             </div>
           </div>
 
           <div className="columns mt-4">
             <div className="column is-half">
-              <img 
-                alt="Fighters Academy" 
-                className="image is-4by3" 
-                src="https://images.unsplash.com/photo-1615117079816-077715446270?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+              <div 
+                className="image-window" 
                 style={{ 
-                  width: "100%", 
-                  maxWidth: "320px"  
-                }} 
-              />
+                  width: "100%",
+                  height: "20rem",
+                  aspectRatio: "16 / 9", 
+                  overflow: "hidden", 
+                  position: "relative" 
+                }}
+              >
+                <img 
+                  alt="Fighters Academy" 
+                  className="image is-4by3" 
+                  src="https://images.unsplash.com/photo-1615117079816-077715446270?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                  style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover", 
+                    objectPosition: "center" 
+                  }} 
+                />
+              </div>
             </div>
             <div className="column is-half">
               <h2 className="title is-size-4">Fighters Academy</h2>
@@ -67,29 +88,55 @@ const Class = () => {
               </p>
             </div>
             <div className="column is-half">
-              <img 
-                alt="Open Gym" 
-                className="image is-4by3" 
-                src="https://images.unsplash.com/photo-1514994444123-10094655bdb5?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              <div 
+                className="image-window" 
                 style={{ 
-                  width: "100%", 
-                  maxWidth: "320px"  
-                }} 
-              />
+                  width: "100%",
+                  height: "20rem",
+                  aspectRatio: "16 / 9", 
+                  overflow: "hidden", 
+                  position: "relative" 
+                }}
+              >
+                <img 
+                  alt="Open Gym" 
+                  className="image is-4by3" 
+                  src="https://images.unsplash.com/photo-1514994444123-10094655bdb5?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover", 
+                    objectPosition: "center" 
+                  }} 
+                />
+              </div>
             </div>
           </div>
 
           <div className="columns mt-4">
             <div className="column is-half">
-              <img 
-                alt="Kids Boxing" 
-                className="image is-4by3" 
-                src="https://images.unsplash.com/photo-1522187030730-5485088c6bfd?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+              <div 
+                className="image-window" 
                 style={{ 
-                  width: "100%", 
-                  maxWidth: "320px"  
-                }} 
-              />
+                  width: "100%",
+                  height: "20rem",
+                  aspectRatio: "16 / 9", 
+                  overflow: "hidden", 
+                  position: "relative" 
+                }}
+              >
+                <img 
+                  alt="Kids Boxing" 
+                  className="image is-4by3" 
+                  src="https://images.unsplash.com/photo-1522187030730-5485088c6bfd?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                  style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover", 
+                    objectPosition: "center" 
+                  }} 
+                />
+              </div>
             </div>
             <div className="column is-half">
               <h2 className="title is-size-4">Kids Boxing (6-12 years)</h2>
@@ -107,15 +154,28 @@ const Class = () => {
               </p>
             </div>
             <div className="column is-half">
-              <img 
-                alt="Personal Training" 
-                className="image is-4by3" 
-                src="https://images.unsplash.com/photo-1636581563711-cd454f1bf99a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+              <div 
+                className="image-window" 
                 style={{ 
-                  width: "100%", 
-                  maxWidth: "320px"  
-                }} 
-              />
+                  width: "100%",
+                  height: "20rem",
+                  aspectRatio: "16 / 9", 
+                  overflow: "hidden", 
+                  position: "relative" 
+                }}
+              >
+                <img 
+                  alt="Personal Training" 
+                  className="image is-4by3" 
+                  src="https://images.unsplash.com/photo-1636581563711-cd454f1bf99a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                  style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover", 
+                    objectPosition: "center" 
+                  }} 
+                />
+              </div>
             </div>
           </div>
         </div>

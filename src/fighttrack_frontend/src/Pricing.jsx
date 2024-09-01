@@ -22,7 +22,7 @@ const Pricing = () => {
             <div className="price">
               <h2 className="title is-2 has-text-weight-bold">$0</h2>
             </div>
-            <div className="spacer"></div>
+           
             <div className="spacer"></div>
             <Link to="/contact" className="button is-primary">Get Started Now</Link>
           </div>
@@ -33,7 +33,7 @@ const Pricing = () => {
             <div className="price">
               <h2 className="title is-2 has-text-weight-bold">$79</h2>
             </div>
-            <div className="spacer"></div>
+            
             <div className="spacer"></div>
             <Link to="/checkout/6-month" className="button is-primary best_selling_btn">Get Started Now</Link>
           </div>
@@ -44,7 +44,7 @@ const Pricing = () => {
             <div className="price">
               <h2 className="title is-2 has-text-weight-bold">$99</h2>
             </div>
-            <div className="spacer"></div>
+            
             <div className="spacer"></div>
             <Link to="/checkout/monthly" className="button is-primary">Get Started Now</Link>
           </div>
