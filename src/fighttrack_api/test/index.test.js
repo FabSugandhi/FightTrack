@@ -26,6 +26,11 @@ describe('GET /', () => {
         expect(res.text).toContain('Hello World');
         expect(res.text).toContain('<img src="');
     });
+
+    it('should return 404 for invalid routes', async () => {
+        const res = await request(server).get('/invalid');
+        expect(res.status).toBe(404);
+    });
 });
 
 describe('POST /api/auth/login', () => {
