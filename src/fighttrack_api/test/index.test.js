@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 let server;
 let token;
+let adminToken;
 
 beforeAll((done) => {
     server = app.listen(5001, done);
@@ -45,6 +46,28 @@ describe('GET /api/classes', () => {
         expect(res.status).toBe(200);
         expect(res.body).toBeInstanceOf(Array);
     });
+
+    it('should return 400 for invalid credentials', async () => {
+        const res = await request(server)
+            .post('/api/auth/login')
+            .send({
+                email: 'wrong@gmail.com',
+                password: 'wrongpassword'
+            });
+        expect(res.status).toBe(400);
+    });
+
+    it('should return 200 and a token when logging in as admin', async () => {
+        const res = await request(server)
+            .post('/api/auth/login')
+            .send({
+                email: 'admin@fighttrack.com',
+                password: 'admin'
+            });
+        expect(res.status).toBe(200);
+        expect(res.body.token).toBeTruthy();
+        adminToken = res.body.token;
+    });
 });
 
 describe('GET /api/bookings', () => {
@@ -55,6 +78,11 @@ describe('GET /api/bookings', () => {
         expect(res.status).toBe(200);
         expect(res.body).toBeInstanceOf(Array);
     });
+
+    it('should return 401 when accessed without a token', async () => {
+        const res = await request(server).get('/api/classes');
+        expect(res.status).toBe(401);
+    });
 });
 
 describe('GET /api/dashboard', () => {
@@ -64,6 +92,11 @@ describe('GET /api/dashboard', () => {
             .set('Authorization', `Bearer ${token}`);
         expect(res.status).toBe(200);
         expect(res.body).toBeInstanceOf(Object);
+    });
+
+    it('should return 401 when accessed without a token', async () => {
+        const res = await request(server).get('/api/dashboard');
+        expect(res.status).toBe(401);
     });
 });
 
