@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 let server;
 let token;
 let adminToken;
+let classId;
 
 beforeAll( (done) => {
     server = app.listen(5001, done);
@@ -144,6 +145,76 @@ describe('POST /api/classes', () => (
                 maxAttendees: "10",
             });
         expect(res.status).toBe(201);
+        classId = res.body._id;
+    })
+));
+
+describe('PUT /api/classes/:id', () => (
+    it('should return 401 when updating a class without admin token', async () => {
+        const res = await request(server)
+            .put(`/api/classes/${classId}`)
+            .send({
+                title: "Test Class",
+                description: "This is a test class",
+                schedule: {
+                    day: "2021-12-31",
+                    time: "12:00",
+    },
+                maxAttendees: "15",
+            });
+        expect(res.status).toBe(401);
+    }),
+
+    it('should return 200 when updating a class with admin token', async () => {
+        const res = await request(server)
+            .put(`/api/classes/${classId}`)
+            .set('Authorization', `Bearer ${adminToken}`)
+            .send({
+                title: "Test Class",
+                description: "This is a test class",
+                schedule: {
+                    day: "2021-12-31",
+                    time: "12:00",
+    },
+                maxAttendees: "15",
+            });
+        expect(res.status).toBe(200);
+    })
+));
+
+describe('POST /api/bookings/book', () => (
+    it('should return 401 when booking a class without a token', async () => {
+        const res = await request(server)
+            .post(`/api/bookings/book`)
+            .send({
+                classId: classId
+            });
+        expect(res.status).toBe(401);
+    }),
+
+    it('should return 201 when booking a class with a token', async () => {
+        const res = await request(server)
+            .post(`/api/bookings/book`)
+            .set('Authorization', `Bearer ${token}`)
+            .send({
+                classId: classId
+            });
+        expect(res.status).toBe(201);
+    })
+));
+
+describe('DELETE /api/classes/:id', () => (
+    it('should return 401 when deleting a class without admin token', async () => {
+        const res = await request(server)
+            .delete(`/api/classes/${classId}`);
+        expect(res.status).toBe(401);
+    }),
+
+    it('should return 200 when deleting a class with admin token', async () => {
+        const res = await request(server)
+            .delete(`/api/classes/${classId}`)
+            .set('Authorization', `Bearer ${adminToken}`);
+        expect(res.status).toBe(200);
     })
 ));
 
