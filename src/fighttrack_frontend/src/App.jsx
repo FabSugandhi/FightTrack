@@ -24,13 +24,15 @@ import Dashboard from './Dashboard/Dashboard';
 import Management from './Management/Management';
 import CheckOutForm from "./CheckOutForm";
 
+
 const stripePromise = loadStripe("pk_live_KBSmZBwrHn9ph7WVAclo6PVg");
+
 
 const App = () => {
   return (
     <>
-      <Header /> {/* Add Header component */}
-      <ScrollToTop> {/* Add ScrollToTop component */}
+      <Header /> 
+      <ScrollToTop>
       <div className="is-hidden-mobile">
         <NavBar /> {/* Desktop Navbar */}
       </div>
@@ -62,7 +64,9 @@ const App = () => {
         <Route path="/pricing" element={<Pricing />} /> 
         <Route path="/purchase" element={<Purchase />} />
         <Route path="/contact" element={<ContactUs />} />
+
         <Route path="/calendar" element={<Calendar />} /> 
+
         <Route path="/booking/:id" element={<Booking />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -79,7 +83,9 @@ const App = () => {
         <Route path="*" element={<h3>Page not found!</h3>} />
       </Routes>
       </ScrollToTop>
+
       <Footer /> 
+
     </>
   );
 };

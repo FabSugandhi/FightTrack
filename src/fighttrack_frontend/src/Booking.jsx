@@ -9,7 +9,7 @@ const Booking = () => {
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
   const [isBooked, setIsBooked] = useState(false);
-  const [bookingId, setBookingId] = useState(null); // New state for booking ID
+  const [bookingId, setBookingId] = useState(null); 
 
   useEffect(() => {
     const fetchBookingData = async () => {

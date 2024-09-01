@@ -301,10 +301,58 @@ Additional one-off issue occured during the production of this website. These we
 
 ![AdditionalIssue2](./docs/R6/AdditionalIssue2.png)
 
+This feature has been scrapped from the current version of the website. This item is added to the list of future improvements instead, which can be found under the "Project Overview" subheading below.
+
+### Final Project Timeline
+
+Here is the final screenshot of the project timeline, with all items closed.
+
+![TimelineFinal](./docs/R6/TimelineFinal.png)
+
+### Project Overview
+
+Overall, the project went in line with our predicted timeline. The critical elements of the website were completed in the allotted time, and some items (such as the Back-end Development and Integration) were completed ahead of schedule.
+
+Although we felt that our group's vision of the project was achieved by the end of this assignment, we also believe that no project is perfect. We identified some features that will be ideal if they can be implemented in the future. These include:
+
+- Limit to the one free trial session per account, and make the package expires after the user has been signed up for a period of time.
+
+- Two-factor authentication
+
+- Allow admins to set up recurring classes
+
+- Waiting list feature for fully booked classes, with notifications when a spot opens up
+
+- Implement push notifications for reminders, updates, and announcements.
+
+- Allows users to rate and review classes and overall gym experience.
+
+- Blog or News section for the gym to share updates, articles, and announcements.
+
 ## R10
 
 The website is deployed and hosted at https://fighttrack.xyz/ \
 You can also click this [LINK](https://fighttrack.xyz/) to go the home page of the website.
+
+The back-end deployment of this website can be accessed at https://fighttrack-abws.onrender.com/
+
+### How to use the website
+
+Here are some general overview on navigating the website:
+
+- The website has general pages that are available for all users, even if they are not signed up: Homepage, Facilities (which will include overview of all the gym facilities and classes), Members (which will include all membership purchase information), and Contact Us page where users can fill an enquiry form.
+
+- On the Header of every page, there is a LOGIN button that users can click. This will redirect users to the Login page, where they can login into their account or sign up for a new account.
+
+- Once logged in, the user will be redirected to the User Dashboard.
+
+- The User Dashboard will initially be on the Available Classes page. They can click the BOOK button and they will be taken to Class Schedule calendar and be able to book classes that they prefer. This Schedule can also be accessed through the Class Calendar tab on the side menu of the Dashboard.
+
+- The "My Schedule" side menu in the Dashboard will take the user to a page that shows all the user's past and future class bookings. They can also cancel any future bookings by clicking the class and picking the CANCEL option there.
+
+- The "Profile" side menu in the Dashboard brings up the user's profile, which they can edit through the option in the same page.
+
+- The "Membership Options" side menu allows the user to view their current membership status, the package they are currently subscribe to, and they are able to change their membership through the option available in this page.
 
 ## R11
 

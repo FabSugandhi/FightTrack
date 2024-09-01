@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Purchase.css"; // Import the CSS file if you have any specific styles
+import "./Purchase.css";
 
 const Purchase = () => {
   const [isPurchased, setIsPurchased] = useState(false);
