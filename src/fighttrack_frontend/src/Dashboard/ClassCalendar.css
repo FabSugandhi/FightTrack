@@ -75,10 +75,8 @@
 
 .calendar-header {
   display: flex;
-  justify-content: center; /* Center the month/year horizontally */
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
-  margin-bottom: 10px; /* Add space below the header */
 }
 
 .calendar-header button {
@@ -129,4 +127,9 @@
   .event-time {
     font-size: calc(0.3rem + 0.2vw); /* Smaller font size and scaling */
   }
+}
+
+.title {
+  flex-grow: 1;
+  text-align: center;
 }
