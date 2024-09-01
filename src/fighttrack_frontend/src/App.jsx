@@ -24,7 +24,9 @@ import Dashboard from './Dashboard/Dashboard';
 import Management from './Management/Management';
 import CheckOutForm from "./CheckOutForm";
 
-const stripePromise = loadStripe("your_stripe_publishable_key_here"); 
+
+const stripePromise = loadStripe("pk_live_KBSmZBwrHn9ph7WVAclo6PVg");
+
 
 const App = () => {
   return (
@@ -62,7 +64,9 @@ const App = () => {
         <Route path="/pricing" element={<Pricing />} /> 
         <Route path="/purchase" element={<Purchase />} />
         <Route path="/contact" element={<ContactUs />} />
-        <Route path="/calendar" element={<Calendar />} />
+
+        <Route path="/calendar" element={<Calendar />} /> 
+
         <Route path="/booking/:id" element={<Booking />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -71,10 +75,17 @@ const App = () => {
             <CheckOutForm priceId="price_6month_membership" />
           </Elements>
         } />
+        <Route path="/checkout/monthly" element={
+          <Elements stripe={stripePromise}>
+            <CheckOutForm priceId="price_monthly_membership" />
+          </Elements>
+        } /> 
         <Route path="*" element={<h3>Page not found!</h3>} />
       </Routes>
       </ScrollToTop>
-      <Footer />
+
+      <Footer /> 
+
     </>
   );
 };

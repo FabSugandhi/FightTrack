@@ -12,18 +12,28 @@ const Facilities = () => {
           </p>
           <div className="columns mt-4">
             <div className="column is-half">
-              <img 
-                alt="Boxing Training" 
-                className="image is-4by3" 
-                src="https://images.unsplash.com/photo-1517438322307-e67111335449?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+              <div 
+                className="image-window" 
                 style={{ 
-                  display: "flex", 
-                  margin: "0 auto", 
-                  width: "100%", 
-                  maxWidth: "400px", 
-                  height: "auto", 
-                }}  
-              />
+                  width: "100%",
+                  height: "25rem",
+                  aspectRatio: "16 / 9", 
+                  overflow: "hidden", 
+                  position: "relative" 
+                }}
+              >
+                <img 
+                  alt="Boxing Training" 
+                  className="image is-4by3" 
+                  src="https://images.unsplash.com/photo-1517438322307-e67111335449?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                  style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover", 
+                    objectPosition: "center" 
+                  }}  
+                />
+              </div>
             </div>
             <div className="column is-half">
               <p>
@@ -44,29 +54,55 @@ const Facilities = () => {
               </p>
             </div>
             <div className="column is-half">
-              <img 
-                alt="Gym Equipment" 
-                className="image is-4by3" 
-                src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              <div 
+                className="image-window" 
                 style={{ 
-                  width: "100%", 
-                  maxWidth: "400px"  
-                }} 
-              />
+                  width: "100%",
+                  height: "25rem",
+                  aspectRatio: "16 / 9", 
+                  overflow: "hidden", 
+                  position: "relative" 
+                }}
+              >
+                <img 
+                  alt="Gym Equipment" 
+                  className="image is-4by3" 
+                  src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover", 
+                    objectPosition: "center" 
+                  }} 
+                />
+              </div>
             </div>
           </div>
 
           <div className="columns mt-4">
             <div className="column is-half">
-              <img 
-                alt="Gym Trainer" 
-                className="image is-4by3" 
-                src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+              <div 
+                className="image-window" 
                 style={{ 
-                  width: "100%", 
-                  maxWidth: "400px"  
-                }} 
-              />
+                  width: "100%",
+                  height: "25rem",
+                  aspectRatio: "16 / 9", 
+                  overflow: "hidden", 
+                  position: "relative" 
+                }}
+              >
+                <img 
+                  alt="Gym Trainer" 
+                  className="image is-4by3" 
+                  src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                  style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover", 
+                    objectPosition: "center" 
+                  }} 
+                />
+              </div>
             </div>
             <div className="column is-half">
               <p>

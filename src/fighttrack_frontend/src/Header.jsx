@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 const Header = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false); // Add state for admin check
+  const [isAdmin, setIsAdmin] = useState(false); // admin check
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -46,11 +46,11 @@ const Header = () => {
             className="button is-info"
             onClick={handleDashboardClick}
           >
-            {isAdmin ? 'Admin Dashboard' : 'Dashboard'} {/* Update button text */}
+            {isAdmin ? 'Admin Dashboard' : 'Dashboard'} 
           </button>
         )}
         <button
-          className={`button is-primary ${isLoading ? 'is-loading' : ''}`}
+          className={`button ${isAuthenticated ? 'is-danger' : 'is-primary'} ${isLoading ? 'is-loading' : ''}`} // Add conditional class
           onClick={handleAuthClick}
           disabled={isLoading}
         >
