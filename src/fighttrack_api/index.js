@@ -38,10 +38,14 @@ app.use('/api/payments', require('./routes/payment_routes.js'));
 app.use('/api/contact', require('./routes/contact_routes.js'));
 
 // start the server
-app.listen(process.env.PORT || 5001, err => {
-    if (err) {
-        console.error(err);
-    } else {
-        console.log('Server running');
-    }
-});
+if (require.main === module) {
+    app.listen(process.env.PORT || 5001, err => {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log('Server running');
+        }
+    });
+}
+
+module.exports = app;
