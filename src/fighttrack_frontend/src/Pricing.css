@@ -5,10 +5,12 @@
     height: 40px;
 }
 .plan_title{
-    margin-bottom: 0 !important;
+    margin-bottom: 1rem; 
 }
 .plan_subtitle{
     color: #90A4AE;
+    margin-top: 1rem; 
+    margin-bottom: 0.5rem;
 }
 .price{
     margin-top: 40px;
@@ -31,4 +33,7 @@
 }
 .best_selling_btn{
     background: #f77f00 !important;
+}
+.spacer-sm {
+    height: 0.5rem;
 }

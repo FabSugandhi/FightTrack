@@ -7,19 +7,28 @@ const Home = () => {
       <main>
         <section className="section mb-6">
           <div className="box has-text-centered">
-            <img 
-              alt="Boxing Image" 
-              className="image is-4by3" 
-              src="https://images.unsplash.com/photo-1555661530-68c8e98db4e6?q=80&w=800&h=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+            <div 
+              className="image-window" 
               style={{ 
-                display: "flex", 
-                margin: "0 auto", 
-                width: "100%", 
-                maxWidth: "800px", 
-                height: "auto", 
-                aspectRatio: "2 / 1" 
-              }} 
-            />
+                width: "100%",
+                height: "25rem",
+                aspectRatio: "16 / 9", 
+                overflow: "hidden", 
+                position: "relative" 
+              }}
+            >
+              <img 
+                alt="Boxing Image" 
+                className="image is-4by3" 
+                src="https://images.unsplash.com/photo-1555661530-68c8e98db4e6?q=80&w=800&h=400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                style={{ 
+                  width: "100%", 
+                  height: "100%", 
+                  objectFit: "cover", 
+                  objectPosition: "center" 
+                }} 
+              />
+            </div>
             <h2 className="title is-size-4 mt-4">
              FUEL THE FIGHTER WITHIN
             </h2>
@@ -50,13 +59,12 @@ const Home = () => {
           
           <div className="column is-one-third">
             <div className="box has-text-centered">
-              <img 
-                alt="Workshop Image" 
+              <img  
                 className="image is-4by3" 
                 src="https://images.unsplash.com/photo-1517343985841-f8b2d66e010b?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
               />
               <h2 className="title is-size-4 mb-3 mt-4">Explore Our Facilities</h2>
-              <p className="mb-3">State-of-the-Art Equipment & Expert Trainers for All Your Fitness Needs</p>
+              <p className="mb-3">State-of-the-Art Equipment & Expert Trainers</p>
               <Link to="/facilities" className="button is-primary">
                 Learn More
               </Link>
