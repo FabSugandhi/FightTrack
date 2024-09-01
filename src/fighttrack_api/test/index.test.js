@@ -159,7 +159,7 @@ describe('PUT /api/classes/:id', () => (
                 schedule: {
                     day: "2021-12-31",
                     time: "12:00",
-    },
+                },
                 maxAttendees: "15",
             });
         expect(res.status).toBe(401);
@@ -175,7 +175,7 @@ describe('PUT /api/classes/:id', () => (
                 schedule: {
                     day: "2021-12-31",
                     time: "12:00",
-    },
+                },
                 maxAttendees: "15",
             });
         expect(res.status).toBe(200);
