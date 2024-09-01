@@ -8,6 +8,7 @@ const ClassEditView = ({ classId }) => {
   });
   const [users, setUsers] = useState([]);
   const [attendance, setAttendance] = useState({});
+  const [bookings, setBookings] = useState([]); // New state for bookings
 
   useEffect(() => {
     const fetchClassDetails = async () => {
@@ -40,8 +41,24 @@ const ClassEditView = ({ classId }) => {
       }
     };
 
+    const fetchBookings = async () => { 
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`https://fighttrack-abws.onrender.com/api/bookings?classId=${classId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const data = await response.json();
+        setBookings(data);
+      } catch (error) {
+        console.error('Error fetching bookings:', error);
+      }
+    };
+
     fetchClassDetails();
     fetchUsers();
+    fetchBookings(); // Fetch bookings
   }, [classId]);
 
   const handleAttendance = (userId, status) => {
@@ -50,6 +67,22 @@ const ClassEditView = ({ classId }) => {
       [userId]: status
     }));
   };
+
+  const getUserNameById = (userId) => {
+    const user = users.find(user => user._id === userId);
+    return user ? user.name : 'Unknown User';
+  };
+
+  // Filter and sort bookings
+  const latestBookings = bookings
+    .filter(booking => booking.status === 'booked')
+    .sort((a, b) => new Date(b.bookingDate) - new Date(a.bookingDate))
+    .reduce((acc, booking) => {
+      if (!acc[booking.user]) {
+        acc[booking.user] = booking;
+      }
+      return acc;
+    }, {});
 
   return (
     <div className="container">
@@ -112,11 +145,19 @@ const ClassEditView = ({ classId }) => {
           </div>
         </div>
       ))}
+
+      <div className="box has-background-light mb-4">
+        <h2 className="title is-5">Bookings</h2>
+        {Object.values(latestBookings).map(booking => (
+          <div key={booking._id} className="box mb-3">
+            <p>User: {getUserNameById(booking.user)}</p> {/* Replace user ID with user name */}
+            <p>Status: {booking.status}</p>
+            <p>Booking Date: {new Date(booking.bookingDate).toLocaleString()}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
 export default ClassEditView;
-
-//have UI
-//have routes

@@ -98,10 +98,18 @@ exports.getBookings = async (req, res) => {
 // @route GET /api/bookings/class
 // @access Private
 exports.getBookingsByClassId = async (req, res) => {
+    const { id } = req.params;
+
     try {
-        res.json({ message: 'Test route for bookings/class is working' });
+        const bookings = await Booking.find({ class: id }).populate('user');
+
+        if (bookings.length === 0) {
+            return res.status(404).json({ message: 'No bookings found for this class' });
+        }
+
+        res.json(bookings);
     } catch (error) {
-        console.error('Error in test route:', error);
+        console.error('Error fetching bookings for class:', error);
         res.status(500).json({ message: 'Server error' });
     }
 };

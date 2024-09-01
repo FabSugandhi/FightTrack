@@ -1,10 +1,12 @@
-# T3A2-A: Full Stack App
+# T3A2-A: Full Stack App (FightTrack)
 
-Coder Academy Term 3 Assignment 2
+Repository link: https://github.com/FabSugandhi/FightTrack
+
+Deployed website: Fighttrack.xyz
 
 ### Student Name:
 
-Kasun Don\
+Kasun L. Don\
 Fabian Sugandhi\
 Ryley Croucher
 
@@ -328,6 +330,8 @@ Although we felt that our group's vision of the project was achieved by the end 
 - Allows users to rate and review classes and overall gym experience.
 
 - Blog or News section for the gym to share updates, articles, and announcements.
+
+- Functionality issues need to be resolved for when editing class attendance as the admin and search functionality for the gym admin to add members to classes
 
 ## R10
 
