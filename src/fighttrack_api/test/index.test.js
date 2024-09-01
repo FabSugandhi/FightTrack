@@ -267,4 +267,17 @@ describe('DELETE /api/classes/:id', () => (
     })
 ));
 
-// Add more tests!!
+describe('GET /api/auth/profile', () => {
+    it('should return 200 and user data', async () => {
+        const res = await request(server)
+            .get('/api/auth/profile')
+            .set('Authorization', `Bearer ${token}`);
+        expect(res.status).toBe(200);
+        expect(res.body).toBeInstanceOf(Object);
+    });
+
+    it('should return 401 when accessed without a token', async () => {
+        const res = await request(server).get('/api/auth/profile');
+        expect(res.status).toBe(401);
+    });
+});
