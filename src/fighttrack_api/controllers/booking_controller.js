@@ -82,7 +82,9 @@ exports.cancelBooking = async (req, res) => {
 // @access Private
 exports.getBookings = async (req, res) => {
     try {
-        const bookings = await Booking.find({ user: req.user._id }).populate('class');
+        const bookings = await Booking.find({ user: req.user._id })
+            .populate('class')
+            .populate('user', 'name'); // Populate user with name field
 
         if (bookings.length === 0) {
             return res.status(404).json({ message: 'No bookings found' });
@@ -101,7 +103,8 @@ exports.getBookingsByClassId = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const bookings = await Booking.find({ class: id }).populate('user');
+        const bookings = await Booking.find({ class: id })
+            .populate('user', 'name'); // Populate user with name field
 
         if (bookings.length === 0) {
             return res.status(404).json({ message: 'No bookings found for this class' });

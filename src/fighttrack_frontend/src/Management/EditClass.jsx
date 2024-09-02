@@ -44,7 +44,7 @@ const ClassEditView = ({ classId }) => {
     const fetchBookings = async () => { 
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`https://fighttrack-abws.onrender.com/api/bookings?classId=${classId}`, {
+        const response = await fetch(`https://fighttrack-abws.onrender.com/api/bookings/class/${classId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -146,11 +146,11 @@ const ClassEditView = ({ classId }) => {
         </div>
       ))}
 
-      <div className="box has-background-light mb-4">
+      <div className="box mb-4">
         <h2 className="title is-5">Bookings</h2>
         {Object.values(latestBookings).map(booking => (
           <div key={booking._id} className="box mb-3">
-            <p>User: {getUserNameById(booking.user)}</p> {/* Replace user ID with user name */}
+            <p>User: {booking.user.name}</p> {/* Directly access user name */}
             <p>Status: {booking.status}</p>
             <p>Booking Date: {new Date(booking.bookingDate).toLocaleString()}</p>
           </div>

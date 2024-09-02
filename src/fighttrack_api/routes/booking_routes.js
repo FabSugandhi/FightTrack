@@ -7,5 +7,6 @@ router.post('/book', verify, bookClass);
 router.put('/cancel/:id', verify, cancelBooking);
 router.get('/', verify, getBookings);
 router.get('/class', verify, getBookingsByClassId);
+router.get('/class/:id', verify, getBookingsByClassId); // Add :id parameter to the route
 
 module.exports = router;
