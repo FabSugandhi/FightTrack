@@ -10,6 +10,34 @@ const ClassEditView = ({ classId }) => {
   const [attendance, setAttendance] = useState({});
   const [bookings, setBookings] = useState([]); // Initialize as an empty array
 
+  const removeAttendee = async (userId) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`https://fighttrack-abws.onrender.com/api/classes/${classId}/attendees/${userId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // Remove the booking from the local state
+      setBookings(prevBookings => prevBookings.filter(booking => booking.user._id !== userId));
+      
+      // Update class details
+      setClassDetails(prevDetails => ({
+        ...prevDetails,
+        currentAttendees: prevDetails.currentAttendees - 1
+      }));
+
+    } catch (error) {
+      console.error('Error removing attendee:', error);
+    }
+  };
+
   useEffect(() => {
     const fetchClassDetails = async () => {
       try {
@@ -136,18 +164,24 @@ const ClassEditView = ({ classId }) => {
               </div>
               <div className="column has-text-right">
                 <button
-                  className={`button is-small mr-2 ${attendance[booking.user._id] === 'present' ? 'is-success' : ''}`}
-                  onClick={() => handleAttendance(booking.user._id, 'present')}
-                >
+                  className={`button is-small mr-2 ${attendance[booking.user?._id] === 'present' ? 'is-success' : ''}`}
+                  onClick={() => booking.user && handleAttendance(booking.user._id, 'present')} // only works if booking.user exists
+                > 
                   Present
                 </button>
                 <button
-                  className={`button is-small mr-2 ${attendance[booking.user._id] === 'absent' ? 'is-danger' : ''}`}
-                  onClick={() => handleAttendance(booking.user._id, 'absent')}
+                  className={`button is-small mr-2 ${attendance[booking.user?._id] === 'absent' ? 'is-danger' : ''}`}
+                  onClick={() => booking.user && handleAttendance(booking.user._id, 'absent')}
                 >
                   Absent
                 </button>
-                <button className="button is-small">X</button>
+                <button 
+                  className="button is-small"
+                  onClick={() => booking.user && removeAttendee(booking.user._id)}
+                  title="Remove"
+                >
+                  X
+                </button>
               </div>
             </div>
           </div>
