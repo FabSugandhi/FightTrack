@@ -8,7 +8,7 @@ const ClassEditView = ({ classId }) => {
   });
   const [users, setUsers] = useState([]);
   const [attendance, setAttendance] = useState({});
-  const [bookings, setBookings] = useState([]); // New state for bookings
+  const [bookings, setBookings] = useState([]); // Initialize as an empty array
 
   useEffect(() => {
     const fetchClassDetails = async () => {
@@ -49,16 +49,26 @@ const ClassEditView = ({ classId }) => {
             'Authorization': `Bearer ${token}`
           }
         });
-        const data = await response.json();
-        setBookings(data);
+        if (!response.ok) {
+          if (response.status === 404) {
+            console.log('No bookings found for this class');
+            setBookings([]); // Set to empty array if no bookings
+          } else {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+        } else {
+          const data = await response.json();
+          setBookings(Array.isArray(data) ? data : []); // Ensure bookings is always an array
+        }
       } catch (error) {
         console.error('Error fetching bookings:', error);
+        setBookings([]); // Set to empty array on error
       }
     };
 
     fetchClassDetails();
     fetchUsers();
-    fetchBookings(); // Fetch bookings
+    fetchBookings();
   }, [classId]);
 
   const handleAttendance = (userId, status) => {
@@ -73,10 +83,12 @@ const ClassEditView = ({ classId }) => {
     return user ? user.name : 'Unknown User';
   };
 
-  // Filter and sort bookings
-  const activeBookings = bookings
-    .filter(booking => booking.status === 'booked')
-    .sort((a, b) => new Date(b.bookingDate) - new Date(a.bookingDate));
+  // Update the activeBookings calculation
+  const activeBookings = Array.isArray(bookings) 
+    ? bookings
+        .filter(booking => booking.status === 'booked')
+        .sort((a, b) => new Date(b.bookingDate) - new Date(a.bookingDate))
+    : [];
 
   return (
     <div className="container">
@@ -107,39 +119,43 @@ const ClassEditView = ({ classId }) => {
         </div>
       </div>
 
-      {activeBookings.map(booking => (
-        <div key={booking._id} className="box mb-3">
-          <div className="columns is-mobile is-vcentered">
-            <div className="column is-narrow">
-              <span className="icon is-medium">
-                <i className="fas fa-user-circle fa-2x"></i>
-              </span>
-            </div>
-            <div className="column">
-              <p className="is-size-5 has-text-weight-bold mb-1">{booking.user.name}</p>
-              <p className="is-size-6">
-                {/* {booking.user.membershipType.charAt(0).toUpperCase() + booking.user.membershipType.slice(1)} Membership */}
-              </p>
-            </div>
-            <div className="column has-text-right">
-              <button
-                className={`button is-small mr-2 ${attendance[booking.user._id] === 'present' ? 'is-success' : ''}`}
-                onClick={() => handleAttendance(booking.user._id, 'present')}
-              >
-                Present
-              </button>
-              <button
-                className={`button is-small mr-2 ${attendance[booking.user._id] === 'absent' ? 'is-danger' : ''}`}
-                onClick={() => handleAttendance(booking.user._id, 'absent')}
-              >
-                Absent
-              </button>
-              <button className="button is-small">X</button>
+      {activeBookings.length > 0 ? (
+        activeBookings.map(booking => (
+          <div key={booking._id} className="box mb-3">
+            <div className="columns is-mobile is-vcentered">
+              <div className="column is-narrow">
+                <span className="icon is-medium">
+                  <i className="fas fa-user-circle fa-2x"></i>
+                </span>
+              </div>
+              <div className="column">
+                <p className="is-size-5 has-text-weight-bold mb-1">{booking.user.name}</p>
+                <p className="is-size-6">
+                  {/* {booking.user.membershipType.charAt(0).toUpperCase() + booking.user.membershipType.slice(1)} Membership */}
+                </p>
+              </div>
+              <div className="column has-text-right">
+                <button
+                  className={`button is-small mr-2 ${attendance[booking.user._id] === 'present' ? 'is-success' : ''}`}
+                  onClick={() => handleAttendance(booking.user._id, 'present')}
+                >
+                  Present
+                </button>
+                <button
+                  className={`button is-small mr-2 ${attendance[booking.user._id] === 'absent' ? 'is-danger' : ''}`}
+                  onClick={() => handleAttendance(booking.user._id, 'absent')}
+                >
+                  Absent
+                </button>
+                <button className="button is-small">X</button>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
- 
+        ))
+      ) : (
+        <p>No active bookings for this class yet.</p>
+      )}
+
     </div>
   );
 };
