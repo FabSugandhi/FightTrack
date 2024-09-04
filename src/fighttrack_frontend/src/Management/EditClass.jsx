@@ -107,8 +107,8 @@ const ClassEditView = ({ classId }) => {
         </div>
       </div>
 
-      {users.map(user => (
-        <div key={user._id} className="box mb-3">
+      {activeBookings.map(booking => (
+        <div key={booking._id} className="box mb-3">
           <div className="columns is-mobile is-vcentered">
             <div className="column is-narrow">
               <span className="icon is-medium">
@@ -116,21 +116,21 @@ const ClassEditView = ({ classId }) => {
               </span>
             </div>
             <div className="column">
-              <p className="is-size-5 has-text-weight-bold mb-1">{user.name}</p>
+              <p className="is-size-5 has-text-weight-bold mb-1">{booking.user.name}</p>
               <p className="is-size-6">
-                {user.membershipType.charAt(0).toUpperCase() + user.membershipType.slice(1)} Membership
+                {/* {booking.user.membershipType.charAt(0).toUpperCase() + booking.user.membershipType.slice(1)} Membership */}
               </p>
             </div>
             <div className="column has-text-right">
               <button
-                className={`button is-small mr-2 ${attendance[user._id] === 'present' ? 'is-success' : ''}`}
-                onClick={() => handleAttendance(user._id, 'present')}
+                className={`button is-small mr-2 ${attendance[booking.user._id] === 'present' ? 'is-success' : ''}`}
+                onClick={() => handleAttendance(booking.user._id, 'present')}
               >
                 Present
               </button>
               <button
-                className={`button is-small mr-2 ${attendance[user._id] === 'absent' ? 'is-danger' : ''}`}
-                onClick={() => handleAttendance(user._id, 'absent')}
+                className={`button is-small mr-2 ${attendance[booking.user._id] === 'absent' ? 'is-danger' : ''}`}
+                onClick={() => handleAttendance(booking.user._id, 'absent')}
               >
                 Absent
               </button>
@@ -139,19 +139,21 @@ const ClassEditView = ({ classId }) => {
           </div>
         </div>
       ))}
-
-      <div className="box mb-4">
-        <h2 className="title is-5">Bookings</h2>
-        {activeBookings.map(booking => (
-          <div key={booking._id} className="box mb-3">
-            <p>User: {booking.user.name}</p> {/* Directly access user name */}
-            <p>Status: {booking.status}</p>
-            <p>Booking Date: {new Date(booking.bookingDate).toLocaleString()}</p>
-          </div>
-        ))}
-      </div>
+ 
     </div>
   );
 };
 
 export default ClassEditView;
+
+// code for checking if the route works
+// // <div className="box mb-4">
+// <h2 className="title is-5">Bookings</h2>
+// {activeBookings.map(booking => (
+//   <div key={booking._id} className="box mb-3">
+//     <p>User: {booking.user.name}</p> {/* Directly access user name */}
+//     <p>Status: {booking.status}</p>
+//     <p>Booking Date: {new Date(booking.bookingDate).toLocaleString()}</p>
+//   </div>
+// ))}
+// </div>

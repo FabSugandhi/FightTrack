@@ -5,6 +5,7 @@ const Class = require('./models/class.js');
 
 dotenv.config();
 
+// current attendees should not be seeded in, rather it should be calculated by the server
 const classes = [
     {
       title: 'CardioBox',

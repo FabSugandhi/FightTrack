@@ -37,7 +37,7 @@ exports.updateClass = async (req, res) => {
     try {
         const updatedClass = await Class.findByIdAndUpdate(
             id,
-            { title, description, schedule, maxAttendees},
+            { title, description, schedule, maxAttendees}, 
             { new: true }
         );
 
