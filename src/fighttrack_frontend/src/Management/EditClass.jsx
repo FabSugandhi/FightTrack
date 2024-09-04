@@ -74,15 +74,9 @@ const ClassEditView = ({ classId }) => {
   };
 
   // Filter and sort bookings
-  const latestBookings = bookings
+  const activeBookings = bookings
     .filter(booking => booking.status === 'booked')
-    .sort((a, b) => new Date(b.bookingDate) - new Date(a.bookingDate))
-    .reduce((acc, booking) => {
-      if (!acc[booking.user]) {
-        acc[booking.user] = booking;
-      }
-      return acc;
-    }, {});
+    .sort((a, b) => new Date(b.bookingDate) - new Date(a.bookingDate));
 
   return (
     <div className="container">
@@ -148,7 +142,7 @@ const ClassEditView = ({ classId }) => {
 
       <div className="box mb-4">
         <h2 className="title is-5">Bookings</h2>
-        {Object.values(latestBookings).map(booking => (
+        {activeBookings.map(booking => (
           <div key={booking._id} className="box mb-3">
             <p>User: {booking.user.name}</p> {/* Directly access user name */}
             <p>Status: {booking.status}</p>
