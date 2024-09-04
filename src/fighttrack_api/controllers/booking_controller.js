@@ -97,14 +97,14 @@ exports.getBookings = async (req, res) => {
 };
 
 // Test route for bookings/class
-// @route GET /api/bookings/class
+// @route GET /api/bookings/class/:id
 // @access Private
 exports.getBookingsByClassId = async (req, res) => {
     const { id } = req.params;
 
     try {
         const bookings = await Booking.find({ class: id })
-            .populate('user', 'name', 'membershipType'); // Populate user with name field and membershipType
+            .populate('user', 'name membershipType'); // Populate user with name field and membershipType
 
         if (bookings.length === 0) {
             return res.status(404).json({ message: 'No bookings found for this class' });
