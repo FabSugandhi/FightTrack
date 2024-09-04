@@ -104,7 +104,10 @@ exports.getBookingsByClassId = async (req, res) => {
 
     try {
         const bookings = await Booking.find({ class: id })
-            .populate('user', 'name membershipType'); // Populate user with name field and membershipType
+            .populate({
+                path: 'user',
+                select: 'name membershipType'
+            }); // more explicity specify the fields to be populated
 
         if (bookings.length === 0) {
             return res.status(404).json({ message: 'No bookings found for this class' });
