@@ -4,11 +4,14 @@ const ClassEditView = ({ classId }) => {
   const [classDetails, setClassDetails] = useState({
     title: '',
     maxAttendees: 0,
-    currentAttendees: 0
+    currentAttendees: 0,
+    startTime: '', // Add this line
+    duration: 0    // Add this line
   });
   const [users, setUsers] = useState([]);
   const [attendance, setAttendance] = useState({});
   const [bookings, setBookings] = useState([]); // Initialize as an empty array
+  const [attendanceStatus, setAttendanceStatus] = useState({});
 
   const removeAttendee = async (userId) => {
     try {
@@ -36,6 +39,48 @@ const ClassEditView = ({ classId }) => {
     } catch (error) {
       console.error('Error removing attendee:', error);
     }
+  };
+
+  const handleAttendance = async (userId) => {
+    // Immediately set the status to 'present'
+    setAttendanceStatus(prev => ({ ...prev, [userId]: 'present' }));
+
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`https://fighttrack-abws.onrender.com/api/classes/${classId}/attendance`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userId })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      console.log('Attendance marked successfully');
+    } catch (error) {
+      console.error('Error marking attendance:', error);
+      alert('Error marking attendance: ' + error.message);
+      // Remove the attendance status if there's an error
+      setAttendanceStatus(prev => {
+        const newStatus = { ...prev };
+        delete newStatus[userId];
+        return newStatus;
+      });
+    }
+  };
+
+  const handleAbsentClick = (userId) => {
+    // Only set to 'absent' if not already 'present'
+    setAttendanceStatus(prev => {
+      if (prev[userId] !== 'present') {
+        return { ...prev, [userId]: 'absent' };
+      }
+      return prev;
+    });
   };
 
   useEffect(() => {
@@ -80,7 +125,7 @@ const ClassEditView = ({ classId }) => {
         if (!response.ok) {
           if (response.status === 404) {
             console.log('No bookings found for this class');
-            setBookings([]); // Set to empty array if no bookings
+            setBookings([]); // Set to emptyarray if no bookings
           } else {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
@@ -99,11 +144,9 @@ const ClassEditView = ({ classId }) => {
     fetchBookings();
   }, [classId]);
 
-  const handleAttendance = (userId, status) => {
-    setAttendance(prevState => ({
-      ...prevState,
-      [userId]: status
-    }));
+  const getUserNameById = (userId) => {
+    const user = users.find(user => user._id === userId);
+    return user ? user.name : 'Unknown User';
   };
 
   // Update the activeBookings calculation
@@ -113,11 +156,20 @@ const ClassEditView = ({ classId }) => {
         .sort((a, b) => new Date(b.bookingDate) - new Date(a.bookingDate))
     : [];
 
+  // Add this function to format the time
+  const formatClassTime = (startTime, duration) => {
+    if (!startTime) return '';
+    const time = new Date(startTime);
+    const formattedTime = time.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit', hour12: true });
+    return `${formattedTime} AEST (${duration}m)`;
+  };
+
   return (
     <div className="container">
       <div className="columns is-mobile is-vcentered mb-4">
         <div className="column">
           <h1 className="title is-4">Class {classDetails.title} Attendees</h1>
+          <p className="subtitle is-6">{formatClassTime(classDetails.startTime, classDetails.duration)}</p>
         </div>
         <div className="column">
           <div className="field">
@@ -153,26 +205,28 @@ const ClassEditView = ({ classId }) => {
               </div>
               <div className="column">
                 <p className="is-size-5 has-text-weight-bold mb-1">{booking.user.name}</p>
-                <p className="is-size-6">
+                <p className="is-size-6"> 
                   {booking.user.membershipType.charAt(0).toUpperCase() + booking.user.membershipType.slice(1)} Membership
                 </p>
               </div>
               <div className="column has-text-right">
                 <button
-                  className={`button is-small mr-2 ${attendance[booking.user?._id] === 'present' ? 'is-success' : ''}`}
-                  onClick={() => booking.user && handleAttendance(booking.user._id, 'present')} // only works if booking.user exists
+                  className={`button is-small mr-2 ${attendanceStatus[booking.user._id] === 'present' ? 'is-success' : ''}`}
+                  onClick={() => handleAttendance(booking.user._id)}
+                  disabled={attendanceStatus[booking.user._id] === 'present'}
                 > 
                   Present
                 </button>
                 <button
-                  className={`button is-small mr-2 ${attendance[booking.user?._id] === 'absent' ? 'is-danger' : ''}`}
-                  onClick={() => booking.user && handleAttendance(booking.user._id, 'absent')}
+                  className={`button is-small mr-2 ${attendanceStatus[booking.user._id] === 'absent' ? 'is-danger' : ''}`}
+                  onClick={() => handleAbsentClick(booking.user._id)}
+                  disabled={attendanceStatus[booking.user._id] === 'present'}
                 >
                   Absent
                 </button>
                 <button 
                   className="button is-small"
-                  onClick={() => booking.user && removeAttendee(booking.user._id)}
+                  onClick={() => removeAttendee(booking.user._id)}
                   title="Remove"
                 >
                   X

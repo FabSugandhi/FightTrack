@@ -17,7 +17,8 @@ const ClassManagement = ({ onClassSelect }) => {
     title: '',
     description: '',
     schedule: { day: '', time: '' },
-    maxAttendees: 0,
+    maxAttendees: 18,
+    duration: 45, // Add default duration of 60 minutes
   });
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [classToDelete, setClassToDelete] = useState(null);
@@ -108,9 +109,26 @@ const ClassManagement = ({ onClassSelect }) => {
     setClassToDelete(null);
   };
 
+  const formatTime = (time, duration) => {
+    const [hours, minutes] = time.split(':');
+    const isPM = parseInt(hours) >= 12;
+    const formattedHours = parseInt(hours) % 12 || 12;
+    const ampm = isPM ? 'pm' : 'am';
+    return `${formattedHours}:${minutes} ${ampm} AEST\n(${duration}m)`;
+  };
+
   const handleAddClass = async (e) => {
     e.preventDefault();
     try {
+      const formattedTime = formatTime(newClass.schedule.time, newClass.duration);
+      const classData = {
+        ...newClass,
+        schedule: {
+          ...newClass.schedule,
+          time: formattedTime
+        }
+      };
+
       const token = localStorage.getItem('token');
       const response = await fetch('https://fighttrack-abws.onrender.com/api/classes', {
         method: 'POST',
@@ -118,7 +136,7 @@ const ClassManagement = ({ onClassSelect }) => {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newClass),
+        body: JSON.stringify(classData),
       });
 
       if (!response.ok) {
@@ -139,7 +157,7 @@ const ClassManagement = ({ onClassSelect }) => {
       });
 
       setShowAddClassModal(false);
-      setNewClass({ title: '', description: '', schedule: { day: '', time: '' }, maxAttendees: 0 });
+      setNewClass({ title: '', description: '', schedule: { day: '', time: '' }, maxAttendees: 0, duration: 60 });
     } catch (error) {
       console.error('Error adding class:', error);
     }
@@ -264,6 +282,19 @@ const ClassManagement = ({ onClassSelect }) => {
                       value={newClass.maxAttendees}
                       onChange={(e) => setNewClass({...newClass, maxAttendees: e.target.value})}
                       required
+                    />
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label">Duration (minutes)</label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      type="number"
+                      value={newClass.duration}
+                      onChange={(e) => setNewClass({...newClass, duration: parseInt(e.target.value)})}
+                      required
+                      min="1"
                     />
                   </div>
                 </div>
