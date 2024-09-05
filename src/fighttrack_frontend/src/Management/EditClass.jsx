@@ -106,11 +106,6 @@ const ClassEditView = ({ classId }) => {
     }));
   };
 
-  const getUserNameById = (userId) => {
-    const user = users.find(user => user._id === userId);
-    return user ? user.name : 'Unknown User';
-  };
-
   // Update the activeBookings calculation
   const activeBookings = Array.isArray(bookings) 
     ? bookings
@@ -158,8 +153,8 @@ const ClassEditView = ({ classId }) => {
               </div>
               <div className="column">
                 <p className="is-size-5 has-text-weight-bold mb-1">{booking.user.name}</p>
-                <p className="is-size-6"> Membership Type:
-                  {/* {booking.user.membershipType.charAt(0).toUpperCase() + booking.user.membershipType.slice(1)} Membership */}
+                <p className="is-size-6">
+                  {booking.user.membershipType.charAt(0).toUpperCase() + booking.user.membershipType.slice(1)} Membership
                 </p>
               </div>
               <div className="column has-text-right">
